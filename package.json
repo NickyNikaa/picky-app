@@ -1,0 +1,19 @@
+{
+  "name": "picky-app",
+  "version": "0.4.0",
+  "description": "picky. — München's Restaurant/Bar/Event Finder mit Live-Scraping Backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'static site, no build'",
+    "scrape:test": "node scripts/test-scrapers.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "@anthropic-ai/sdk": "^0.27.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

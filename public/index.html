@@ -1,0 +1,1510 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>picky. — Restaurants, Bars & Events</title>
+<style>
+  :root {
+    --bg: #0f0e0c;
+    --bg-soft: #18161312;
+    --panel: #1a1714;
+    --panel-2: #221d18;
+    --text: #f4ede2;
+    --text-dim: #b9ada0;
+    --text-mute: #8c8074;
+    --accent: #d4a574;
+    --accent-2: #c2410c;
+    --border: #2a241e;
+    --border-soft: #221d18;
+    --chip-bg: #1f1a15;
+    --chip-bg-active: #d4a574;
+    --chip-text-active: #1a1714;
+    --good: #6ec27f;
+    --shadow: 0 10px 40px rgba(0,0,0,0.45);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  body {
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(212,165,116,0.10), transparent 60%),
+      radial-gradient(700px 400px at 0% 30%, rgba(194,65,12,0.07), transparent 60%);
+    min-height: 100vh;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* HEADER */
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border-soft);
+    gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: baseline; gap: 12px; }
+  .brand .logo {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700; font-size: 32px; letter-spacing: -0.5px;
+    color: var(--text);
+  }
+  .brand .logo span { color: var(--accent); }
+  .brand .tag { color: var(--text-mute); font-size: 13px; }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  .city-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 999px;
+    color: var(--text); font-size: 13px;
+  }
+  .city-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .city-pill select {
+    background: transparent; border: none; color: var(--text);
+    font: inherit; outline: none; cursor: pointer;
+  }
+  .add-btn {
+    background: var(--accent); color: #1a1714;
+    border: none; padding: 9px 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background 0.15s ease;
+  }
+  .add-btn:hover { background: #e2b487; }
+
+  /* HERO */
+  .hero { padding: 48px 0 20px; }
+  .hero h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05; margin: 0 0 14px; font-weight: 700; letter-spacing: -0.5px;
+  }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero p { color: var(--text-dim); max-width: 640px; font-size: 17px; line-height: 1.55; margin: 0; }
+
+  /* TABS */
+  .tabs {
+    display: flex; gap: 4px;
+    margin: 32px 0 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .tab {
+    padding: 12px 18px;
+    background: transparent; border: none;
+    color: var(--text-mute); font-size: 14px; font-weight: 500;
+    cursor: pointer; position: relative;
+    transition: color 0.15s ease;
+    font-family: inherit;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--text); }
+  .tab.active::after {
+    content: ""; position: absolute; bottom: -1px; left: 12px; right: 12px;
+    height: 2px; background: var(--accent); border-radius: 2px;
+  }
+  .tab .count {
+    background: var(--chip-bg); color: var(--text-mute);
+    padding: 2px 7px; border-radius: 999px; font-size: 11px;
+  }
+  .tab.active .count { background: var(--accent); color: #1a1714; }
+
+  /* FILTERS */
+  .filters {
+    margin-top: 18px;
+    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border); border-radius: 18px;
+    padding: 22px 22px 18px; box-shadow: var(--shadow);
+  }
+  .filter-row { margin-bottom: 14px; }
+  .filter-row:last-child { margin-bottom: 0; }
+  .filter-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text-mute); margin: 0 0 8px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--chip-bg); color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 7px 13px; border-radius: 999px;
+    cursor: pointer; font-size: 13px;
+    transition: all 0.15s ease; user-select: none;
+  }
+  .chip:hover { color: var(--text); border-color: var(--accent); }
+  .chip.active {
+    background: var(--chip-bg-active); color: var(--chip-text-active);
+    border-color: var(--accent); font-weight: 600;
+  }
+  .filter-actions {
+    display: flex; gap: 10px; align-items: center; justify-content: space-between;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-soft);
+  }
+  .reset-btn {
+    background: transparent; color: var(--text-mute); border: none;
+    cursor: pointer; font-size: 13px; padding: 6px 0;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .reset-btn:hover { color: var(--text); }
+  .result-count { color: var(--text-dim); font-size: 14px; }
+  .result-count strong { color: var(--accent); }
+
+  /* TYPE FILTER (segmented) */
+  .type-seg { display: inline-flex; background: var(--chip-bg); border: 1px solid var(--border); border-radius: 10px; padding: 3px; gap: 2px; }
+  .type-seg button {
+    background: transparent; border: none; color: var(--text-dim);
+    padding: 7px 14px; border-radius: 7px; cursor: pointer;
+    font-size: 13px; font-family: inherit; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 0.15s ease;
+  }
+  .type-seg button:hover { color: var(--text); }
+  .type-seg button.active { background: var(--accent); color: #1a1714; font-weight: 600; }
+
+  /* RESULTS */
+  .results {
+    margin: 28px 0 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+    display: flex; flex-direction: column;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card-banner {
+    height: 160px; position: relative;
+    background-size: cover; background-position: center;
+    display: flex; align-items: flex-end; padding: 12px 16px;
+  }
+  .card-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,14,12,0.0) 30%, rgba(15,14,12,0.85) 100%);
+  }
+  .card-banner .badges { position: relative; z-index: 2; display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    background: rgba(0,0,0,0.55); color: var(--text);
+    backdrop-filter: blur(6px);
+    padding: 4px 9px; border-radius: 6px; font-size: 11px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .badge.michelin { background: var(--accent); color: #1a1714; font-weight: 700; }
+  .badge.custom { background: var(--accent-2); color: #fff; }
+  .badge.bar { background: rgba(194,65,12,0.85); color: #fff; }
+  .badge.event { background: var(--good); color: #0f0e0c; font-weight: 700; }
+  .card-cuisine-icon {
+    position: absolute; top: 12px; right: 14px; z-index: 2;
+    font-size: 24px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+  }
+  .card-body { padding: 18px 18px 16px; flex: 1; display: flex; flex-direction: column; }
+  .card-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+    margin-bottom: 6px;
+  }
+  .card-name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px; font-weight: 700; line-height: 1.2; margin: 0;
+  }
+  .card-price { color: var(--accent); font-size: 14px; white-space: nowrap; }
+  .card-meta {
+    color: var(--text-mute); font-size: 12px; margin-bottom: 12px;
+    display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+  }
+  .card-meta .dot { color: var(--border); }
+  .card-pitch { color: var(--text-dim); font-size: 13.5px; line-height: 1.5; margin-bottom: 14px; flex: 1; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0; }
+  .tag-pill {
+    background: var(--chip-bg); color: var(--text-dim);
+    padding: 3px 8px; border-radius: 5px; font-size: 11px;
+    border: 1px solid var(--border);
+  }
+  .exclusivity { display: inline-flex; gap: 2px; margin-left: 4px; vertical-align: middle; }
+  .exclusivity .star { color: var(--accent); font-size: 11px; }
+  .exclusivity .star.dim { color: var(--border); }
+
+  /* EVENT CARDS */
+  .event-date-pill {
+    position: absolute; top: 12px; left: 14px; z-index: 2;
+    background: var(--accent); color: #1a1714;
+    padding: 4px 10px; border-radius: 8px;
+    font-size: 12px; font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .event-date-pill .day { display: block; font-size: 16px; line-height: 1; }
+  .event-date-pill .month { display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .empty {
+    grid-column: 1 / -1; text-align: center; padding: 60px 20px;
+    color: var(--text-mute);
+  }
+  .empty h3 { color: var(--text); font-family: "Playfair Display", Georgia, serif; }
+
+  /* Events info-banner */
+  .events-banner {
+    background: linear-gradient(135deg, rgba(212,165,116,0.10) 0%, rgba(194,65,12,0.10) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 20px;
+    margin-top: 22px;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .events-banner .icn { font-size: 28px; }
+  .events-banner .txt { color: var(--text-dim); font-size: 13.5px; line-height: 1.5; flex: 1; }
+  .events-banner .txt strong { color: var(--text); }
+
+  /* MODAL — base */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.78); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 100; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--border); border-radius: 18px;
+    max-width: 720px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: var(--shadow);
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px; z-index: 3;
+    background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text); width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; font-size: 20px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  .modal-close:hover { background: rgba(0,0,0,0.85); }
+
+  /* DETAIL MODAL */
+  .detail-hero {
+    position: relative; height: 280px;
+    background-size: cover; background-position: center;
+    border-radius: 18px 18px 0 0;
+  }
+  .detail-hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(26,23,20,0.95) 100%);
+    border-radius: 18px 18px 0 0;
+  }
+  .detail-hero-content {
+    position: absolute; bottom: 20px; left: 24px; right: 24px; z-index: 2;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+  }
+  .detail-hero-content h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 32px; font-weight: 700; margin: 0 0 6px;
+    line-height: 1.1; letter-spacing: -0.5px;
+  }
+  .detail-hero-content .sub { color: var(--text-dim); font-size: 14px; }
+  .detail-price { color: var(--accent); font-size: 18px; font-weight: 600; white-space: nowrap; }
+  .gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    padding: 12px 24px 0;
+  }
+  .gallery img {
+    width: 100%; height: 90px; object-fit: cover;
+    border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--border);
+    transition: opacity 0.15s ease;
+  }
+  .gallery img:hover { opacity: 0.85; }
+  .detail-body { padding: 20px 24px 24px; }
+  .detail-section { margin-bottom: 22px; }
+  .detail-section h3 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text-mute); margin: 0 0 10px; font-weight: 600;
+  }
+  .detail-pitch { color: var(--text); font-size: 15px; line-height: 1.6; }
+  .detail-meta-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .detail-meta-item {
+    background: var(--chip-bg); padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .detail-meta-item .lbl {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-mute); margin-bottom: 3px;
+  }
+  .detail-meta-item .val { color: var(--text); font-size: 13.5px; }
+  .info-line {
+    color: var(--text-dim); font-size: 13px; margin-bottom: 16px; line-height: 1.5;
+    background: var(--bg-soft); padding: 10px 12px; border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .pax-control {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+  }
+  .pax-control label { font-size: 11px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 1px; }
+  .pax-control select {
+    background: var(--chip-bg); color: var(--text); border: 1px solid var(--border);
+    padding: 7px 12px; border-radius: 8px; font-size: 14px; cursor: pointer;
+  }
+  .day-row { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border-soft); }
+  .day-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .day-label {
+    font-size: 13px; color: var(--text); font-weight: 600; margin-bottom: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .day-label .day-date { color: var(--text-mute); font-weight: 400; font-size: 12px; }
+  .slot-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .slot-btn {
+    background: var(--chip-bg); color: var(--text);
+    border: 1px solid var(--border);
+    padding: 7px 11px; border-radius: 7px;
+    font-size: 12.5px; cursor: pointer;
+    transition: all 0.12s ease;
+    text-decoration: none;
+  }
+  .slot-btn:hover { background: var(--accent); color: #1a1714; border-color: var(--accent); }
+  .slot-btn.none { background: transparent; color: var(--text-mute); cursor: default; font-style: italic; }
+  .detail-cta {
+    display: flex; gap: 10px; margin-top: 18px;
+  }
+  .btn {
+    flex: 1; padding: 12px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; border: none;
+    transition: all 0.15s ease; text-align: center;
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btn-primary { background: var(--accent); color: #1a1714; }
+  .btn-primary:hover { background: #e2b487; }
+  .btn-secondary { background: var(--chip-bg); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ADD-RESTAURANT FORM */
+  .form-modal { max-width: 580px; padding: 24px 28px 28px; position: relative; }
+  .form-modal h2 { font-family: "Playfair Display", Georgia, serif; margin: 0 0 6px; font-size: 26px; }
+  .form-modal .sub { color: var(--text-mute); font-size: 13px; margin-bottom: 22px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--text-mute); margin-bottom: 6px;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; background: var(--chip-bg); border: 1px solid var(--border);
+    color: var(--text); padding: 10px 12px; border-radius: 8px; font-size: 14px;
+    font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .form-chips .chip { font-size: 12px; padding: 5px 11px; }
+  .form-error {
+    color: #f87171; font-size: 13px; margin: 8px 0;
+    background: rgba(248,113,113,0.08); padding: 8px 12px; border-radius: 6px;
+    border-left: 3px solid #f87171;
+    display: none;
+  }
+  .form-actions { display: flex; gap: 10px; margin-top: 22px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 24px 0;
+    color: var(--text-mute); font-size: 12px; text-align: center;
+  }
+  footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 36px 0 20px; }
+    .container { padding: 0 16px; }
+    .filters { padding: 18px 16px 14px; }
+    .results { gap: 14px; }
+    .detail-hero { height: 200px; }
+    .detail-hero-content h2 { font-size: 26px; }
+    .form-row { grid-template-columns: 1fr; }
+    .tab { padding: 10px 12px; font-size: 13px; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+  <header class="top">
+    <div class="brand">
+      <div class="logo">picky<span>.</span></div>
+      <div class="tag">Wenn du wählerisch sein willst.</div>
+    </div>
+    <div class="header-actions">
+      <div class="city-pill">
+        <span class="dot"></span>
+        <select id="citySelect">
+          <option value="muc">München</option>
+          <option value="ber" disabled>Berlin (bald)</option>
+          <option value="hh" disabled>Hamburg (bald)</option>
+        </select>
+      </div>
+      <button class="add-btn" id="addBtn">+ Eintrag</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Der richtige Ort für <em>jeden Anlass.</em></h1>
+    <p>Restaurants, Bars und Events in München — gefiltert nach Stimmung, Anlass, Budget. Heute Abend oder in zwei Wochen. Mit Bildern, Verfügbarkeit und direkter Buchung.</p>
+  </section>
+
+  <!-- TABS -->
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-view="places">🍽️ Restaurants & Bars <span class="count" id="placesCount">0</span></button>
+    <button class="tab" data-view="events">🎉 Events <span class="count" id="eventsCount">0</span></button>
+  </div>
+
+  <!-- PLACES VIEW (Restaurants & Bars) -->
+  <div id="view-places">
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter-label">Typ</div>
+        <div class="type-seg" id="typeSeg">
+          <button data-type="all" class="active">Alle</button>
+          <button data-type="restaurant">🍽️ Restaurant</button>
+          <button data-type="bar">🍸 Bar</button>
+        </div>
+      </div>
+      <div class="filter-row"><div class="filter-label">Anlass</div><div class="chips" id="occasionChips"></div></div>
+      <div class="filter-row"><div class="filter-label">Stimmung</div><div class="chips" id="moodChips"></div></div>
+      <div class="filter-row"><div class="filter-label">Küche / Stil</div><div class="chips" id="cuisineChips"></div></div>
+      <div class="filter-row"><div class="filter-label">Preis</div><div class="chips" id="priceChips"></div></div>
+      <div class="filter-row"><div class="filter-label">Exklusivität</div><div class="chips" id="exclusivityChips"></div></div>
+      <div class="filter-row"><div class="filter-label">Extras</div><div class="chips" id="featureChips"></div></div>
+      <div class="filter-actions">
+        <button class="reset-btn" id="resetBtn">Filter zurücksetzen</button>
+        <div class="result-count"><strong id="resultCount">0</strong> Treffer</div>
+      </div>
+    </section>
+    <section class="results" id="results"></section>
+  </div>
+
+  <!-- EVENTS VIEW -->
+  <div id="view-events" style="display:none;">
+    <div class="events-banner" id="eventsBanner">
+      <div class="icn">📡</div>
+      <div class="txt" id="eventsBannerTxt">
+        <strong>Lade Events…</strong> Backend wird abgefragt — Mix aus gescrapten Live-Events und kuratierten Seeds.
+      </div>
+    </div>
+    <section class="filters" style="margin-top: 20px;">
+      <div class="filter-row"><div class="filter-label">Event-Kategorie</div><div class="chips" id="eventCategoryChips"></div></div>
+      <div class="filter-actions">
+        <button class="reset-btn" id="resetEventBtn">Filter zurücksetzen</button>
+        <div class="result-count"><strong id="eventResultCount">0</strong> Events</div>
+      </div>
+    </section>
+    <section class="results" id="eventsResults"></section>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    picky. · MVP <span>v0.4</span> · München · Restaurants, Bars + Live-Event-Scraping · <span id="eventsStatus">lädt…</span>
+  </div>
+</footer>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal" style="position: relative;">
+    <button class="modal-close" id="detailClose">×</button>
+    <div class="detail-hero" id="detailHero">
+      <div class="detail-hero-content">
+        <div>
+          <h2 id="detailName"></h2>
+          <div class="sub" id="detailSub"></div>
+        </div>
+        <div class="detail-price" id="detailPrice"></div>
+      </div>
+    </div>
+    <div class="gallery" id="detailGallery"></div>
+    <div class="detail-body">
+      <div class="detail-section">
+        <p class="detail-pitch" id="detailPitch"></p>
+      </div>
+      <div class="detail-section">
+        <h3>Details</h3>
+        <div class="detail-meta-grid" id="detailMeta"></div>
+      </div>
+      <div class="detail-section" id="detailSlotsSection">
+        <h3>Verfügbarkeit</h3>
+        <div class="info-line">Demo-Slots — der Live-Sync mit OpenTable / Quandoo folgt. Klick öffnet die echte Buchungsseite.</div>
+        <div class="pax-control">
+          <label for="paxSelect">Personen</label>
+          <select id="paxSelect">
+            <option value="1">1</option><option value="2" selected>2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option>
+          </select>
+        </div>
+        <div id="detailSlots"></div>
+      </div>
+      <div class="detail-cta">
+        <a class="btn btn-primary" id="detailBookBtn" href="#" target="_blank" rel="noopener">Direkt buchen →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD ENTRY MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal form-modal">
+    <button class="modal-close" id="addClose">×</button>
+    <h2>Eigenen Eintrag hinzufügen</h2>
+    <div class="sub">Restaurant oder Bar — wird lokal in deinem Browser gespeichert.</div>
+    <div class="form-error" id="formError"></div>
+
+    <div class="form-group">
+      <label>Typ</label>
+      <div class="type-seg" id="f_typeSeg">
+        <button data-type="restaurant" class="active">🍽️ Restaurant</button>
+        <button data-type="bar">🍸 Bar</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Name *</label>
+      <input type="text" id="f_name" placeholder="z.B. Trattoria Bei Mario" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Viertel</label>
+        <input type="text" id="f_neighborhood" placeholder="z.B. Glockenbach" />
+      </div>
+      <div class="form-group">
+        <label>Buchungs-URL *</label>
+        <input type="url" id="f_url" placeholder="https://..." />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Kurze Beschreibung *</label>
+      <textarea id="f_pitch" rows="2" placeholder="1-2 Sätze, was den Ort besonders macht..."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Preis</label>
+        <select id="f_price">
+          <option value="1">€</option><option value="2" selected>€€</option>
+          <option value="3">€€€</option><option value="4">€€€€</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Exklusivität</label>
+        <select id="f_exclusivity">
+          <option value="1">Spontan</option><option value="2" selected>Lieber reservieren</option>
+          <option value="3">Schwer zu kriegen</option><option value="4">Insider / VIP</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Anlass (mind. 1)</label>
+      <div class="form-chips chips" id="f_occasion"></div>
+    </div>
+    <div class="form-group">
+      <label>Stimmung (mind. 1)</label>
+      <div class="form-chips chips" id="f_mood"></div>
+    </div>
+    <div class="form-group">
+      <label>Küche / Stil (mind. 1)</label>
+      <div class="form-chips chips" id="f_cuisine"></div>
+    </div>
+    <div class="form-group">
+      <label>Extras (optional)</label>
+      <div class="form-chips chips" id="f_features"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-secondary" id="cancelAdd">Abbrechen</button>
+      <button class="btn btn-primary" id="saveAdd">Hinzufügen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA — RESTAURANTS & BARS (type: "restaurant" | "bar")
+// ============================================================
+const PLACES = [
+  // === RESTAURANTS ===
+  { id: "atelier", type: "restaurant", name: "Atelier", neighborhood: "Altstadt", cuisine: ["modern-european","french"], price: 4,
+    occasion: ["celebration","business","date"], mood: ["elegant","chic"], exclusivity: 4, features: ["michelin"], michelin: 3,
+    pitch: "Münchens einziges Drei-Sterne-Restaurant im Bayerischen Hof. Anton Gschwendtner, kompromisslos.",
+    bookingUrl: "https://www.bayerischerhof.de/de/atelier" },
+  { id: "tantris", type: "restaurant", name: "Tantris", neighborhood: "Schwabing", cuisine: ["french","modern-european"], price: 4,
+    occasion: ["celebration","business","date"], mood: ["elegant"], exclusivity: 4, features: ["michelin"], michelin: 2,
+    pitch: "Münchner Fine-Dining-Ikone seit 1971. Benjamin Chmura kocht den Klassiker neu.",
+    bookingUrl: "https://tantris.de/de/restaurants/tantris-restaurant/" },
+  { id: "alois", type: "restaurant", name: "Alois — Dallmayr Fine Dining", neighborhood: "Altstadt", cuisine: ["modern-european"], price: 4,
+    occasion: ["business","celebration"], mood: ["elegant"], exclusivity: 4, features: ["michelin"], michelin: 2,
+    pitch: "Im OG des Dallmayr. Rosina Ostler — präzise, intuitiv, kraftvoll.",
+    bookingUrl: "https://www.dallmayr.com/de/dallmayr-fine-dining/" },
+  { id: "komu", type: "restaurant", name: "KOMU", neighborhood: "Maxvorstadt", cuisine: ["japanese","asian-fusion"], price: 4,
+    occasion: ["celebration","date","business"], mood: ["elegant","chic"], exclusivity: 4, features: ["michelin"], michelin: 2,
+    pitch: "Japanisch trifft auf hohe europäische Kunst. Tasting-Menü auf Weltniveau.",
+    bookingUrl: "https://www.komu-restaurant.de/" },
+  { id: "les-deux", type: "restaurant", name: "Les Deux", neighborhood: "Altstadt", cuisine: ["french","modern-european"], price: 4,
+    occasion: ["business","date","celebration"], mood: ["elegant","chic"], exclusivity: 3, features: ["michelin"], michelin: 1,
+    pitch: "Französisch-elegant zwischen Maximilianstraße und Marienplatz. Brasserie unten, Sterne oben.",
+    bookingUrl: "https://lesdeux-muc.de/" },
+  { id: "sparkling-bistro", type: "restaurant", name: "Sparkling Bistro", neighborhood: "Altstadt", cuisine: ["modern-european"], price: 3,
+    occasion: ["date","business"], mood: ["chic","cozy"], exclusivity: 3, features: ["michelin"], michelin: 1,
+    pitch: "Klein, persönlich, Champagner-fokussiert. Jürgen Wolfsgruber kocht für 20 Gäste.",
+    bookingUrl: "https://www.sparklingbistro.de/" },
+  { id: "1804-hirschau", type: "restaurant", name: "1804 Hirschau", neighborhood: "Englischer Garten", cuisine: ["modern-european"], price: 3,
+    occasion: ["date","celebration","family"], mood: ["cozy","traditional"], exclusivity: 2, features: ["michelin","terrace","beer-garden"], michelin: 1,
+    pitch: "Brandneuer Stern im Englischen Garten. Farm-to-Table mit bayerischem Akzent.",
+    bookingUrl: "https://1804hirschau.de/" },
+  { id: "showroom", type: "restaurant", name: "Showroom by Dominik Käppeler", neighborhood: "Gärtnerplatz", cuisine: ["modern-european"], price: 4,
+    occasion: ["date","celebration"], mood: ["chic","cozy"], exclusivity: 3, features: ["michelin"], michelin: 1,
+    pitch: "Intimes Counter-Dining. Show-Kitchen, ein Menü, ein Sommelier — kompromisslos persönlich.",
+    bookingUrl: "https://www.showroom-restaurant.de/" },
+  { id: "gabelspiel", type: "restaurant", name: "Gabelspiel", neighborhood: "Steinhausen", cuisine: ["modern-european","mediterranean"], price: 3,
+    occasion: ["date","celebration"], mood: ["cozy","elegant"], exclusivity: 3, features: ["michelin"], michelin: 1,
+    pitch: "Versteckter Stern abseits der Touri-Pfade. Florian Berger, Produkt-pur.",
+    bookingUrl: "https://www.gabelspiel.com/" },
+  { id: "brothers", type: "restaurant", name: "Brothers", neighborhood: "Altstadt", cuisine: ["modern-european"], price: 4,
+    occasion: ["date","celebration"], mood: ["chic","trendy"], exclusivity: 3, features: ["michelin"], michelin: 1,
+    pitch: "Wild, jung, Fine Dining ohne Krawatte. Bar-Vibe trifft Sternenküche.",
+    bookingUrl: "https://www.brothers-restaurant.com/" },
+  { id: "tian", type: "restaurant", name: "Tian München", neighborhood: "Viktualienmarkt", cuisine: ["vegetarian","vegan","modern-european"], price: 4,
+    occasion: ["date","celebration","business"], mood: ["elegant","chic"], exclusivity: 3, features: ["michelin","vegan"], michelin: 1,
+    pitch: "Vegetarisches Fine Dining mit Stern am Viktualienmarkt. Pflanzlich, hochkomplex.",
+    bookingUrl: "https://www.tian-restaurant.com/munich" },
+  { id: "matsuhisa", type: "restaurant", name: "Matsuhisa", neighborhood: "Maximilianstraße", cuisine: ["japanese","asian-fusion"], price: 4,
+    occasion: ["date","celebration","business"], mood: ["elegant","chic","lively"], exclusivity: 3, features: [],
+    pitch: "Nobu Matsuhisas Münchner Außenposten im Mandarin Oriental. Black Cod, Sake, Sushi-Counter.",
+    bookingUrl: "https://www.mandarinoriental.com/de/munich/altstadt/dine/matsuhisa" },
+  { id: "broeding", type: "restaurant", name: "Broeding", neighborhood: "Neuhausen", cuisine: ["modern-european","mediterranean"], price: 3,
+    occasion: ["date","celebration","business"], mood: ["cozy","elegant"], exclusivity: 2, features: [],
+    pitch: "Tisch-Menü mit Weinbegleitung, kleines Kammerstück. Slow Dining für Genießer.",
+    bookingUrl: "https://www.broeding.de/" },
+  { id: "vinaiolo", type: "restaurant", name: "Vinaiolo", neighborhood: "Haidhausen", cuisine: ["italian"], price: 3,
+    occasion: ["date","celebration"], mood: ["romantic","cozy"], exclusivity: 2, features: [],
+    pitch: "Italienisch im liebevoll restaurierten Krämerladen von 1904. Date-Klassiker.",
+    bookingUrl: "https://vinaiolo.de/" },
+  { id: "storia", type: "restaurant", name: "Ristorante Storia", neighborhood: "Maxvorstadt", cuisine: ["italian"], price: 3,
+    occasion: ["date","celebration"], mood: ["romantic","elegant"], exclusivity: 2, features: [],
+    pitch: "Candle-Light, 4-Gang mit Weinbegleitung, klassisches Date-Restaurant.",
+    bookingUrl: "https://www.ristorantestoria.de/" },
+  { id: "maxelon", type: "restaurant", name: "Maxelon", neighborhood: "Maxvorstadt", cuisine: ["modern-european","mediterranean"], price: 3,
+    occasion: ["date","casual","business","celebration"], mood: ["chic","cozy","romantic"], exclusivity: 2, features: [],
+    pitch: "Saisonal, ehrlich, immer ein Lichtblick. Maxvorstadt-Geheimtipp ohne Allüren.",
+    bookingUrl: "https://maxelon.de/" },
+  { id: "schumanns", type: "restaurant", name: "Schumann's Tagesbar", neighborhood: "Fünf Höfe", cuisine: ["european","international"], price: 2,
+    occasion: ["business","casual"], mood: ["chic","lively"], exclusivity: 2, features: [],
+    pitch: "Institution für Business-Lunch und After-Work in zentraler Lage.",
+    bookingUrl: "https://www.schumanns.de/" },
+  { id: "brenner", type: "restaurant", name: "Brenner Operngrill", neighborhood: "Altstadt", cuisine: ["italian","grill"], price: 3,
+    occasion: ["business","date","celebration","group"], mood: ["elegant","lively"], exclusivity: 2, features: [],
+    pitch: "Säulenhalle des Marstalls — Bar, Pasta, Grill. Sehen und gesehen werden.",
+    bookingUrl: "https://www.brennergrill.de/" },
+  { id: "rocca-riviera", type: "restaurant", name: "Rocca Riviera", neighborhood: "Wittelsbacherplatz", cuisine: ["italian","mediterranean"], price: 3,
+    occasion: ["date","casual","celebration","group"], mood: ["trendy","lively","chic"], exclusivity: 2, features: ["terrace"],
+    pitch: "Mediterran, Bar-Vibe, schöne Terrasse. Sommer-Liebling der Innenstadt.",
+    bookingUrl: "https://www.roccariviera.com/" },
+  { id: "muniqo", type: "restaurant", name: "M'Uniqo Rooftop", neighborhood: "Schwabing", cuisine: ["international"], price: 3,
+    occasion: ["celebration","date","casual"], mood: ["chic","trendy"], exclusivity: 2, features: ["rooftop","view"],
+    pitch: "Münchens höchste Rooftop-Bar — 360° auf Stadt, Olympiapark, Alpen.",
+    bookingUrl: "https://muniqo-rooftop.com/" },
+  { id: "sushi-club", type: "restaurant", name: "Munich Sushi Club", neighborhood: "Altstadt (Mandarin Oriental)", cuisine: ["japanese"], price: 4,
+    occasion: ["date","celebration","business"], mood: ["chic","elegant"], exclusivity: 3, features: ["rooftop","view"],
+    pitch: "7. Stock des Mandarin Oriental. Blick auf Frauenkirche, Cocktails, Omakase.",
+    bookingUrl: "https://www.mandarinoriental.com/de/munich/altstadt/dine/munich-sushi-club" },
+  { id: "fitzroy", type: "restaurant", name: "Fitzroy", neighborhood: "Werksviertel", cuisine: ["modern-european"], price: 3,
+    occasion: ["date","celebration","casual"], mood: ["chic","trendy"], exclusivity: 2, features: ["rooftop","view"],
+    pitch: "14. Stock im WERK4. Panorama bis zu den Alpen, moderne Küche, urbaner Vibe.",
+    bookingUrl: "https://fitzroy-rooftop.com/" },
+  { id: "frau-im-mond", type: "restaurant", name: "Frau im Mond", neighborhood: "Isarvorstadt", cuisine: ["international"], price: 2,
+    occasion: ["casual","date"], mood: ["trendy","lively"], exclusivity: 1, features: ["terrace","view"],
+    pitch: "Dachterrasse des Deutschen Museums. Frühstück bis Cocktail, Blick über die Isar.",
+    bookingUrl: "https://frauimmond-bar.de/" },
+  { id: "hofbraeu", type: "restaurant", name: "Hofbräuhaus", neighborhood: "Altstadt", cuisine: ["bavarian"], price: 2,
+    occasion: ["family","casual","group"], mood: ["traditional","lively"], exclusivity: 1, features: ["beer-garden"],
+    pitch: "Das berühmteste Wirtshaus der Welt. Touri-Magnet, aber zu Recht.",
+    bookingUrl: "https://www.hofbraeuhaus.de/" },
+  { id: "augustiner", type: "restaurant", name: "Augustiner Stammhaus", neighborhood: "Altstadt", cuisine: ["bavarian"], price: 2,
+    occasion: ["family","casual","group","business"], mood: ["traditional","lively"], exclusivity: 1, features: ["beer-garden"],
+    pitch: "Seit 1887 Bier vom Holzfass. Weißwurst aus der hauseigenen Metzgerei.",
+    bookingUrl: "https://www.augustiner-restaurant.com/" },
+  { id: "haxnbauer", type: "restaurant", name: "Haxnbauer im Tal", neighborhood: "Altstadt", cuisine: ["bavarian"], price: 3,
+    occasion: ["family","casual"], mood: ["traditional","cozy"], exclusivity: 1, features: [],
+    pitch: "Die Heimat der besten Haxn der Stadt. Legendär, ehrlich, voll.",
+    bookingUrl: "https://www.haxnbauer.de/" },
+  { id: "tegernseer", type: "restaurant", name: "Tegernseer Tal Bräuhaus", neighborhood: "Altstadt", cuisine: ["bavarian"], price: 2,
+    occasion: ["family","casual","group"], mood: ["traditional","lively"], exclusivity: 1, features: [],
+    pitch: "Knusprige Haxn, hausgemachte Kässpatzen, Tegernseer vom Fass.",
+    bookingUrl: "https://www.tegernseer-tal.com/" },
+  { id: "wirtshaus-ayinger", type: "restaurant", name: "Wirtshaus Ayingers", neighborhood: "Platzl", cuisine: ["bavarian"], price: 2,
+    occasion: ["family","casual","group","business"], mood: ["traditional","cozy"], exclusivity: 1, features: ["beer-garden"],
+    pitch: "Solides Wirtshaus gegenüber dem Hofbräuhaus — weniger Touri, dafür entspannter.",
+    bookingUrl: "https://www.ayingers.de/" },
+  { id: "spatenhaus", type: "restaurant", name: "Spatenhaus an der Oper", neighborhood: "Maximilianstraße", cuisine: ["bavarian","european"], price: 3,
+    occasion: ["business","celebration","date","family"], mood: ["elegant","traditional"], exclusivity: 2, features: [],
+    pitch: "Traditionsadresse vor der Oper. Zweistöckig, gediegen, Münchner Klassiker.",
+    bookingUrl: "https://www.kuffler.de/de/restaurants/spatenhaus-an-der-oper" },
+  { id: "max-pett", type: "restaurant", name: "Max Pett", neighborhood: "Ludwigsvorstadt", cuisine: ["vegan","bavarian"], price: 2,
+    occasion: ["casual","date","family"], mood: ["cozy"], exclusivity: 2, features: ["vegan"],
+    pitch: "Komplett vegan, komplett bayerisch. Schnitzel, Schweinsbraten, Käsespätzle — alles pflanzlich.",
+    bookingUrl: "https://www.max-pett.de/" },
+  { id: "bodhi", type: "restaurant", name: "Bodhi", neighborhood: "Westend", cuisine: ["vegan","bavarian"], price: 2,
+    occasion: ["casual","family"], mood: ["traditional","cozy"], exclusivity: 2, features: ["vegan"],
+    pitch: "Bayerns erstes rein veganes Wirtshaus. Seitan-Ente, vegane Roulade.",
+    bookingUrl: "https://bodhi-bavaria.de/" },
+  { id: "prinz-myshkin", type: "restaurant", name: "Prinz Myshkin", neighborhood: "Altstadt", cuisine: ["vegetarian","mediterranean"], price: 2,
+    occasion: ["casual","date","family"], mood: ["chic","cozy"], exclusivity: 1, features: ["vegan"],
+    pitch: "Vegetarisches Aushängeschild der Innenstadt. Seit Jahrzehnten verlässlich.",
+    bookingUrl: "https://prinzmyshkin.com/" },
+  { id: "casele", type: "restaurant", name: "Casele", neighborhood: "Glockenbach", cuisine: ["italian"], price: 3,
+    occasion: ["date","celebration","casual"], mood: ["trendy","romantic"], exclusivity: 2, features: [],
+    pitch: "Süditalienisch in ehemaliger Metzgerei. Walk-in Weinkühlraum, Glockenbach-Vibe.",
+    bookingUrl: "https://www.casele.de/" },
+  { id: "loulou", type: "restaurant", name: "Lou Lou Tagesbar", neighborhood: "Maxvorstadt", cuisine: ["french","modern-european"], price: 2,
+    occasion: ["casual","date","business"], mood: ["trendy","chic"], exclusivity: 2, features: [],
+    pitch: "Skandi meets Paris. Beef Tartare mit Pökel-Eigelb, Maxvorstadt-Liebling.",
+    bookingUrl: "https://www.loulou-bar.de/" },
+  { id: "moromou", type: "restaurant", name: "Moro Mou", neighborhood: "Schwabing", cuisine: ["greek","mediterranean"], price: 3,
+    occasion: ["date","casual","group","celebration"], mood: ["trendy","lively"], exclusivity: 2, features: [],
+    pitch: "Modernes Griechenland in Schwabing. Mediterran, laut, gut.",
+    bookingUrl: "https://moromou.de/" },
+  { id: "koji", type: "restaurant", name: "KOJI", neighborhood: "Ludwigsvorstadt", cuisine: ["japanese","asian-fusion"], price: 4,
+    occasion: ["date","celebration"], mood: ["chic","cozy"], exclusivity: 3, features: [],
+    pitch: "Japanese Fusion mit geheimem Omakase. Intim, hochkonzentriert.",
+    bookingUrl: "https://kojirestaurant.de/" },
+  { id: "kaefer", type: "restaurant", name: "Käfer-Schänke", neighborhood: "Bogenhausen", cuisine: ["bavarian","european"], price: 4,
+    occasion: ["business","celebration","date"], mood: ["elegant","traditional"], exclusivity: 3, features: [],
+    pitch: "Münchner Institution. Themenstuben für jeden Anlass.",
+    bookingUrl: "https://www.feinkost-kaefer.de/schaenke" },
+  { id: "ratskeller", type: "restaurant", name: "Ratskeller", neighborhood: "Marienplatz", cuisine: ["bavarian"], price: 2,
+    occasion: ["family","casual","group","celebration","date"], mood: ["cozy","traditional","romantic"], exclusivity: 1, features: [],
+    pitch: "Gewölbekeller unter dem Neuen Rathaus. Romantisch wie eine Filmkulisse.",
+    bookingUrl: "https://www.ratskeller.com/" },
+  { id: "schwarzreiter", type: "restaurant", name: "Schwarzreiter", neighborhood: "Maximilianstraße", cuisine: ["modern-european"], price: 4,
+    occasion: ["date","celebration","business"], mood: ["elegant","romantic"], exclusivity: 3, features: [],
+    pitch: "Junge bayerische Cuisine im legendären Vier Jahreszeiten. Polierter Glamour.",
+    bookingUrl: "https://www.kempinski.com/de/vier-jahreszeiten/restaurants-bars/schwarzreiter" },
+  { id: "le-voyage", type: "restaurant", name: "Le Voyage", neighborhood: "Glockenbach", cuisine: ["international"], price: 3,
+    occasion: ["date","casual","celebration"], mood: ["trendy","chic"], exclusivity: 2, features: [],
+    pitch: "Bistro-Bar mit Globetrotter-Karte. Glockenbach-Trendsetter.",
+    bookingUrl: "https://www.lvg.bar/" },
+  { id: "park-cafe", type: "restaurant", name: "Park Café 089", neighborhood: "Alter Botanischer Garten", cuisine: ["international"], price: 2,
+    occasion: ["group","celebration","family","casual"], mood: ["lively","trendy"], exclusivity: 1, features: ["beer-garden","terrace"],
+    pitch: "Großer Biergarten, abends Club-Vibes. Perfekt für Geburtstagsrunden.",
+    bookingUrl: "https://www.parkcafe089.de/" },
+  { id: "helene", type: "restaurant", name: "Helene", neighborhood: "Schwanthalerhöhe", cuisine: ["middle-eastern","mediterranean"], price: 3,
+    occasion: ["celebration","group","date"], mood: ["trendy","lively"], exclusivity: 2, features: [],
+    pitch: "Israelisch-arabische Küche, danach Disco. Private Feiern 10–70 Personen.",
+    bookingUrl: "https://heleneliebtdich.de/" },
+  { id: "boheme", type: "restaurant", name: "La Bohème Schwabing", neighborhood: "Schwabing", cuisine: ["steakhouse","european"], price: 3,
+    occasion: ["celebration","business","group","date"], mood: ["elegant","lively"], exclusivity: 2, features: [],
+    pitch: "Steakhouse mit Stil. Separée bis 150 Gäste, klassisches Anlass-Restaurant.",
+    bookingUrl: "https://www.boheme-schwabing.de/" },
+  { id: "hide", type: "restaurant", name: "Hide", neighborhood: "Lehel", cuisine: ["steakhouse","european"], price: 4,
+    occasion: ["date","celebration","business","group"], mood: ["elegant","chic","lively"], exclusivity: 3, features: [],
+    pitch: "Premium-Steakhouse im Lehel. Dry-Aged, Cocktailkultur, hohe Decken.",
+    bookingUrl: "https://hide-restaurant.de/" },
+  { id: "soy", type: "restaurant", name: "Soy", neighborhood: "Maxvorstadt", cuisine: ["vietnamese","vegan","asian-fusion"], price: 2,
+    occasion: ["casual","date"], mood: ["cozy","trendy"], exclusivity: 2, features: ["vegan"],
+    pitch: "Vietnamesisch — komplett vegan, ohne Kompromisse beim Geschmack.",
+    bookingUrl: "https://www.soy-vegan.de/" },
+  { id: "wabi", type: "restaurant", name: "Wabi Sabi", neighborhood: "Glockenbach", cuisine: ["japanese","asian-fusion"], price: 3,
+    occasion: ["date","casual"], mood: ["cozy","trendy"], exclusivity: 2, features: [],
+    pitch: "Izakaya-Vibe mit Robata-Grill. Kompakt, dunkel, gut.",
+    bookingUrl: "https://wabi-sabi.de/" },
+  { id: "fei-scho", type: "restaurant", name: "Fei Scho", neighborhood: "Glockenbach", cuisine: ["asian-fusion","international"], price: 2,
+    occasion: ["casual","date","group"], mood: ["trendy","lively"], exclusivity: 1, features: [],
+    pitch: "Dim Sum, Bao, Bowls — moderne asiatische Casual-Adresse.",
+    bookingUrl: "https://feischo.com/" },
+  { id: "emmis", type: "restaurant", name: "Emmi's Kitchen", neighborhood: "Gärtnerplatz", cuisine: ["vegan","brunch"], price: 2,
+    occasion: ["casual","family"], mood: ["cozy","trendy"], exclusivity: 1, features: ["vegan"],
+    pitch: "Veganer Brunch-Spot. Bowls, Burger, Kuchen — Gärtnerplatz-Liebling.",
+    bookingUrl: "https://www.emmis-kitchen.de/" },
+  { id: "luitpold", type: "restaurant", name: "Café Luitpold", neighborhood: "Brienner Straße", cuisine: ["european","brunch"], price: 2,
+    occasion: ["business","casual","family","date"], mood: ["elegant","cozy"], exclusivity: 1, features: ["terrace"],
+    pitch: "Traditionscafé mit großer Tagesbar. Frühstück, Patisserie, Wiener Stil.",
+    bookingUrl: "https://www.cafe-luitpold.de/" },
+
+  // === BARS ===
+  { id: "goldene-bar", type: "bar", name: "Goldene Bar", neighborhood: "Haus der Kunst", cuisine: ["cocktail-bar","bar-bites"], price: 3,
+    occasion: ["date","casual","celebration"], mood: ["elegant","chic","romantic"], exclusivity: 2, features: ["terrace"],
+    pitch: "Goldverzierte Wände im Haus der Kunst. Wahrscheinlich Münchens schönste Bar.",
+    bookingUrl: "https://goldenebar.de/" },
+  { id: "schumanns-bar", type: "bar", name: "Schumann's Bar", neighborhood: "Hofgarten", cuisine: ["cocktail-bar"], price: 3,
+    occasion: ["date","business","casual","celebration"], mood: ["elegant","chic","lively"], exclusivity: 2, features: [],
+    pitch: "Die Charles Schumann Bar — Klassiker, Standards, Münchner Bar-Kultur.",
+    bookingUrl: "https://www.schumanns.de/" },
+  { id: "bar-centrale", type: "bar", name: "Bar Centrale", neighborhood: "Altstadt", cuisine: ["cocktail-bar","wine-bar","italian"], price: 2,
+    occasion: ["date","business","casual"], mood: ["chic","cozy","lively"], exclusivity: 2, features: [],
+    pitch: "Italienische Bar zum Aperitivo. Tag- und Nachtgeschäft, immer voll, immer gut.",
+    bookingUrl: "https://www.bar-centrale.com/" },
+  { id: "falks-bar", type: "bar", name: "Falk's Bar (Bayerischer Hof)", neighborhood: "Altstadt", cuisine: ["cocktail-bar","champagne-bar"], price: 4,
+    occasion: ["date","business","celebration"], mood: ["elegant","chic","romantic"], exclusivity: 3, features: [],
+    pitch: "Spiegelsaal im Bayerischen Hof. Champagner, Klassiker, Old-School-Glamour.",
+    bookingUrl: "https://www.bayerischerhof.de/de/falks-bar" },
+  { id: "ory-bar", type: "bar", name: "Ory Bar (Mandarin Oriental)", neighborhood: "Altstadt", cuisine: ["cocktail-bar"], price: 4,
+    occasion: ["date","business","celebration"], mood: ["elegant","chic","romantic"], exclusivity: 3, features: [],
+    pitch: "Mandarin Oriental — Signature-Cocktails, Live-Pianist, Hotel-Bar-Klasse.",
+    bookingUrl: "https://www.mandarinoriental.com/de/munich/altstadt/dine/ory-bar" },
+  { id: "pacific-times", type: "bar", name: "Pacific Times", neighborhood: "Glockenbach", cuisine: ["cocktail-bar","international","bar-bites"], price: 3,
+    occasion: ["date","casual","group","celebration"], mood: ["trendy","lively","chic"], exclusivity: 2, features: [],
+    pitch: "Glockenbach-Klassiker. Pazifik-Cocktails, internationale Karte, lange Nächte.",
+    bookingUrl: "https://www.pacific-times.de/" },
+  { id: "zephyr", type: "bar", name: "Zephyr Bar", neighborhood: "Glockenbach", cuisine: ["cocktail-bar"], price: 3,
+    occasion: ["date","celebration","casual"], mood: ["chic","cozy","trendy"], exclusivity: 3, features: [],
+    pitch: "Speakeasy-Vibe. Hochkonzentriertes Bartending, kleine Karte, große Drinks.",
+    bookingUrl: "https://www.zephyr-bar.de/" },
+  { id: "trader-vics", type: "bar", name: "Trader Vic's", neighborhood: "Altstadt (Bayerischer Hof)", cuisine: ["cocktail-bar","tiki","polynesian"], price: 3,
+    occasion: ["date","group","celebration","casual"], mood: ["lively","trendy"], exclusivity: 2, features: [],
+    pitch: "Tiki-Klassiker im Bayerischen Hof. Mai Tais, Tropical-Kitsch, immer Stimmung.",
+    bookingUrl: "https://tradervics.de/munich" },
+  { id: "high-five", type: "bar", name: "High Five", neighborhood: "Altstadt", cuisine: ["cocktail-bar","bar-bites"], price: 3,
+    occasion: ["date","celebration","casual"], mood: ["chic","trendy","romantic"], exclusivity: 2, features: ["rooftop","view"],
+    pitch: "Rooftop-Bar im Hotel Deutsche Eiche. Drinks mit Aussicht auf den Glockenbach.",
+    bookingUrl: "https://highfive-bar.de/" },
+  { id: "mural-bar", type: "bar", name: "Mural Bar", neighborhood: "Maxvorstadt", cuisine: ["cocktail-bar","wine-bar","bar-bites"], price: 3,
+    occasion: ["date","casual","business"], mood: ["chic","trendy","cozy"], exclusivity: 2, features: [],
+    pitch: "Natural-Wine-Bar mit Snacks. Klein, präzise, Maxvorstadt-Insider.",
+    bookingUrl: "https://www.mural-restaurant.de/" },
+  { id: "barroom", type: "bar", name: "The Barroom", neighborhood: "Schwabing", cuisine: ["cocktail-bar"], price: 3,
+    occasion: ["date","casual","celebration"], mood: ["chic","lively"], exclusivity: 2, features: [],
+    pitch: "Bartender-Bar in Schwabing. Klassiker-fokussiert, ohne Show.",
+    bookingUrl: "https://thebarroom.de/" }
+];
+
+// ============================================================
+// EVENTS
+// Loaded from /api/events at runtime. Falls back to inline seeds
+// when the backend is unreachable (e.g. opening the file directly).
+// ============================================================
+let EVENTS = [];
+const SEED_EVENTS = [
+  { id: "ev-wine-casele", title: "Süditalienische Weinprobe", venueId: "casele", venueName: "Casele", date: "2026-06-05", time: "19:30",
+    category: "wine-tasting", price: "75€/Person", source: "Instagram", sourceUrl: "https://instagram.com/casele.muc",
+    pitch: "5 Weine aus Apulien, dazu Antipasti-Tasting. Mit Winzer aus Bari." },
+  { id: "ev-jazz-schumanns", title: "Live-Jazz im Schumann's", venueId: "schumanns-bar", venueName: "Schumann's Bar", date: "2026-06-04", time: "21:00",
+    category: "live-music", price: "Eintritt frei", source: "Website",
+    pitch: "Jeden Donnerstag — wechselnde Jazz-Trios, klassischer Bar-Vibe." },
+  { id: "ev-omakase-koji", title: "Geheimes Omakase-Menü", venueId: "koji", venueName: "KOJI", date: "2026-06-06", time: "19:00",
+    category: "popup-dinner", price: "180€/Person", source: "Instagram", sourceUrl: "https://instagram.com/koji.munich",
+    pitch: "10-Gang Omakase, geheimes Sondermenü von Chef Sayan. Nur 8 Plätze." },
+  { id: "ev-rooftop-muniqo", title: "Sunset Rooftop Sessions", venueId: "muniqo", venueName: "M'Uniqo Rooftop", date: "2026-06-07", time: "18:00",
+    category: "live-music", price: "Eintritt frei", source: "Instagram", sourceUrl: "https://instagram.com/muniqo.rooftop",
+    pitch: "DJ-Set zur Golden Hour. Sundowner auf Münchens höchster Bar." },
+  { id: "ev-brunch-emmis", title: "Pride Vegan Brunch", venueId: "emmis", venueName: "Emmi's Kitchen", date: "2026-06-08", time: "11:00",
+    category: "brunch", price: "32€/Person", source: "Instagram", sourceUrl: "https://instagram.com/emmiskitchen",
+    pitch: "Special-Brunch zum Pride-Weekend. Live-DJ, Rainbow-Pancakes, Mimosas." },
+  { id: "ev-pop-up-ostler", title: "Pop-up: Rosina Ostler kocht im Park", venueId: "park-cafe", venueName: "Park Café 089", date: "2026-06-12", time: "19:00",
+    category: "popup-dinner", price: "120€/Person", source: "Website",
+    pitch: "Die Alois-Köchin im Biergarten — 5-Gang-Menü unter Kastanien." },
+  { id: "ev-pasta-vinaiolo", title: "Pasta Night & Aperitivo", venueId: "vinaiolo", venueName: "Vinaiolo", date: "2026-06-10", time: "19:30",
+    category: "themed-dinner", price: "55€/Person", source: "Instagram", sourceUrl: "https://instagram.com/vinaiolo",
+    pitch: "5 Pasta-Variationen, Aperol-Spritz-Bar, italienische Hits." },
+  { id: "ev-tiki-trader", title: "Tiki-Night mit Bartender-Battle", venueId: "trader-vics", venueName: "Trader Vic's", date: "2026-06-13", time: "20:00",
+    category: "themed-night", price: "ab 14€/Drink", source: "Instagram", sourceUrl: "https://instagram.com/tradervics_munich",
+    pitch: "Drei Bartender, drei Signature-Mai-Tais — Publikum stimmt ab." },
+  { id: "ev-cocktail-class", title: "Cocktail-Masterclass: Negroni", venueId: "goldene-bar", venueName: "Goldene Bar", date: "2026-06-14", time: "16:00",
+    category: "workshop", price: "85€/Person", source: "Website",
+    pitch: "2 Stunden Headbartender, 4 Negroni-Variationen zum Verkosten." },
+  { id: "ev-summer-rocca", title: "Summer Opening — Terrace Party", venueId: "rocca-riviera", venueName: "Rocca Riviera", date: "2026-06-15", time: "17:00",
+    category: "party", price: "Eintritt frei", source: "Instagram", sourceUrl: "https://instagram.com/roccariviera",
+    pitch: "DJ, Sundowner, Pasta-Special. Terrasse offen bis spät." },
+  { id: "ev-truffle-tantris", title: "Trüffel-Menü Special", venueId: "tantris", venueName: "Tantris", date: "2026-06-20", time: "19:00",
+    category: "themed-dinner", price: "295€/Person", source: "Website",
+    pitch: "Saisonale Trüffel aus Alba — 7-Gang von Benjamin Chmura." },
+  { id: "ev-greek-moromou", title: "Symposium — Griechische Tafel", venueId: "moromou", venueName: "Moro Mou", date: "2026-06-21", time: "19:30",
+    category: "themed-dinner", price: "65€/Person", source: "Instagram", sourceUrl: "https://instagram.com/moromou.munich",
+    pitch: "Familiale Tafel, geteilte Gerichte, griechischer Wein, Live-Bouzouki." }
+];
+
+const EVENT_CATEGORIES = [
+  // Music & Nightlife
+  { id: "live-music",     label: "🎵 Live-Musik" },
+  { id: "dj-club",        label: "🎧 Club / DJ" },
+  { id: "underground",    label: "🕳️ Underground" },
+  { id: "karaoke",        label: "🎤 Karaoke" },
+  { id: "open-mic",       label: "🎙️ Open Mic" },
+  { id: "silent-disco",   label: "🎧 Silent Disco" },
+  // Food & Drink
+  { id: "wine-tasting",   label: "🍷 Weinprobe" },
+  { id: "popup-dinner",   label: "👨‍🍳 Pop-up Dinner" },
+  { id: "popup",          label: "🛍️ Pop-up Store" },
+  { id: "themed-dinner",  label: "🍽️ Themen-Dinner" },
+  { id: "chef-table",     label: "🍳 Chef's Table" },
+  { id: "brunch",         label: "🥐 Brunch-Special" },
+  { id: "sober",          label: "🚫 Sober Curious" },
+  // Community & Culture
+  { id: "community",      label: "💛 Community" },
+  { id: "flinta-queer",   label: "🌈 FLINTA / Queer" },
+  { id: "market",         label: "🧺 Markt / Flohmarkt" },
+  { id: "vernissage",     label: "🎨 Vernissage / Kunst" },
+  { id: "workshop",       label: "🛠️ Workshop" },
+  { id: "book-reading",   label: "📚 Lesung" },
+  // Outdoor / Vibe
+  { id: "rooftop-sundown",label: "🌇 Rooftop / Sundown" },
+  { id: "wellness",       label: "🧘 Wellness / Yoga" },
+  { id: "sports-watch",   label: "⚽ Sport gucken" },
+  { id: "gaming",         label: "🎮 Gaming / Game Night" },
+  // Generic
+  { id: "themed-night",   label: "🎭 Themen-Night" },
+  { id: "party",          label: "🎉 Party" }
+];
+
+const FILTER_DEFS = {
+  occasion: [
+    { id: "date", label: "Date" }, { id: "business", label: "Business" },
+    { id: "celebration", label: "Feiern" }, { id: "family", label: "Familie" },
+    { id: "group", label: "Gruppe" }, { id: "casual", label: "Casual" }
+  ],
+  mood: [
+    { id: "romantic", label: "Romantisch" }, { id: "cozy", label: "Gemütlich" },
+    { id: "elegant", label: "Elegant" }, { id: "chic", label: "Chic" },
+    { id: "trendy", label: "Trendy" }, { id: "lively", label: "Lebhaft" },
+    { id: "traditional", label: "Traditionell" }
+  ],
+  cuisine: [
+    { id: "bavarian", label: "Bayerisch" }, { id: "italian", label: "Italienisch" },
+    { id: "french", label: "Französisch" }, { id: "japanese", label: "Japanisch" },
+    { id: "asian-fusion", label: "Asian Fusion" }, { id: "vietnamese", label: "Vietnamesisch" },
+    { id: "mediterranean", label: "Mediterran" }, { id: "greek", label: "Griechisch" },
+    { id: "middle-eastern", label: "Middle Eastern" },
+    { id: "modern-european", label: "Modern Europäisch" }, { id: "european", label: "Europäisch" },
+    { id: "international", label: "International" }, { id: "vegan", label: "Vegan" },
+    { id: "vegetarian", label: "Vegetarisch" }, { id: "steakhouse", label: "Steakhouse" },
+    { id: "grill", label: "Grill" }, { id: "brunch", label: "Brunch" },
+    { id: "cocktail-bar", label: "Cocktail-Bar" }, { id: "wine-bar", label: "Wein-Bar" },
+    { id: "champagne-bar", label: "Champagner-Bar" }, { id: "tiki", label: "Tiki" },
+    { id: "bar-bites", label: "Bar-Bites" }
+  ],
+  price: [ { id: 1, label: "€" }, { id: 2, label: "€€" }, { id: 3, label: "€€€" }, { id: 4, label: "€€€€" } ],
+  exclusivity: [
+    { id: 1, label: "Spontan" }, { id: 2, label: "Lieber reservieren" },
+    { id: 3, label: "Schwer zu kriegen" }, { id: 4, label: "Insider / VIP" }
+  ],
+  feature: [
+    { id: "michelin", label: "Michelin" }, { id: "rooftop", label: "Rooftop" },
+    { id: "view", label: "Aussicht" }, { id: "terrace", label: "Terrasse" },
+    { id: "beer-garden", label: "Biergarten" }, { id: "vegan", label: "Vegan/-friendly" }
+  ]
+};
+
+const CUISINE_EMOJI = {
+  "bavarian": "🥨", "italian": "🍝", "french": "🥐", "japanese": "🍣",
+  "asian-fusion": "🥢", "vietnamese": "🍜", "mediterranean": "🫒",
+  "greek": "🫒", "middle-eastern": "🥙", "modern-european": "🍽️",
+  "european": "🍽️", "international": "🌍", "vegan": "🌱",
+  "vegetarian": "🥗", "steakhouse": "🥩", "grill": "🔥", "brunch": "🥐",
+  "cocktail-bar": "🍸", "wine-bar": "🍷", "champagne-bar": "🥂",
+  "tiki": "🍹", "polynesian": "🍹", "bar-bites": "🫒"
+};
+
+// ============================================================
+// IMAGES
+// ============================================================
+function bannerImg(id) { return `https://picsum.photos/seed/${id}-hero/800/500`; }
+function galleryImgs(id) {
+  return [
+    `https://picsum.photos/seed/${id}-1/600/400`,
+    `https://picsum.photos/seed/${id}-2/600/400`,
+    `https://picsum.photos/seed/${id}-3/600/400`
+  ];
+}
+
+// ============================================================
+// STORAGE
+// ============================================================
+const STORAGE_KEY = "picky.custom.entries";
+function loadCustom() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; } }
+function saveCustom(list) { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+function allPlaces() { return [...PLACES, ...loadCustom()]; }
+
+// ============================================================
+// PLACES — STATE + RENDER
+// ============================================================
+const state = {
+  type: "all",
+  occasion: new Set(), mood: new Set(), cuisine: new Set(),
+  price: new Set(), exclusivity: new Set(), feature: new Set()
+};
+
+function renderChips(containerId, items, setKey) {
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = "";
+  items.forEach(item => {
+    const el = document.createElement("div");
+    el.className = "chip";
+    el.textContent = item.label;
+    el.dataset.id = item.id;
+    el.addEventListener("click", () => {
+      const s = state[setKey];
+      if (s.has(item.id)) s.delete(item.id); else s.add(item.id);
+      el.classList.toggle("active");
+      renderResults();
+    });
+    wrap.appendChild(el);
+  });
+}
+
+function priceLabel(level) { return "€".repeat(level); }
+function matchSet(set, arr) { if (set.size === 0) return true; for (const v of set) if (arr.includes(v)) return true; return false; }
+function matchSetValue(set, value) { if (set.size === 0) return true; return set.has(value); }
+
+function filtered() {
+  return allPlaces().filter(r => {
+    if (state.type !== "all" && r.type !== state.type) return false;
+    if (!matchSet(state.occasion, r.occasion)) return false;
+    if (!matchSet(state.mood, r.mood)) return false;
+    if (!matchSet(state.cuisine, r.cuisine)) return false;
+    if (!matchSetValue(state.price, r.price)) return false;
+    if (!matchSetValue(state.exclusivity, r.exclusivity)) return false;
+    if (!matchSet(state.feature, r.features)) return false;
+    return true;
+  });
+}
+
+function renderExclusivity(level) {
+  let html = '<span class="exclusivity">';
+  for (let i = 1; i <= 4; i++) { html += `<span class="star ${i <= level ? "" : "dim"}">●</span>`; }
+  html += "</span>";
+  return html;
+}
+
+function renderResults() {
+  const list = filtered();
+  document.getElementById("resultCount").textContent = list.length;
+  document.getElementById("placesCount").textContent = allPlaces().length;
+  const wrap = document.getElementById("results");
+  wrap.innerHTML = "";
+  if (list.length === 0) {
+    wrap.innerHTML = `<div class="empty"><h3>Keine Treffer.</h3><p>Lockere ein paar Filter — oder klick auf "Filter zurücksetzen".</p></div>`;
+    return;
+  }
+  list.forEach(r => {
+    const cuisineLabels = r.cuisine.map(c => FILTER_DEFS.cuisine.find(x => x.id === c)?.label || c).slice(0, 2).join(" · ");
+    const badges = [];
+    if (r.type === "bar") badges.push(`<span class="badge bar">🍸 Bar</span>`);
+    if (r.features.includes("michelin")) badges.push(`<span class="badge michelin">${"★".repeat(r.michelin || 1)} Michelin</span>`);
+    if (r.features.includes("rooftop")) badges.push(`<span class="badge">Rooftop</span>`);
+    if (r.features.includes("vegan")) badges.push(`<span class="badge">Vegan</span>`);
+    if (r.custom) badges.push(`<span class="badge custom">Eigene</span>`);
+    const features = r.features.filter(f => !["michelin","rooftop","vegan"].includes(f));
+    const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
+    const card = document.createElement("article");
+    card.className = "card";
+    card.addEventListener("click", () => openDetail(r.id));
+    card.innerHTML = `
+      <div class="card-banner" style="background-image: url('${bannerImg(r.id)}');">
+        <div class="card-cuisine-icon">${cuisineIcon}</div>
+        <div class="badges">${badges.join("")}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3 class="card-name">${r.name}</h3>
+          <div class="card-price">${priceLabel(r.price)}</div>
+        </div>
+        <div class="card-meta">
+          <span>${cuisineLabels}</span>
+          <span class="dot">·</span>
+          <span>${r.neighborhood}</span>
+          ${renderExclusivity(r.exclusivity)}
+        </div>
+        <p class="card-pitch">${r.pitch}</p>
+        <div class="card-tags">${features.map(f => {
+          const lbl = FILTER_DEFS.feature.find(x => x.id === f)?.label || f;
+          return `<span class="tag-pill">${lbl}</span>`;
+        }).join("")}</div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+// ============================================================
+// EVENTS — STATE + RENDER
+// ============================================================
+const eventState = { category: new Set() };
+
+function eventsFiltered() {
+  return EVENTS.filter(e => {
+    if (eventState.category.size > 0 && !eventState.category.has(e.category)) return false;
+    return true;
+  }).sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function formatEventDate(dateStr) {
+  const d = new Date(dateStr);
+  const months = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  const days = ["So","Mo","Di","Mi","Do","Fr","Sa"];
+  return { day: d.getDate(), month: months[d.getMonth()], weekday: days[d.getDay()] };
+}
+
+function renderEvents() {
+  const list = eventsFiltered();
+  document.getElementById("eventResultCount").textContent = list.length;
+  document.getElementById("eventsCount").textContent = EVENTS.length;
+  const wrap = document.getElementById("eventsResults");
+  wrap.innerHTML = "";
+  if (list.length === 0) {
+    wrap.innerHTML = `<div class="empty"><h3>Keine Events passen.</h3><p>Lockere die Filter.</p></div>`;
+    return;
+  }
+  list.forEach(ev => {
+    const catLabel = EVENT_CATEGORIES.find(c => c.id === ev.category)?.label || ev.category;
+    const d = formatEventDate(ev.date);
+    const venue = allPlaces().find(v => v.id === ev.venueId);
+    const card = document.createElement("article");
+    card.className = "card";
+    card.addEventListener("click", () => openEventDetail(ev.id));
+    card.innerHTML = `
+      <div class="card-banner" style="background-image: url('${bannerImg(ev.id)}');">
+        <div class="event-date-pill">
+          <span class="day">${d.day}</span>
+          <span class="month">${d.month}</span>
+        </div>
+        <div class="badges">
+          <span class="badge event">${catLabel}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-head">
+          <h3 class="card-name">${ev.title}</h3>
+          <div class="card-price">${ev.price}</div>
+        </div>
+        <div class="card-meta">
+          <span>${d.weekday}, ${ev.time}</span>
+          <span class="dot">·</span>
+          <span>${ev.venueName}</span>
+        </div>
+        <p class="card-pitch">${ev.pitch}</p>
+        <div class="card-tags">
+          <span class="tag-pill">📡 ${ev.source}</span>
+          ${venue ? `<span class="tag-pill">${venue.neighborhood}</span>` : ""}
+        </div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+// ============================================================
+// DETAIL MODAL
+// ============================================================
+const detailModal = document.getElementById("detailModal");
+document.getElementById("detailClose").addEventListener("click", () => detailModal.classList.remove("open"));
+detailModal.addEventListener("click", e => { if (e.target === detailModal) detailModal.classList.remove("open"); });
+document.getElementById("paxSelect").addEventListener("change", () => {
+  if (detailModal.dataset.restaurantId) renderSlots(detailModal.dataset.restaurantId);
+});
+
+function openDetail(id) {
+  const r = allPlaces().find(x => x.id === id);
+  if (!r) return;
+  detailModal.dataset.restaurantId = id;
+  document.getElementById("detailName").textContent = r.name;
+  document.getElementById("detailSub").textContent = `${r.neighborhood} · ${r.cuisine.map(c => FILTER_DEFS.cuisine.find(x => x.id === c)?.label || c).join(" · ")}`;
+  document.getElementById("detailPrice").textContent = priceLabel(r.price);
+  document.getElementById("detailPitch").textContent = r.pitch;
+  document.getElementById("detailHero").style.backgroundImage = `url('${bannerImg(id)}')`;
+  const gallery = document.getElementById("detailGallery");
+  gallery.innerHTML = "";
+  galleryImgs(id).forEach((url, i) => {
+    const img = document.createElement("img");
+    img.src = url; img.alt = `${r.name} Bild ${i+1}`;
+    img.addEventListener("click", () => { document.getElementById("detailHero").style.backgroundImage = `url('${url.replace('600/400','800/500')}')`; });
+    gallery.appendChild(img);
+  });
+  const meta = document.getElementById("detailMeta");
+  const occLabels = r.occasion.map(o => FILTER_DEFS.occasion.find(x => x.id === o)?.label).join(", ");
+  const moodLabels = r.mood.map(o => FILTER_DEFS.mood.find(x => x.id === o)?.label).join(", ");
+  const exLabel = FILTER_DEFS.exclusivity.find(x => x.id === r.exclusivity)?.label || "";
+  const featLabels = r.features.map(o => FILTER_DEFS.feature.find(x => x.id === o)?.label || o).join(", ") || "—";
+  const typeLabel = r.type === "bar" ? "🍸 Bar" : "🍽️ Restaurant";
+  meta.innerHTML = `
+    <div class="detail-meta-item"><div class="lbl">Typ</div><div class="val">${typeLabel}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Anlass</div><div class="val">${occLabels}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Stimmung</div><div class="val">${moodLabels}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Exklusivität</div><div class="val">${exLabel}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Extras</div><div class="val">${featLabels}</div></div>
+  `;
+  document.getElementById("detailBookBtn").href = r.bookingUrl;
+  document.getElementById("detailBookBtn").textContent = r.type === "bar" ? "Zur Bar-Website →" : "Direkt buchen →";
+  document.getElementById("detailSlotsSection").style.display = r.type === "bar" ? "none" : "";
+  if (r.type !== "bar") renderSlots(id);
+  detailModal.classList.add("open");
+}
+
+function openEventDetail(id) {
+  const ev = EVENTS.find(x => x.id === id);
+  if (!ev) return;
+  const venue = allPlaces().find(v => v.id === ev.venueId);
+  detailModal.dataset.restaurantId = "";
+  document.getElementById("detailName").textContent = ev.title;
+  const d = formatEventDate(ev.date);
+  document.getElementById("detailSub").textContent = `${d.weekday}, ${d.day}. ${d.month} · ${ev.time} · ${ev.venueName}`;
+  document.getElementById("detailPrice").textContent = ev.price;
+  document.getElementById("detailPitch").textContent = ev.pitch;
+  document.getElementById("detailHero").style.backgroundImage = `url('${bannerImg(ev.id)}')`;
+  const gallery = document.getElementById("detailGallery");
+  gallery.innerHTML = "";
+  galleryImgs(ev.id).forEach((url, i) => {
+    const img = document.createElement("img");
+    img.src = url; img.alt = `${ev.title} Bild ${i+1}`;
+    img.addEventListener("click", () => { document.getElementById("detailHero").style.backgroundImage = `url('${url.replace('600/400','800/500')}')`; });
+    gallery.appendChild(img);
+  });
+  const catLabel = EVENT_CATEGORIES.find(c => c.id === ev.category)?.label || ev.category;
+  const meta = document.getElementById("detailMeta");
+  meta.innerHTML = `
+    <div class="detail-meta-item"><div class="lbl">Kategorie</div><div class="val">${catLabel}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Datum</div><div class="val">${d.weekday}, ${d.day}. ${d.month}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Uhrzeit</div><div class="val">${ev.time}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Preis</div><div class="val">${ev.price}</div></div>
+    <div class="detail-meta-item"><div class="lbl">Quelle</div><div class="val">📡 ${ev.source}</div></div>
+    ${venue ? `<div class="detail-meta-item"><div class="lbl">Viertel</div><div class="val">${venue.neighborhood}</div></div>` : ""}
+  `;
+  // Hide slot section for events
+  document.getElementById("detailSlotsSection").style.display = "none";
+  const link = ev.sourceUrl || (venue ? venue.bookingUrl : "#");
+  document.getElementById("detailBookBtn").href = link;
+  document.getElementById("detailBookBtn").textContent = ev.sourceUrl ? "Zum Event →" : "Zur Location →";
+  detailModal.classList.add("open");
+}
+
+function pseudoRandom(seed) {
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return () => { h += 0x6D2B79F5; let t = h; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+
+function renderSlots(id) {
+  const r = allPlaces().find(x => x.id === id);
+  const pax = parseInt(document.getElementById("paxSelect").value, 10);
+  const wrap = document.getElementById("detailSlots");
+  wrap.innerHTML = "";
+  const days = 7;
+  const today = new Date();
+  const rng = pseudoRandom(id + pax);
+  const baseSlots = ["18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30"];
+  const slotProbability = 0.7 - (r.exclusivity - 1) * 0.15;
+  const dayNames = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+  const monthNames = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  for (let d = 0; d < days; d++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + d);
+    const dayLabel = d === 0 ? "Heute" : d === 1 ? "Morgen" : dayNames[date.getDay()];
+    const dateStr = `${date.getDate()}. ${monthNames[date.getMonth()]}`;
+    const available = baseSlots.filter(() => rng() < slotProbability);
+    const dayDiv = document.createElement("div");
+    dayDiv.className = "day-row";
+    const slotsHtml = available.length === 0
+      ? `<div class="slot-row"><div class="slot-btn none">keine Slots verfügbar</div></div>`
+      : `<div class="slot-row">${available.map(t =>
+          `<a class="slot-btn" href="${r.bookingUrl}" target="_blank" rel="noopener">${t}</a>`
+        ).join("")}</div>`;
+    dayDiv.innerHTML = `
+      <div class="day-label"><span>${dayLabel}</span><span class="day-date">${dateStr} · ${pax} Pers.</span></div>
+      ${slotsHtml}
+    `;
+    wrap.appendChild(dayDiv);
+  }
+}
+
+// ============================================================
+// ADD ENTRY FORM
+// ============================================================
+const addModal = document.getElementById("addModal");
+const addBtn = document.getElementById("addBtn");
+const addClose = document.getElementById("addClose");
+const cancelAdd = document.getElementById("cancelAdd");
+const saveAdd = document.getElementById("saveAdd");
+
+const formState = { type: "restaurant", occasion: new Set(), mood: new Set(), cuisine: new Set(), feature: new Set() };
+
+function renderFormChips(containerId, items, setKey) {
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = "";
+  items.forEach(item => {
+    const el = document.createElement("div");
+    el.className = "chip";
+    el.textContent = item.label;
+    el.addEventListener("click", () => {
+      const s = formState[setKey];
+      if (s.has(item.id)) s.delete(item.id); else s.add(item.id);
+      el.classList.toggle("active");
+    });
+    wrap.appendChild(el);
+  });
+}
+
+renderFormChips("f_occasion", FILTER_DEFS.occasion, "occasion");
+renderFormChips("f_mood", FILTER_DEFS.mood, "mood");
+renderFormChips("f_cuisine", FILTER_DEFS.cuisine, "cuisine");
+renderFormChips("f_features", FILTER_DEFS.feature, "feature");
+
+// form type segmented
+document.querySelectorAll("#f_typeSeg button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#f_typeSeg button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    formState.type = btn.dataset.type;
+  });
+});
+
+addBtn.addEventListener("click", () => addModal.classList.add("open"));
+addClose.addEventListener("click", () => addModal.classList.remove("open"));
+cancelAdd.addEventListener("click", () => addModal.classList.remove("open"));
+addModal.addEventListener("click", e => { if (e.target === addModal) addModal.classList.remove("open"); });
+
+function showFormError(msg) {
+  const el = document.getElementById("formError");
+  el.textContent = msg;
+  el.style.display = "block";
+  setTimeout(() => { el.style.display = "none"; }, 4000);
+}
+
+saveAdd.addEventListener("click", () => {
+  const name = document.getElementById("f_name").value.trim();
+  const url = document.getElementById("f_url").value.trim();
+  const pitch = document.getElementById("f_pitch").value.trim();
+  const neighborhood = document.getElementById("f_neighborhood").value.trim() || "—";
+  const price = parseInt(document.getElementById("f_price").value, 10);
+  const exclusivity = parseInt(document.getElementById("f_exclusivity").value, 10);
+  if (!name) return showFormError("Bitte einen Namen angeben.");
+  if (!url || !/^https?:\/\//.test(url)) return showFormError("Bitte gültige URL angeben (mit https://).");
+  if (!pitch) return showFormError("Bitte eine kurze Beschreibung angeben.");
+  if (formState.occasion.size === 0) return showFormError("Mind. einen Anlass wählen.");
+  if (formState.mood.size === 0) return showFormError("Mind. eine Stimmung wählen.");
+  if (formState.cuisine.size === 0) return showFormError("Mind. eine Küche / Stil wählen.");
+
+  const id = "custom-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,6);
+  const newR = {
+    id, type: formState.type, name, neighborhood, price, exclusivity, pitch,
+    cuisine: Array.from(formState.cuisine),
+    occasion: Array.from(formState.occasion),
+    mood: Array.from(formState.mood),
+    features: Array.from(formState.feature),
+    bookingUrl: url, custom: true
+  };
+  const list = loadCustom();
+  list.push(newR);
+  saveCustom(list);
+  document.getElementById("f_name").value = "";
+  document.getElementById("f_url").value = "";
+  document.getElementById("f_pitch").value = "";
+  document.getElementById("f_neighborhood").value = "";
+  Object.entries(formState).forEach(([k, v]) => { if (v instanceof Set) v.clear(); });
+  document.querySelectorAll(".form-modal .chip.active").forEach(c => c.classList.remove("active"));
+  addModal.classList.remove("open");
+  renderResults();
+});
+
+// ============================================================
+// TYPE SEGMENT
+// ============================================================
+document.querySelectorAll("#typeSeg button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#typeSeg button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    state.type = btn.dataset.type;
+    renderResults();
+  });
+});
+
+// ============================================================
+// TABS
+// ============================================================
+document.querySelectorAll("#tabs .tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll("#tabs .tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    const view = tab.dataset.view;
+    document.getElementById("view-places").style.display = view === "places" ? "" : "none";
+    document.getElementById("view-events").style.display = view === "events" ? "" : "none";
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+renderChips("occasionChips", FILTER_DEFS.occasion, "occasion");
+renderChips("moodChips", FILTER_DEFS.mood, "mood");
+renderChips("cuisineChips", FILTER_DEFS.cuisine, "cuisine");
+renderChips("priceChips", FILTER_DEFS.price, "price");
+renderChips("exclusivityChips", FILTER_DEFS.exclusivity, "exclusivity");
+renderChips("featureChips", FILTER_DEFS.feature, "feature");
+
+// Event categories — special handling (use eventState)
+(function renderEventCategoryChips() {
+  const wrap = document.getElementById("eventCategoryChips");
+  wrap.innerHTML = "";
+  EVENT_CATEGORIES.forEach(item => {
+    const el = document.createElement("div");
+    el.className = "chip";
+    el.textContent = item.label;
+    el.addEventListener("click", () => {
+      if (eventState.category.has(item.id)) eventState.category.delete(item.id);
+      else eventState.category.add(item.id);
+      el.classList.toggle("active");
+      renderEvents();
+    });
+    wrap.appendChild(el);
+  });
+})();
+
+// Initial render with seed data (instant)
+EVENTS = SEED_EVENTS.slice();
+renderResults();
+renderEvents();
+
+// Then async-load live events from backend (overrides seeds on success)
+(async function loadEvents() {
+  const banner = document.getElementById("eventsBannerTxt");
+  const status = document.getElementById("eventsStatus");
+  try {
+    const r = await fetch("/api/events", { headers: { "Accept": "application/json" } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const json = await r.json();
+    if (Array.isArray(json.events) && json.events.length > 0) {
+      EVENTS = json.events;
+      const live = json.meta?.liveCount ?? 0;
+      const total = json.events.length;
+      const ts = json.meta?.generatedAt ? new Date(json.meta.generatedAt).toLocaleString("de-DE") : "—";
+      banner.innerHTML = `<strong>Live geladen.</strong> ${live} Events aus Web-Scraping, ${total - live} kuratierte Seeds. Stand: ${ts}.`;
+      status.textContent = `${total} Events live`;
+      renderEvents();
+    }
+  } catch (e) {
+    banner.innerHTML = `<strong>Backend offline.</strong> Zeige ${SEED_EVENTS.length} Demo-Events. Backend via Vercel deployen — siehe README.`;
+    status.textContent = `${SEED_EVENTS.length} Seeds`;
+  }
+})();
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  state.type = "all";
+  document.querySelectorAll("#typeSeg button").forEach(b => b.classList.remove("active"));
+  document.querySelector('#typeSeg button[data-type="all"]').classList.add("active");
+  Object.entries(state).forEach(([k, v]) => { if (v instanceof Set) v.clear(); });
+  document.querySelectorAll(".filters .chip.active").forEach(c => c.classList.remove("active"));
+  renderResults();
+});
+document.getElementById("resetEventBtn").addEventListener("click", () => {
+  eventState.category.clear();
+  document.querySelectorAll("#eventCategoryChips .chip.active").forEach(c => c.classList.remove("active"));
+  renderEvents();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    detailModal.classList.remove("open");
+    addModal.classList.remove("open");
+  }
+});
+</script>
+</body>
+</html>
