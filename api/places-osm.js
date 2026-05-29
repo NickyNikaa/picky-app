@@ -36,6 +36,38 @@ function mapCuisine(s) {
   return s.split(/[;,]/).map(c => CUISINE_MAP[c.trim().toLowerCase()]).filter(Boolean).slice(0, 2);
 }
 
+// Heuristic occasion/mood enrichment so filter combinations actually find matches.
+// We can't read OSM-people's minds — so we cast a wide-but-plausible net per cuisine.
+function enrichTags(type, amenity, cuisine, features) {
+  const occasion = new Set();
+  const mood = new Set();
+
+  if (type === "bar") {
+    ["casual","date","group","celebration"].forEach(o => occasion.add(o));
+    ["lively","chic","trendy"].forEach(m => mood.add(m));
+    if (cuisine.includes("cocktail-bar")) { mood.add("romantic"); mood.add("elegant"); }
+    if (cuisine.includes("wine-bar")) { mood.add("cozy"); mood.add("romantic"); }
+    if (amenity === "nightclub") { occasion.delete("date"); mood.delete("romantic"); }
+  } else {
+    ["casual","date","family"].forEach(o => occasion.add(o));
+    ["cozy","lively"].forEach(m => mood.add(m));
+
+    if (cuisine.includes("italian")) { occasion.add("celebration"); mood.add("romantic"); mood.add("traditional"); }
+    if (cuisine.includes("french")) { occasion.add("celebration"); occasion.add("business"); mood.add("elegant"); mood.add("romantic"); }
+    if (cuisine.includes("japanese") || cuisine.includes("asian-fusion") || cuisine.includes("vietnamese")) { mood.add("chic"); mood.add("trendy"); }
+    if (cuisine.includes("bavarian")) { occasion.add("group"); occasion.add("business"); mood.add("traditional"); }
+    if (cuisine.includes("greek") || cuisine.includes("mediterranean") || cuisine.includes("middle-eastern")) { occasion.add("group"); mood.add("trendy"); }
+    if (cuisine.includes("steakhouse")) { occasion.add("business"); occasion.add("celebration"); mood.add("elegant"); }
+    if (cuisine.includes("vegan") || cuisine.includes("vegetarian")) { mood.add("trendy"); }
+    if (cuisine.includes("brunch")) { occasion.add("casual"); mood.add("cozy"); mood.add("trendy"); }
+    if (cuisine.includes("modern-european")) { occasion.add("celebration"); occasion.add("business"); mood.add("chic"); mood.add("elegant"); }
+
+    if (features.includes("beer-garden")) { occasion.add("group"); occasion.add("family"); mood.add("lively"); mood.add("traditional"); }
+    if (features.includes("terrace")) { mood.add("lively"); }
+  }
+  return { occasion: [...occasion], mood: [...mood] };
+}
+
 function mapPlace(e) {
   const t = e.tags || {};
   const amenity = t.amenity;
@@ -53,6 +85,8 @@ function mapPlace(e) {
   if (t.outdoor_seating === "yes") features.push("terrace");
   if (amenity === "biergarten" || t.beer_garden === "yes") features.push("beer-garden");
   if (t["diet:vegan"] === "yes" || t["diet:vegan"] === "only") features.push("vegan");
+
+  const { occasion, mood } = enrichTags(type, amenity, cuisine, features);
 
   const hood = t["addr:suburb"] || t["addr:city_district"] || t["addr:city"] || "München";
 
@@ -74,8 +108,7 @@ function mapPlace(e) {
     type, name: t.name,
     neighborhood: hood,
     cuisine, price,
-    occasion: type === "bar" ? ["casual","date"] : ["casual"],
-    mood: type === "bar" ? ["lively"] : ["cozy"],
+    occasion, mood,
     exclusivity: 1,
     features, pitch,
     bookingUrl: url,

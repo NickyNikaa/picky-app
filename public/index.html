@@ -248,6 +248,15 @@
     color: var(--text-mute);
   }
   .empty h3 { color: var(--text); font-family: "Playfair Display", Georgia, serif; }
+  .fallback-banner {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(212,165,116,0.10), rgba(194,65,12,0.08));
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px 18px; margin-bottom: 4px;
+    color: var(--text-dim); font-size: 13.5px; line-height: 1.5;
+  }
+  .fallback-banner strong { color: var(--text); }
+  .fallback-banner .miss { color: var(--accent); font-weight: 600; }
 
   /* Events info-banner */
   .events-banner {
@@ -1070,6 +1079,40 @@ function filtered() {
   });
 }
 
+// Score each place by how many active filter dimensions it matches.
+// Used when strict filter yields 0 results — we show the top N near-matches instead.
+function scoreFiltered() {
+  const active = {
+    type: state.type !== "all",
+    occasion: state.occasion.size > 0,
+    mood: state.mood.size > 0,
+    cuisine: state.cuisine.size > 0,
+    price: state.price.size > 0,
+    exclusivity: state.exclusivity.size > 0,
+    feature: state.feature.size > 0
+  };
+  const activeCount = Object.values(active).filter(Boolean).length;
+  if (activeCount === 0) return [];
+
+  const scored = allPlaces().map(r => {
+    let s = 0;
+    const missing = [];
+    if (active.type)        (state.type === r.type ? s++ : missing.push("Typ"));
+    if (active.occasion)    (matchSet(state.occasion, r.occasion) ? s++ : missing.push("Anlass"));
+    if (active.mood)        (matchSet(state.mood, r.mood) ? s++ : missing.push("Stimmung"));
+    if (active.cuisine)     (matchSet(state.cuisine, r.cuisine) ? s++ : missing.push("Küche"));
+    if (active.price)       (matchSetValue(state.price, r.price) ? s++ : missing.push("Preis"));
+    if (active.exclusivity) (matchSetValue(state.exclusivity, r.exclusivity) ? s++ : missing.push("Exklusivität"));
+    if (active.feature)     (matchSet(state.feature, r.features) ? s++ : missing.push("Extras"));
+    // Prefer curated > custom > osm at equal score
+    let tier = 0;
+    if (r.custom) tier = 1; else if (r.osm) tier = 2;
+    return { r, s, missing, tier };
+  });
+  scored.sort((a,b) => b.s - a.s || a.tier - b.tier);
+  return scored.slice(0, 5);
+}
+
 function renderExclusivity(level) {
   let html = '<span class="exclusivity">';
   for (let i = 1; i <= 4; i++) { html += `<span class="star ${i <= level ? "" : "dim"}">●</span>`; }
@@ -1078,7 +1121,20 @@ function renderExclusivity(level) {
 }
 
 function renderResults() {
-  const list = filtered();
+  let list = filtered();
+  let fallback = null;
+  if (list.length === 0) {
+    const near = scoreFiltered();
+    if (near.length > 0) {
+      // Top-of-the-pile entries — at least one passes most filters
+      list = near.map(n => n.r);
+      // Most common missed dimension across the fallback set
+      const missCounts = {};
+      near.forEach(n => n.missing.forEach(m => missCounts[m] = (missCounts[m] || 0) + 1));
+      const topMisses = Object.entries(missCounts).sort((a,b) => b[1] - a[1]).slice(0, 2).map(([k]) => k);
+      fallback = topMisses;
+    }
+  }
   document.getElementById("resultCount").textContent = list.length;
   document.getElementById("placesCount").textContent = allPlaces().length;
   const wrap = document.getElementById("results");
@@ -1086,6 +1142,15 @@ function renderResults() {
   if (list.length === 0) {
     wrap.innerHTML = `<div class="empty"><h3>Keine Treffer.</h3><p>Lockere ein paar Filter — oder klick auf "Filter zurücksetzen".</p></div>`;
     return;
+  }
+  if (fallback) {
+    const missLabel = fallback.length > 0
+      ? `Knapp daneben bei: <span class="miss">${fallback.join(" · ")}</span>`
+      : "";
+    const banner = document.createElement("div");
+    banner.className = "fallback-banner";
+    banner.innerHTML = `<strong>Strenge Kombi — keine 100%-Treffer.</strong> Hier die 5 nächstbesten Plätze. ${missLabel}`;
+    wrap.appendChild(banner);
   }
   list.forEach(r => {
     const cuisineLabels = r.cuisine.map(c => FILTER_DEFS.cuisine.find(x => x.id === c)?.label || c).slice(0, 2).join(" · ");
