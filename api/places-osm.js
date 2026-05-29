@@ -101,7 +101,7 @@ function scoreAndFilter(elements) {
     return { e, s };
   });
   scored.sort((a,b) => b.s - a.s);
-  return scored.slice(0, 250).map(({e}) => mapPlace(e));
+  return scored.slice(0, 800).map(({e}) => mapPlace(e));
 }
 
 export default async function handler(req, res) {
@@ -123,7 +123,8 @@ export default async function handler(req, res) {
         generatedAt: new Date().toISOString(),
         source: "openstreetmap",
         totalElements: data.elements?.length || 0,
-        returned: places.length
+        returned: places.length,
+        cap: 800
       },
       places
     });
