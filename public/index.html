@@ -180,13 +180,21 @@
   }
   .card:hover { transform: translateY(-3px); border-color: var(--accent); }
   .card-banner {
-    height: 160px; position: relative;
-    background-size: cover; background-position: center;
+    height: 120px; position: relative;
     display: flex; align-items: flex-end; padding: 12px 16px;
+    background: linear-gradient(135deg, var(--banner-from, #2a241e) 0%, var(--banner-to, #1a1714) 100%);
+    overflow: hidden;
+  }
+  .card-banner .big-emoji {
+    position: absolute; right: -10px; bottom: -16px;
+    font-size: 110px; line-height: 1;
+    opacity: 0.18; transform: rotate(-8deg);
+    pointer-events: none;
   }
   .card-banner::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(15,14,12,0.0) 30%, rgba(15,14,12,0.85) 100%);
+    background: linear-gradient(180deg, rgba(15,14,12,0.0) 40%, rgba(15,14,12,0.6) 100%);
+    pointer-events: none;
   }
   .card-banner .badges { position: relative; z-index: 2; display: flex; gap: 6px; flex-wrap: wrap; }
   .badge {
@@ -380,6 +388,7 @@
   .card-cuisine-icon {
     position: absolute; top: 12px; right: 14px; z-index: 2;
     font-size: 24px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+    display: none;
   }
   .card-body { padding: 18px 18px 16px; flex: 1; display: flex; flex-direction: column; }
   .card-head {
@@ -473,14 +482,20 @@
 
   /* DETAIL MODAL */
   .detail-hero {
-    position: relative; height: 280px;
-    background-size: cover; background-position: center;
-    border-radius: 18px 18px 0 0;
+    position: relative; height: 180px;
+    border-radius: 18px 18px 0 0; overflow: hidden;
+    background: linear-gradient(135deg, var(--banner-from, #2a241e) 0%, var(--banner-to, #1a1714) 100%);
+  }
+  .detail-hero .big-emoji {
+    position: absolute; right: 0; bottom: -30px;
+    font-size: 220px; line-height: 1;
+    opacity: 0.15; transform: rotate(-8deg);
+    pointer-events: none;
   }
   .detail-hero::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(26,23,20,0.95) 100%);
-    border-radius: 18px 18px 0 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(26,23,20,0.85) 100%);
+    border-radius: 18px 18px 0 0; pointer-events: none;
   }
   .detail-hero-content {
     position: absolute; bottom: 20px; left: 24px; right: 24px; z-index: 2;
@@ -493,17 +508,18 @@
   }
   .detail-hero-content .sub { color: var(--text-dim); font-size: 14px; }
   .detail-price { color: var(--accent); font-size: 18px; font-weight: 600; white-space: nowrap; }
-  .gallery {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-    padding: 12px 24px 0;
-  }
-  .gallery img {
-    width: 100%; height: 90px; object-fit: cover;
-    border-radius: 8px; cursor: pointer;
-    border: 1px solid var(--border);
+  .gallery { display: none; }
+  .ig-button {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff; border: none;
+    padding: 12px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; flex: 1;
+    text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     transition: opacity 0.15s ease;
   }
-  .gallery img:hover { opacity: 0.85; }
+  .ig-button:hover { opacity: 0.92; }
   .detail-body { padding: 20px 24px 24px; }
   .detail-section { margin-bottom: 22px; }
   .detail-section h3 {
@@ -769,6 +785,7 @@
       </div>
       <div class="detail-cta">
         <a class="btn btn-primary" id="detailBookBtn" href="#" target="_blank" rel="noopener">Direkt buchen →</a>
+        <a class="ig-button" id="detailIgBtn" href="#" target="_blank" rel="noopener" style="display:none">📷 Instagram</a>
       </div>
     </div>
   </div>
@@ -1227,14 +1244,9 @@ const CUISINE_EMOJI = {
 // ============================================================
 // IMAGES
 // ============================================================
-function bannerImg(id) { return `https://picsum.photos/seed/${id}-hero/800/500`; }
-function galleryImgs(id) {
-  return [
-    `https://picsum.photos/seed/${id}-1/600/400`,
-    `https://picsum.photos/seed/${id}-2/600/400`,
-    `https://picsum.photos/seed/${id}-3/600/400`
-  ];
-}
+// Deprecated — banners now use cuisine gradients, no images
+function bannerImg(_id) { return ""; }
+function galleryImgs(_id) { return []; }
 
 // ============================================================
 // STORAGE
@@ -1378,10 +1390,11 @@ function renderResults() {
     const card = document.createElement("article");
     card.className = "card";
     card.addEventListener("click", () => openDetail(r.id));
+    const [bgFrom, bgTo] = cuisineGradient(r.cuisine);
     card.innerHTML = `
-      <div class="card-banner" style="background-image: url('${bannerImg(r.id)}');">
-        <div class="card-cuisine-icon">${cuisineIcon}</div>
-        <div class="badges">${badges.join("")}</div>
+      <div class="card-banner" style="--banner-from:${bgFrom}; --banner-to:${bgTo};">
+        <div class="big-emoji">${cuisineIcon}</div>
+        <div class="badges" style="position:relative;z-index:2">${badges.join("")}</div>
       </div>
       <div class="card-body">
         <div class="card-head">
@@ -1521,15 +1534,17 @@ function openDetail(id) {
   document.getElementById("detailSub").textContent = `${r.neighborhood} · ${r.cuisine.map(c => FILTER_DEFS.cuisine.find(x => x.id === c)?.label || c).join(" · ")}`;
   document.getElementById("detailPrice").textContent = priceLabel(r.price);
   document.getElementById("detailPitch").textContent = r.pitch;
-  document.getElementById("detailHero").style.backgroundImage = `url('${bannerImg(id)}')`;
-  const gallery = document.getElementById("detailGallery");
-  gallery.innerHTML = "";
-  galleryImgs(id).forEach((url, i) => {
-    const img = document.createElement("img");
-    img.src = url; img.alt = `${r.name} Bild ${i+1}`;
-    img.addEventListener("click", () => { document.getElementById("detailHero").style.backgroundImage = `url('${url.replace('600/400','800/500')}')`; });
-    gallery.appendChild(img);
-  });
+  const [bgFrom, bgTo] = cuisineGradient(r.cuisine);
+  const detailHero = document.getElementById("detailHero");
+  const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
+  detailHero.style.cssText = `--banner-from:${bgFrom}; --banner-to:${bgTo};`;
+  let emojiEl = detailHero.querySelector(".big-emoji");
+  if (!emojiEl) {
+    emojiEl = document.createElement("div");
+    emojiEl.className = "big-emoji";
+    detailHero.insertBefore(emojiEl, detailHero.firstChild);
+  }
+  emojiEl.textContent = cuisineIcon;
   const meta = document.getElementById("detailMeta");
   const occLabels = r.occasion.map(o => FILTER_DEFS.occasion.find(x => x.id === o)?.label).join(", ");
   const moodLabels = r.mood.map(o => FILTER_DEFS.mood.find(x => x.id === o)?.label).join(", ");
@@ -1545,6 +1560,16 @@ function openDetail(id) {
   `;
   document.getElementById("detailBookBtn").href = r.bookingUrl;
   document.getElementById("detailBookBtn").textContent = r.type === "bar" ? "Zur Bar-Website →" : "Direkt buchen →";
+  // Instagram button
+  const igBtn = document.getElementById("detailIgBtn");
+  if (r.instagram) {
+    const handle = r.instagram.replace(/^@/, "");
+    igBtn.href = `https://www.instagram.com/${handle}/`;
+    igBtn.textContent = `📷 @${handle}`;
+    igBtn.style.display = "";
+  } else {
+    igBtn.style.display = "none";
+  }
   document.getElementById("detailSlotsSection").style.display = r.type === "bar" ? "none" : "";
   if (r.type !== "bar") renderSlots(id);
   detailModal.classList.add("open");
