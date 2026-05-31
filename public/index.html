@@ -1372,7 +1372,7 @@ function renderResults() {
     if (r.features.includes("vegan")) badges.push(`<span class="badge">Vegan</span>`);
     if (r.custom) badges.push(`<span class="badge custom">Eigene</span>`);
     if (r.osm) badges.push(`<span class="badge osm">OSM</span>`);
-    if (r.curated) badges.push(`<span class="badge curated">💎 Tipp${r.rating ? " " + r.rating + "★" : ""}</span>`);
+    // r.curated places appear as regular places (no badge)
     const features = r.features.filter(f => !["michelin","rooftop","vegan"].includes(f));
     const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
     const card = document.createElement("article");
