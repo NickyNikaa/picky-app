@@ -265,8 +265,14 @@
   .calendar-nav .today-btn {
     width: auto; padding: 0 14px; font-size: 13px; font-weight: 500;
   }
-  .calendar-grid {
+  .calendar-weekdays {
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    margin-bottom: 4px;
+  }
+  .calendar-week {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    margin-bottom: 4px; position: relative;
+    grid-auto-rows: min-content;
   }
   .calendar-weekday {
     text-align: center; padding: 8px 0;
@@ -274,46 +280,66 @@
     color: var(--text-mute); font-weight: 500;
   }
   .calendar-day {
-    aspect-ratio: 1 / 1;
     background: var(--chip-bg); border: 1px solid var(--border);
-    border-radius: 10px; padding: 8px;
-    display: flex; flex-direction: column; justify-content: space-between;
+    border-radius: 10px; padding: 6px 6px 4px;
+    display: flex; flex-direction: column; gap: 3px;
     cursor: pointer; transition: all 0.15s ease;
     position: relative;
-    min-height: 56px;
+    min-height: 92px;
+    overflow: hidden;
   }
-  .calendar-day:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .calendar-day.other-month { opacity: 0.3; cursor: default; }
-  .calendar-day.other-month:hover { border-color: var(--border); transform: none; }
+  .calendar-day:hover { border-color: var(--accent); }
+  .calendar-day.other-month { opacity: 0.35; cursor: default; min-height: 50px; }
+  .calendar-day.other-month:hover { border-color: var(--border); }
   .calendar-day.today { border-color: var(--accent); border-width: 2px; }
-  .calendar-day.has-events { background: var(--panel-2); }
   .calendar-day.has-trending::before {
     content: ""; position: absolute; top: 6px; right: 6px;
     width: 6px; height: 6px; border-radius: 50%;
     background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
-    box-shadow: 0 0 6px rgba(255,94,58,0.6);
+    box-shadow: 0 0 6px rgba(255,94,58,0.6); z-index: 2;
   }
   .calendar-day.selected {
-    background: var(--accent); color: #1a1714; border-color: var(--accent);
+    background: var(--accent); border-color: var(--accent);
   }
   .calendar-day.selected .day-num { color: #1a1714; }
-  .calendar-day.selected .day-meta { color: rgba(26,23,20,0.7); }
+  .calendar-day.selected .ev-pill {
+    background: rgba(26,23,20,0.25); color: #1a1714; border-color: transparent;
+  }
+  .calendar-day.selected .ev-pill.trend {
+    background: rgba(26,23,20,0.85); color: #ff9a3a;
+  }
   .calendar-day .day-num {
-    font-size: 16px; font-weight: 600; color: var(--text);
-    font-family: inherit; line-height: 1;
+    font-size: 14px; font-weight: 600; color: var(--text);
+    line-height: 1; margin-bottom: 2px;
   }
-  .calendar-day .day-meta {
-    font-size: 10px; color: var(--text-mute);
-    display: flex; gap: 3px; align-items: center;
+  .ev-pill {
+    background: rgba(212,165,116,0.18); color: var(--text);
+    border: 1px solid rgba(212,165,116,0.35);
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 10.5px; line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    cursor: pointer;
   }
-  .calendar-day .event-count {
-    background: var(--accent); color: #1a1714;
-    padding: 1px 6px; border-radius: 99px;
-    font-size: 10px; font-weight: 700;
+  .ev-pill:hover { background: rgba(212,165,116,0.32); }
+  .ev-pill.trend {
+    background: linear-gradient(135deg, rgba(255,94,58,0.25), rgba(255,154,58,0.25));
+    border-color: rgba(255,94,58,0.5); color: #ffcaa6;
   }
-  .calendar-day.selected .event-count {
-    background: rgba(26,23,20,0.85); color: var(--accent);
+  .ev-pill.span {
+    background: rgba(110,194,127,0.2);
+    border-color: rgba(110,194,127,0.5);
+    color: #b8e6c4;
   }
+  .ev-pill.span.trend {
+    background: linear-gradient(135deg, rgba(255,94,58,0.3), rgba(255,154,58,0.3));
+    border-color: rgba(255,94,58,0.6); color: #ffcaa6;
+  }
+  .ev-more {
+    font-size: 10px; color: var(--text-mute); padding: 0 5px;
+    cursor: pointer;
+  }
+  .ev-more:hover { color: var(--accent); }
   .selected-day-banner {
     background: var(--accent); color: #1a1714;
     border-radius: 12px; padding: 10px 14px;
@@ -671,7 +697,7 @@
           <button id="calNext" title="Nächster Monat">›</button>
         </div>
       </div>
-      <div class="calendar-grid" id="calendarGrid"></div>
+      <div id="calendarGrid"></div>
       <div id="selectedDayBanner"></div>
     </section>
 
@@ -1367,7 +1393,10 @@ function eventsFiltered() {
   return EVENTS.filter(e => {
     if (eventState.onlyTrending && !e.trending) return false;
     if (eventState.category.size > 0 && !eventState.category.has(e.category)) return false;
-    if (eventState.selectedDay && e.date !== eventState.selectedDay) return false;
+    if (eventState.selectedDay) {
+      const start = e.date, end = e.endDate || e.date;
+      if (eventState.selectedDay < start || eventState.selectedDay > end) return false;
+    }
     return true;
   }).sort((a, b) => {
     // Wenn nach Tag gefiltert: nur nach Trending sortieren
@@ -1697,6 +1726,7 @@ renderChips("featureChips", FILTER_DEFS.feature, "feature");
       if (eventState.category.has(item.id)) eventState.category.delete(item.id);
       else eventState.category.add(item.id);
       el.classList.toggle("active");
+      if (eventState.view === "calendar") renderCalendar();
       renderEvents();
     });
     wrap.appendChild(el);
@@ -1766,6 +1796,7 @@ document.getElementById("resetEventBtn").addEventListener("click", () => {
 document.getElementById("trendToggle").addEventListener("click", () => {
   eventState.onlyTrending = !eventState.onlyTrending;
   document.getElementById("trendToggle").classList.toggle("active", eventState.onlyTrending);
+  if (eventState.view === "calendar") renderCalendar();
   renderEvents();
 });
 
@@ -1782,89 +1813,157 @@ function isoDay(date) {
   return `${y}-${m}-${d}`;
 }
 
+// Returns events that pass the active filters EXCEPT selectedDay.
+function eventsForCalendar() {
+  return EVENTS.filter(e => {
+    if (!e.date) return false;
+    if (eventState.onlyTrending && !e.trending) return false;
+    if (eventState.category.size > 0 && !eventState.category.has(e.category)) return false;
+    return true;
+  });
+}
+
+function shortTitle(str, max = 22) {
+  if (!str) return "";
+  return str.length > max ? str.slice(0, max - 1) + "…" : str;
+}
+
 function renderCalendar() {
   if (!eventState.calendarMonth) eventState.calendarMonth = new Date();
   const cur = eventState.calendarMonth;
   const year = cur.getFullYear();
   const month = cur.getMonth();
-
   document.getElementById("calendarMonth").textContent = `${MONTH_NAMES[month]} ${year}`;
 
-  // Build day → event-summary map
-  const dayMap = {};
-  EVENTS.forEach(e => {
-    if (!e.date) return;
-    if (!dayMap[e.date]) dayMap[e.date] = { count: 0, trending: false };
-    dayMap[e.date].count++;
-    if (e.trending) dayMap[e.date].trending = true;
-  });
-
-  // First day of month, adjusted to Monday-start (Mo=0, So=6)
   const firstOfMonth = new Date(year, month, 1);
   const firstWeekday = (firstOfMonth.getDay() + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const daysInPrevMonth = new Date(year, month, 0).getDate();
   const todayIso = isoDay(new Date());
+
+  const startDate = new Date(year, month, 1 - firstWeekday);
+  const totalCells = Math.ceil((firstWeekday + daysInMonth) / 7) * 7;
+  const cells = [];
+  for (let i = 0; i < totalCells; i++) {
+    const d = new Date(startDate);
+    d.setDate(startDate.getDate() + i);
+    cells.push({ date: d, iso: isoDay(d), inMonth: d.getMonth() === month });
+  }
+
+  const events = eventsForCalendar();
+  const singleByDate = new Map();
+  const multi = [];
+  events.forEach(e => {
+    if (e.endDate && e.endDate !== e.date) multi.push(e);
+    else {
+      if (!singleByDate.has(e.date)) singleByDate.set(e.date, []);
+      singleByDate.get(e.date).push(e);
+    }
+  });
+  singleByDate.forEach(list => list.sort((a, b) => {
+    if (!!a.trending !== !!b.trending) return a.trending ? -1 : 1;
+    return (a.time || "").localeCompare(b.time || "");
+  }));
 
   const grid = document.getElementById("calendarGrid");
   grid.innerHTML = "";
-  // Weekday header
+  const head = document.createElement("div");
+  head.className = "calendar-weekdays";
   WEEKDAY_NAMES.forEach(w => {
     const el = document.createElement("div");
     el.className = "calendar-weekday";
     el.textContent = w;
-    grid.appendChild(el);
+    head.appendChild(el);
   });
-  // Leading prev-month days
-  for (let i = firstWeekday - 1; i >= 0; i--) {
-    const day = daysInPrevMonth - i;
-    const el = document.createElement("div");
-    el.className = "calendar-day other-month";
-    el.innerHTML = `<div class="day-num">${day}</div>`;
-    grid.appendChild(el);
-  }
-  // Current month days
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateObj = new Date(year, month, d);
-    const iso = isoDay(dateObj);
-    const info = dayMap[iso];
-    const classes = ["calendar-day"];
-    if (info) classes.push("has-events");
-    if (info?.trending) classes.push("has-trending");
-    if (iso === todayIso) classes.push("today");
-    if (iso === eventState.selectedDay) classes.push("selected");
-    const el = document.createElement("div");
-    el.className = classes.join(" ");
-    el.dataset.iso = iso;
-    el.innerHTML = `
-      <div class="day-num">${d}</div>
-      ${info ? `<div class="day-meta"><span class="event-count">${info.count}</span></div>` : `<div class="day-meta"></div>`}
-    `;
-    el.addEventListener("click", () => {
-      if (eventState.selectedDay === iso) eventState.selectedDay = null;
-      else eventState.selectedDay = iso;
-      renderCalendar();
-      renderEvents();
+  grid.appendChild(head);
+
+  const weeksTotal = totalCells / 7;
+  for (let w = 0; w < weeksTotal; w++) {
+    const weekCells = cells.slice(w * 7, w * 7 + 7);
+    const weekStart = weekCells[0].iso;
+    const weekEnd = weekCells[6].iso;
+
+    // Multi-day bands first (rendered ABOVE the week)
+    const bands = [];
+    multi.forEach(e => {
+      const start = e.date, end = e.endDate || e.date;
+      if (end < weekStart || start > weekEnd) return;
+      const spanStartIso = start < weekStart ? weekStart : start;
+      const spanEndIso = end > weekEnd ? weekEnd : end;
+      const startIdx = weekCells.findIndex(c => c.iso === spanStartIso);
+      const endIdx = weekCells.findIndex(c => c.iso === spanEndIso);
+      if (startIdx < 0 || endIdx < 0) return;
+      bands.push({ e, startIdx, endIdx, fromBefore: start < weekStart, contAfter: end > weekEnd });
     });
-    grid.appendChild(el);
+    if (bands.length > 0) {
+      const bandRow = document.createElement("div");
+      bandRow.style.cssText = "display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 2px;";
+      bands.forEach(b => {
+        const bandEl = document.createElement("div");
+        bandEl.className = b.e.trending ? "ev-pill span trend" : "ev-pill span";
+        bandEl.dataset.eventId = b.e.id;
+        bandEl.style.gridColumn = `${b.startIdx + 1} / ${b.endIdx + 2}`;
+        const prefix = b.fromBefore ? "… " : "";
+        const suffix = b.contAfter ? " …" : "";
+        bandEl.title = `${b.e.title} (${b.e.date} – ${b.e.endDate})`;
+        bandEl.textContent = `${prefix}${shortTitle(b.e.title, 50)}${suffix}`;
+        bandEl.addEventListener("click", ev => { ev.stopPropagation(); openEventDetail(b.e.id); });
+        bandRow.appendChild(bandEl);
+      });
+      grid.appendChild(bandRow);
+    }
+
+    // Week row
+    const weekEl = document.createElement("div");
+    weekEl.className = "calendar-week";
+    weekCells.forEach(cell => {
+      const classes = ["calendar-day"];
+      if (!cell.inMonth) classes.push("other-month");
+      if (cell.iso === todayIso) classes.push("today");
+      if (cell.iso === eventState.selectedDay) classes.push("selected");
+      const items = singleByDate.get(cell.iso) || [];
+      if (items.some(e => e.trending)) classes.push("has-trending");
+      const el = document.createElement("div");
+      el.className = classes.join(" ");
+      el.dataset.iso = cell.iso;
+      let pillsHtml = "";
+      if (cell.inMonth) {
+        const visible = items.slice(0, 2);
+        pillsHtml = visible.map(e => {
+          const cls = e.trending ? "ev-pill trend" : "ev-pill";
+          const titleSafe = e.title.replace(/"/g, "&quot;");
+          return `<div class="${cls}" data-event-id="${e.id}" title="${titleSafe}">${shortTitle(e.title)}</div>`;
+        }).join("");
+        if (items.length > 2) {
+          pillsHtml += `<div class="ev-more">+${items.length - 2} weitere</div>`;
+        }
+      }
+      el.innerHTML = `<div class="day-num">${cell.date.getDate()}</div>${pillsHtml}`;
+      el.addEventListener("click", ev => {
+        if (!cell.inMonth) return;
+        const pill = ev.target.closest(".ev-pill");
+        if (pill) {
+          ev.stopPropagation();
+          openEventDetail(pill.dataset.eventId);
+          return;
+        }
+        if (eventState.selectedDay === cell.iso) eventState.selectedDay = null;
+        else eventState.selectedDay = cell.iso;
+        renderCalendar();
+        renderEvents();
+      });
+      weekEl.appendChild(el);
+    });
+    grid.appendChild(weekEl);
   }
-  // Trailing next-month days to fill grid (max 6 rows)
-  const totalCells = firstWeekday + daysInMonth;
-  const trailingCells = (7 - (totalCells % 7)) % 7;
-  for (let i = 1; i <= trailingCells; i++) {
-    const el = document.createElement("div");
-    el.className = "calendar-day other-month";
-    el.innerHTML = `<div class="day-num">${i}</div>`;
-    grid.appendChild(el);
-  }
+
   // Selected-day banner
   const banner = document.getElementById("selectedDayBanner");
   if (eventState.selectedDay) {
-    const [y,m,d] = eventState.selectedDay.split("-").map(Number);
-    const dt = new Date(y, m-1, d);
+    const [y, m, d] = eventState.selectedDay.split("-").map(Number);
+    const dt = new Date(y, m - 1, d);
     const wd = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"][dt.getDay()];
     banner.className = "selected-day-banner";
-    banner.innerHTML = `<strong>📌 ${wd}, ${d}. ${MONTH_NAMES[m-1]} ${y}</strong><button class="clear-day" id="clearDay">× Filter aufheben</button>`;
+    banner.innerHTML = `<strong>📌 ${wd}, ${d}. ${MONTH_NAMES[m - 1]} ${y}</strong><button class="clear-day" id="clearDay">× Filter aufheben</button>`;
     document.getElementById("clearDay").addEventListener("click", e => {
       e.stopPropagation();
       eventState.selectedDay = null;
