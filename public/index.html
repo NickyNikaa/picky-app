@@ -213,6 +213,26 @@
     background: linear-gradient(135deg, #b388eb 0%, #d4a574 100%);
     color: #1a1714; font-weight: 700;
   }
+  .badge.maki {
+    background: linear-gradient(135deg, #ff3e8a 0%, #ff8a3e 100%);
+    color: #fff; font-weight: 700; letter-spacing: 0.5px;
+    box-shadow: 0 2px 12px rgba(255, 62, 138, 0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .maki-toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--chip-bg); border: 1px solid var(--border);
+    padding: 7px 14px; border-radius: 999px;
+    cursor: pointer; font-size: 13px; color: var(--text-dim);
+    transition: all 0.15s ease; user-select: none;
+    font-family: inherit; font-weight: 500;
+  }
+  .maki-toggle:hover { color: var(--text); }
+  .maki-toggle.active {
+    background: linear-gradient(135deg, #ff3e8a 0%, #ff8a3e 100%);
+    color: #fff; border-color: #ff3e8a; font-weight: 600;
+    box-shadow: 0 2px 12px rgba(255, 62, 138, 0.35);
+  }
   .badge.trending {
     background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
     color: #fff; font-weight: 700; letter-spacing: 0.5px;
@@ -1293,6 +1313,7 @@ function allPlaces() { return [...PLACES, ...CURATED_PLACES, ...OSM_PLACES, ...l
 // ============================================================
 const state = {
   type: "all",
+  onlyMaki: false,
   occasion: new Set(), mood: new Set(), cuisine: new Set(),
   price: new Set(), exclusivity: new Set(), feature: new Set()
 };
@@ -1321,6 +1342,7 @@ function matchSetValue(set, value) { if (set.size === 0) return true; return set
 
 function filtered() {
   return allPlaces().filter(r => {
+    if (state.onlyMaki && !r.makiApproved) return false;
     if (state.type !== "all" && r.type !== state.type) return false;
     if (!matchSet(state.occasion, r.occasion)) return false;
     if (!matchSet(state.mood, r.mood)) return false;
@@ -1414,6 +1436,7 @@ function renderResults() {
     if (r.features.includes("vegan")) badges.push(`<span class="badge">Vegan</span>`);
     if (r.custom) badges.push(`<span class="badge custom">Eigene</span>`);
     if (r.osm) badges.push(`<span class="badge osm">OSM</span>`);
+    if (r.makiApproved) badges.push(`<span class="badge maki">🦔 Maki approved</span>`);
     // r.curated places appear as regular places (no badge)
     const features = r.features.filter(f => !["michelin","rooftop","vegan"].includes(f));
     const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
@@ -1878,7 +1901,14 @@ renderEvents();
   }
 })();
 
+document.getElementById("makiToggle").addEventListener("click", () => {
+  state.onlyMaki = !state.onlyMaki;
+  document.getElementById("makiToggle").classList.toggle("active", state.onlyMaki);
+  renderResults();
+});
 document.getElementById("resetBtn").addEventListener("click", () => {
+  state.onlyMaki = false;
+  document.getElementById("makiToggle").classList.remove("active");
   state.type = "all";
   document.querySelectorAll("#typeSeg button").forEach(b => b.classList.remove("active"));
   document.querySelector('#typeSeg button[data-type="all"]').classList.add("active");
