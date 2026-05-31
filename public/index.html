@@ -201,6 +201,10 @@
   .badge.bar { background: rgba(194,65,12,0.85); color: #fff; }
   .badge.event { background: var(--good); color: #0f0e0c; font-weight: 700; }
   .badge.osm { background: rgba(110,194,127,0.85); color: #0f0e0c; font-weight: 700; }
+  .badge.curated {
+    background: linear-gradient(135deg, #b388eb 0%, #d4a574 100%);
+    color: #1a1714; font-weight: 700;
+  }
   .badge.trending {
     background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
     color: #fff; font-weight: 700; letter-spacing: 0.5px;
@@ -265,6 +269,20 @@
   .calendar-nav .today-btn {
     width: auto; padding: 0 14px; font-size: 13px; font-weight: 500;
   }
+  .calendar-mode-switch {
+    display: inline-flex; background: var(--chip-bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2px; gap: 2px; margin-right: 6px;
+  }
+  .calendar-mode-switch button {
+    background: transparent; border: none; color: var(--text-dim);
+    padding: 5px 11px; border-radius: 6px; cursor: pointer;
+    font-size: 12px; font-family: inherit; font-weight: 500;
+  }
+  .calendar-mode-switch button.active { background: var(--accent); color: #1a1714; font-weight: 600; }
+  .calendar-day.week-view {
+    min-height: 180px;
+  }
+  .calendar-day.week-view .ev-pill { font-size: 12px; padding: 4px 7px; white-space: normal; }
   .calendar-weekdays {
     display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
     margin-bottom: 4px;
@@ -692,9 +710,13 @@
       <div class="calendar-head">
         <div class="calendar-month" id="calendarMonth"></div>
         <div class="calendar-nav">
-          <button id="calPrev" title="Vorheriger Monat">‹</button>
+          <div class="calendar-mode-switch" id="calModeSwitch">
+            <button data-mode="month" class="active">Monat</button>
+            <button data-mode="week">Woche</button>
+          </div>
+          <button id="calPrev" title="Zurück">‹</button>
           <button id="calToday" class="today-btn">Heute</button>
-          <button id="calNext" title="Nächster Monat">›</button>
+          <button id="calNext" title="Vorwärts">›</button>
         </div>
       </div>
       <div id="calendarGrid"></div>
@@ -1219,9 +1241,10 @@ function galleryImgs(id) {
 // ============================================================
 const STORAGE_KEY = "picky.custom.entries";
 let OSM_PLACES = [];
+let CURATED_PLACES = [];
 function loadCustom() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; } }
 function saveCustom(list) { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
-function allPlaces() { return [...PLACES, ...OSM_PLACES, ...loadCustom()]; }
+function allPlaces() { return [...PLACES, ...CURATED_PLACES, ...OSM_PLACES, ...loadCustom()]; }
 
 // ============================================================
 // PLACES — STATE + RENDER
@@ -1349,6 +1372,7 @@ function renderResults() {
     if (r.features.includes("vegan")) badges.push(`<span class="badge">Vegan</span>`);
     if (r.custom) badges.push(`<span class="badge custom">Eigene</span>`);
     if (r.osm) badges.push(`<span class="badge osm">OSM</span>`);
+    if (r.curated) badges.push(`<span class="badge curated">💎 Tipp${r.rating ? " " + r.rating + "★" : ""}</span>`);
     const features = r.features.filter(f => !["michelin","rooftop","vegan"].includes(f));
     const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
     const card = document.createElement("article");
@@ -1386,8 +1410,20 @@ function renderResults() {
 // ============================================================
 const eventState = {
   category: new Set(), onlyTrending: false,
-  view: "list", calendarMonth: null, selectedDay: null
+  view: "list",
+  calendarMode: "month",            // "month" | "week"
+  calendarMonth: null,              // anchor date inside the displayed month
+  calendarWeekStart: null,          // ISO date of Monday of displayed week
+  selectedDay: null
 };
+
+function mondayOf(date) {
+  const d = new Date(date);
+  const wd = (d.getDay() + 6) % 7;  // Mo=0
+  d.setDate(d.getDate() - wd);
+  d.setHours(0,0,0,0);
+  return d;
+}
 
 function eventsFiltered() {
   return EVENTS.filter(e => {
@@ -1748,9 +1784,20 @@ renderEvents();
       OSM_PLACES = json.places;
       renderResults();
     }
-  } catch (e) {
-    // silent — local PLACES still work without OSM
-  }
+  } catch (e) { /* silent */ }
+})();
+
+// Curated places (from Nicky's Maps list + future additions)
+(async function loadCuratedPlaces() {
+  try {
+    const r = await fetch("/api/places-curated", { headers: { "Accept": "application/json" } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const json = await r.json();
+    if (Array.isArray(json.places) && json.places.length > 0) {
+      CURATED_PLACES = json.places;
+      renderResults();
+    }
+  } catch (e) { /* silent */ }
 })();
 
 // Then async-load live events from backend (overrides seeds on success)
@@ -1829,25 +1876,39 @@ function shortTitle(str, max = 22) {
 }
 
 function renderCalendar() {
-  if (!eventState.calendarMonth) eventState.calendarMonth = new Date();
-  const cur = eventState.calendarMonth;
-  const year = cur.getFullYear();
-  const month = cur.getMonth();
-  document.getElementById("calendarMonth").textContent = `${MONTH_NAMES[month]} ${year}`;
-
-  const firstOfMonth = new Date(year, month, 1);
-  const firstWeekday = (firstOfMonth.getDay() + 6) % 7;
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
   const todayIso = isoDay(new Date());
+  let cells = [];
+  let headerLabel = "";
 
-  const startDate = new Date(year, month, 1 - firstWeekday);
-  const totalCells = Math.ceil((firstWeekday + daysInMonth) / 7) * 7;
-  const cells = [];
-  for (let i = 0; i < totalCells; i++) {
-    const d = new Date(startDate);
-    d.setDate(startDate.getDate() + i);
-    cells.push({ date: d, iso: isoDay(d), inMonth: d.getMonth() === month });
+  if (eventState.calendarMode === "week") {
+    if (!eventState.calendarWeekStart) eventState.calendarWeekStart = mondayOf(new Date());
+    const ws = new Date(eventState.calendarWeekStart);
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(ws); d.setDate(ws.getDate() + i);
+      cells.push({ date: d, iso: isoDay(d), inMonth: true });
+    }
+    const we = new Date(ws); we.setDate(ws.getDate() + 6);
+    const sameMonth = ws.getMonth() === we.getMonth();
+    headerLabel = sameMonth
+      ? `${ws.getDate()}.–${we.getDate()}. ${MONTH_NAMES[we.getMonth()]} ${we.getFullYear()}`
+      : `${ws.getDate()}. ${MONTH_NAMES[ws.getMonth()]} – ${we.getDate()}. ${MONTH_NAMES[we.getMonth()]} ${we.getFullYear()}`;
+  } else {
+    if (!eventState.calendarMonth) eventState.calendarMonth = new Date();
+    const cur = eventState.calendarMonth;
+    const year = cur.getFullYear();
+    const month = cur.getMonth();
+    headerLabel = `${MONTH_NAMES[month]} ${year}`;
+    const firstOfMonth = new Date(year, month, 1);
+    const firstWeekday = (firstOfMonth.getDay() + 6) % 7;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startDate = new Date(year, month, 1 - firstWeekday);
+    const totalCells = Math.ceil((firstWeekday + daysInMonth) / 7) * 7;
+    for (let i = 0; i < totalCells; i++) {
+      const d = new Date(startDate); d.setDate(startDate.getDate() + i);
+      cells.push({ date: d, iso: isoDay(d), inMonth: d.getMonth() === month });
+    }
   }
+  document.getElementById("calendarMonth").textContent = headerLabel;
 
   const events = eventsForCalendar();
   const singleByDate = new Map();
@@ -1917,6 +1978,7 @@ function renderCalendar() {
     weekEl.className = "calendar-week";
     weekCells.forEach(cell => {
       const classes = ["calendar-day"];
+      if (eventState.calendarMode === "week") classes.push("week-view");
       if (!cell.inMonth) classes.push("other-month");
       if (cell.iso === todayIso) classes.push("today");
       if (cell.iso === eventState.selectedDay) classes.push("selected");
@@ -1927,14 +1989,18 @@ function renderCalendar() {
       el.dataset.iso = cell.iso;
       let pillsHtml = "";
       if (cell.inMonth) {
-        const visible = items.slice(0, 2);
+        // Week-view shows more, month-view shows 2
+        const maxVisible = eventState.calendarMode === "week" ? 8 : 2;
+        const visible = items.slice(0, maxVisible);
         pillsHtml = visible.map(e => {
           const cls = e.trending ? "ev-pill trend" : "ev-pill";
           const titleSafe = e.title.replace(/"/g, "&quot;");
-          return `<div class="${cls}" data-event-id="${e.id}" title="${titleSafe}">${shortTitle(e.title)}</div>`;
+          const labelLen = eventState.calendarMode === "week" ? 40 : 22;
+          const timeHtml = e.time ? `<span style="opacity:0.7;margin-right:4px">${e.time}</span>` : "";
+          return `<div class="${cls}" data-event-id="${e.id}" title="${titleSafe}">${timeHtml}${shortTitle(e.title, labelLen)}</div>`;
         }).join("");
-        if (items.length > 2) {
-          pillsHtml += `<div class="ev-more">+${items.length - 2} weitere</div>`;
+        if (items.length > maxVisible) {
+          pillsHtml += `<div class="ev-more">+${items.length - maxVisible} weitere</div>`;
         }
       }
       el.innerHTML = `<div class="day-num">${cell.date.getDate()}</div>${pillsHtml}`;
@@ -1993,20 +2059,44 @@ document.querySelectorAll("#eventsViewSwitch button").forEach(btn => {
   });
 });
 document.getElementById("calPrev").addEventListener("click", () => {
-  const d = eventState.calendarMonth || new Date();
-  eventState.calendarMonth = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+  if (eventState.calendarMode === "week") {
+    const d = new Date(eventState.calendarWeekStart || mondayOf(new Date()));
+    d.setDate(d.getDate() - 7);
+    eventState.calendarWeekStart = d;
+  } else {
+    const d = eventState.calendarMonth || new Date();
+    eventState.calendarMonth = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+  }
   renderCalendar();
 });
 document.getElementById("calNext").addEventListener("click", () => {
-  const d = eventState.calendarMonth || new Date();
-  eventState.calendarMonth = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+  if (eventState.calendarMode === "week") {
+    const d = new Date(eventState.calendarWeekStart || mondayOf(new Date()));
+    d.setDate(d.getDate() + 7);
+    eventState.calendarWeekStart = d;
+  } else {
+    const d = eventState.calendarMonth || new Date();
+    eventState.calendarMonth = new Date(d.getFullYear(), d.getMonth() + 1, 1);
+  }
   renderCalendar();
 });
 document.getElementById("calToday").addEventListener("click", () => {
   eventState.calendarMonth = new Date();
+  eventState.calendarWeekStart = mondayOf(new Date());
   eventState.selectedDay = null;
   renderCalendar();
   renderEvents();
+});
+document.querySelectorAll("#calModeSwitch button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#calModeSwitch button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    eventState.calendarMode = btn.dataset.mode;
+    if (eventState.calendarMode === "week" && !eventState.calendarWeekStart) {
+      eventState.calendarWeekStart = mondayOf(new Date());
+    }
+    renderCalendar();
+  });
 });
 
 document.addEventListener("keydown", e => {
