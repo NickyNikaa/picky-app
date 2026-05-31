@@ -201,6 +201,26 @@
   .badge.bar { background: rgba(194,65,12,0.85); color: #fff; }
   .badge.event { background: var(--good); color: #0f0e0c; font-weight: 700; }
   .badge.osm { background: rgba(110,194,127,0.85); color: #0f0e0c; font-weight: 700; }
+  .badge.trending {
+    background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
+    color: #fff; font-weight: 700; letter-spacing: 0.5px;
+    box-shadow: 0 2px 12px rgba(255,94,58,0.5);
+  }
+  /* Trending-Toggle */
+  .trend-toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--chip-bg); border: 1px solid var(--border);
+    padding: 7px 14px; border-radius: 999px;
+    cursor: pointer; font-size: 13px; color: var(--text-dim);
+    transition: all 0.15s ease; user-select: none;
+    font-family: inherit; font-weight: 500;
+  }
+  .trend-toggle:hover { color: var(--text); }
+  .trend-toggle.active {
+    background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
+    color: #fff; border-color: #ff5e3a; font-weight: 600;
+    box-shadow: 0 2px 12px rgba(255,94,58,0.35);
+  }
   .card-cuisine-icon {
     position: absolute; top: 12px; right: 14px; z-index: 2;
     font-size: 24px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
@@ -509,6 +529,10 @@
       </div>
     </div>
     <section class="filters" style="margin-top: 20px;">
+      <div class="filter-row">
+        <div class="filter-label">Highlight</div>
+        <button class="trend-toggle" id="trendToggle" type="button">🔥 Nur Angesagt</button>
+      </div>
       <div class="filter-row"><div class="filter-label">Event-Kategorie</div><div class="chips" id="eventCategoryChips"></div></div>
       <div class="filter-actions">
         <button class="reset-btn" id="resetEventBtn">Filter zurücksetzen</button>
@@ -1199,13 +1223,18 @@ function renderResults() {
 // ============================================================
 // EVENTS — STATE + RENDER
 // ============================================================
-const eventState = { category: new Set() };
+const eventState = { category: new Set(), onlyTrending: false };
 
 function eventsFiltered() {
   return EVENTS.filter(e => {
+    if (eventState.onlyTrending && !e.trending) return false;
     if (eventState.category.size > 0 && !eventState.category.has(e.category)) return false;
     return true;
-  }).sort((a, b) => a.date.localeCompare(b.date));
+  }).sort((a, b) => {
+    // Trending zuerst, dann nach Datum
+    if (!!a.trending !== !!b.trending) return a.trending ? -1 : 1;
+    return (a.date || "").localeCompare(b.date || "");
+  });
 }
 
 function formatEventDate(dateStr) {
@@ -1232,6 +1261,7 @@ function renderEvents() {
     const card = document.createElement("article");
     card.className = "card";
     card.addEventListener("click", () => openEventDetail(ev.id));
+    const trendingBadge = ev.trending ? `<span class="badge trending">🔥 Angesagt</span>` : "";
     card.innerHTML = `
       <div class="card-banner" style="background-image: url('${bannerImg(ev.id)}');">
         <div class="event-date-pill">
@@ -1239,6 +1269,7 @@ function renderEvents() {
           <span class="month">${d.month}</span>
         </div>
         <div class="badges">
+          ${trendingBadge}
           <span class="badge event">${catLabel}</span>
         </div>
       </div>
@@ -1581,7 +1612,14 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 });
 document.getElementById("resetEventBtn").addEventListener("click", () => {
   eventState.category.clear();
+  eventState.onlyTrending = false;
   document.querySelectorAll("#eventCategoryChips .chip.active").forEach(c => c.classList.remove("active"));
+  document.getElementById("trendToggle").classList.remove("active");
+  renderEvents();
+});
+document.getElementById("trendToggle").addEventListener("click", () => {
+  eventState.onlyTrending = !eventState.onlyTrending;
+  document.getElementById("trendToggle").classList.toggle("active", eventState.onlyTrending);
   renderEvents();
 });
 
