@@ -1248,6 +1248,36 @@ const CUISINE_EMOJI = {
 function bannerImg(_id) { return ""; }
 function galleryImgs(_id) { return []; }
 
+// Cuisine → Farbverlauf-Paar (für Card- & Hero-Banner)
+const CUISINE_COLORS = {
+  "italian":         ["#5c1f1f", "#8b2c2c"],
+  "french":          ["#3a2a4a", "#5a3f6a"],
+  "japanese":        ["#1a2a3a", "#2c4258"],
+  "asian-fusion":    ["#1f3a2f", "#2f5440"],
+  "vietnamese":      ["#1f3a2f", "#2f5440"],
+  "mediterranean":   ["#3a3a1f", "#6a5f2c"],
+  "greek":           ["#1a2c4a", "#2c4275"],
+  "middle-eastern":  ["#4a2c1a", "#7a4a2c"],
+  "modern-european": ["#2a242e", "#3f3650"],
+  "european":        ["#2a242e", "#3f3650"],
+  "international":   ["#2a2a2a", "#3f3f3f"],
+  "vegan":           ["#1f3a2a", "#2f5440"],
+  "vegetarian":      ["#1f3a2a", "#2f5440"],
+  "steakhouse":      ["#3a1f1f", "#5a2c2c"],
+  "grill":           ["#3a1f1f", "#5a2c2c"],
+  "brunch":          ["#3a2f1f", "#5a4a2c"],
+  "bavarian":        ["#3a2a1f", "#5a4530"],
+  "cocktail-bar":    ["#2a1f3a", "#4a2f5a"],
+  "wine-bar":        ["#3a1f2a", "#5a2c4a"],
+  "champagne-bar":   ["#3a2a1f", "#5a4530"],
+  "tiki":            ["#1f3a3a", "#2c5a5a"],
+  "bar-bites":       ["#2a2a2a", "#3f3f3f"]
+};
+function cuisineGradient(cuisineArr) {
+  const c = (cuisineArr || [])[0] || "international";
+  return CUISINE_COLORS[c] || CUISINE_COLORS["international"];
+}
+
 // ============================================================
 // STORAGE
 // ============================================================
