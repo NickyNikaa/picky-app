@@ -1937,7 +1937,7 @@ function renderCalendar() {
   });
   grid.appendChild(head);
 
-  const weeksTotal = totalCells / 7;
+  const weeksTotal = cells.length / 7;
   for (let w = 0; w < weeksTotal; w++) {
     const weekCells = cells.slice(w * 7, w * 7 + 7);
     const weekStart = weekCells[0].iso;
