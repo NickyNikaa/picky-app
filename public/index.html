@@ -185,6 +185,14 @@
     background: linear-gradient(135deg, var(--banner-from, #2a241e) 0%, var(--banner-to, #1a1714) 100%);
     overflow: hidden;
   }
+  .card-banner .real-photo {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+  .card-banner .real-photo.loaded { opacity: 1; }
+  .card-banner.has-photo .big-emoji { opacity: 0; }
   .card-banner .big-emoji {
     position: absolute; right: -10px; bottom: -16px;
     font-size: 110px; line-height: 1;
@@ -1452,8 +1460,10 @@ function renderResults() {
     card.className = "card";
     card.addEventListener("click", () => openDetail(r.id));
     const [bgFrom, bgTo] = cuisineGradient(r.cuisine);
+    const bookUrl = r.bookingUrl && /^https?:\/\//.test(r.bookingUrl) ? r.bookingUrl : "";
     card.innerHTML = `
-      <div class="card-banner" style="--banner-from:${bgFrom}; --banner-to:${bgTo};">
+      <div class="card-banner" style="--banner-from:${bgFrom}; --banner-to:${bgTo};" data-book-url="${bookUrl}">
+        <div class="real-photo"></div>
         <div class="big-emoji">${cuisineIcon}</div>
         <div class="badges" style="position:relative;z-index:2">${badges.join("")}</div>
       </div>
@@ -1914,6 +1924,78 @@ document.getElementById("makiToggle").addEventListener("click", () => {
   document.getElementById("makiToggle").classList.toggle("active", state.onlyMaki);
   renderResults();
 });
+// ============================================================
+// PHOTO LAZY-LOADER — fetches og:image for cards in viewport
+// ============================================================
+const PHOTO_CACHE_KEY = "picky.photo.cache.v1";
+const PHOTO_CACHE_TTL = 7 * 24 * 60 * 60 * 1000;  // 7 days
+function getPhotoCache() {
+  try { return JSON.parse(localStorage.getItem(PHOTO_CACHE_KEY) || "{}"); }
+  catch { return {}; }
+}
+function setPhotoCacheEntry(url, image) {
+  try {
+    const c = getPhotoCache();
+    c[url] = { image, ts: Date.now() };
+    // Limit cache size — drop oldest if >500 entries
+    const keys = Object.keys(c);
+    if (keys.length > 500) {
+      keys.sort((a, b) => c[a].ts - c[b].ts);
+      keys.slice(0, keys.length - 500).forEach(k => delete c[k]);
+    }
+    localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(c));
+  } catch {}
+}
+async function fetchPhoto(url) {
+  const cache = getPhotoCache();
+  const hit = cache[url];
+  if (hit && (Date.now() - hit.ts) < PHOTO_CACHE_TTL) return hit.image;
+  try {
+    const r = await fetch("/api/og-image?url=" + encodeURIComponent(url));
+    if (!r.ok) return null;
+    const j = await r.json();
+    setPhotoCacheEntry(url, j.image || null);
+    return j.image || null;
+  } catch { return null; }
+}
+const photoObserver = new IntersectionObserver(entries => {
+  entries.forEach(async entry => {
+    if (!entry.isIntersecting) return;
+    const banner = entry.target;
+    photoObserver.unobserve(banner);
+    const url = banner.dataset.bookUrl;
+    if (!url) return;
+    const photo = banner.querySelector(".real-photo");
+    if (!photo) return;
+    const img = await fetchPhoto(url);
+    if (img) {
+      const probe = new Image();
+      probe.onload = () => {
+        photo.style.backgroundImage = `url("${img}")`;
+        photo.classList.add("loaded");
+        banner.classList.add("has-photo");
+      };
+      probe.onerror = () => {};  // keep gradient
+      probe.src = img;
+    }
+  });
+}, { rootMargin: "200px" });
+
+function observePhotos() {
+  document.querySelectorAll(".card-banner[data-book-url]:not([data-photo-observed])").forEach(b => {
+    b.dataset.photoObserved = "1";
+    photoObserver.observe(b);
+  });
+}
+// hook into renderResults
+const _origRenderResults = renderResults;
+renderResults = function() {
+  _origRenderResults.apply(this, arguments);
+  observePhotos();
+};
+// also trigger after initial render
+setTimeout(observePhotos, 100);
+
 document.getElementById("resetBtn").addEventListener("click", () => {
   state.onlyMaki = false;
   document.getElementById("makiToggle").classList.remove("active");
