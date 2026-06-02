@@ -468,7 +468,8 @@
     "pitch": "Französisch, klein, perfekt für Dates. 5,0★.",
     "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Chez+Pierre+M%C3%BCnchen",
     "curated": true,
-    "rating": 5.0
+    "rating": 5.0,
+    "makiApproved": true
   },
   {
     "id": "map-aran",
@@ -1890,6 +1891,334 @@
     "pitch": "Münchner Institution für die Schmalznudel — frittierte Hefeteig-Spezialität, am Viktualienmarkt seit Jahrzehnten.",
     "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Frischhut+Schmalznudel+M%C3%BCnchen",
     "instagram": "cafefrischhut",
+    "curated": true
+  },
+  {
+    "id": "tip-lo-studente",
+    "type": "restaurant",
+    "name": "Lo Studente",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "italian"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "family",
+      "group"
+    ],
+    "mood": [
+      "lively",
+      "cozy",
+      "traditional"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Italienische Pizzeria mit Holzofen-Pizza in der Maxvorstadt — Studenten-Klassiker an der Schellingstraße. Lunch-Menü Mo-Fr 8,50€. Schellingstr. 30.",
+    "bookingUrl": "https://lo-studente.de/",
+    "instagram": "lostudente_muenchen",
+    "curated": true,
+    "makiApproved": true
+  },
+  {
+    "id": "tip-pera-meze",
+    "type": "restaurant",
+    "name": "Pera Meze",
+    "neighborhood": "Gärtnerplatz",
+    "cuisine": [
+      "middle-eastern",
+      "mediterranean",
+      "modern-european"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "celebration",
+      "business",
+      "group"
+    ],
+    "mood": [
+      "chic",
+      "elegant",
+      "trendy"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Ali Güngörmüş bringt Istanbuls Meze-Kultur ins Gärtnerplatzviertel. Modern interpretierte türkisch-levantinische Küche. Klenzestr. 23.",
+    "bookingUrl": "https://www.pera-meze.de/",
+    "instagram": "perameze.muenchen",
+    "curated": true,
+    "makiApproved": true
+  },
+  {
+    "id": "snack-zeit-fuer-brot",
+    "type": "restaurant",
+    "name": "Zeit für Brot",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "brunch",
+      "zimtschnecken",
+      "kardamom-bun"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "family",
+      "business"
+    ],
+    "mood": [
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Bio-Bäckerei aus Berlin mit Filiale in der Amalienstraße — saftige Zimtschnecken (5,10€) und Kardamom-Knöpfe (4,70€), handgemacht, Bioland-Qualität.",
+    "bookingUrl": "https://zeitfuerbrot.com/en",
+    "instagram": "zeitfuerbrot_muenchen",
+    "curated": true
+  },
+  {
+    "id": "snack-brotraum",
+    "type": "restaurant",
+    "name": "Brotraum",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "brunch",
+      "zimtschnecken",
+      "bavarian"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "family"
+    ],
+    "mood": [
+      "cozy",
+      "traditional"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Innovative Bäckerei in Schwabing — Zimtschnecken, Brot, Konditorei in höchster Qualität. Herzogstr. 6.",
+    "bookingUrl": "https://brotraum.de/",
+    "instagram": "brotraum_muenchen",
+    "curated": true
+  },
+  {
+    "id": "snack-nonnas",
+    "type": "restaurant",
+    "name": "Nonna's Café",
+    "neighborhood": "Königsplatz",
+    "cuisine": [
+      "italian",
+      "brunch",
+      "zimtschnecken"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "family",
+      "business"
+    ],
+    "mood": [
+      "cozy",
+      "romantic"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Kleines italienisches Wohnzimmer an der Karlstraße — Croissants, hausgemachte Kuchen, Espresso, Focaccia & Panini. Karlstr. 52.",
+    "bookingUrl": "https://www.nonnas-cafe.de/",
+    "instagram": "nonnascafe_muc",
+    "curated": true
+  },
+  {
+    "id": "snack-ana-spanish",
+    "type": "restaurant",
+    "name": "Ana Spanish Cheesecake",
+    "neighborhood": "Innenstadt",
+    "cuisine": [
+      "cheesecake",
+      "brunch"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date"
+    ],
+    "mood": [
+      "trendy",
+      "cozy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Cremiger spanischer Cheesecake im Pop-up-Setting an der Sonnenstraße. Sonnenstr. 24-26.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Ana+Spanish+Cheesecake+M%C3%BCnchen",
+    "instagram": "anaspanishcheesecake",
+    "curated": true
+  },
+  {
+    "id": "snack-cafe-mabae",
+    "type": "restaurant",
+    "name": "Cafe MaBae",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "cheesecake",
+      "brunch",
+      "middle-eastern"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "business"
+    ],
+    "mood": [
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Türkisch-inspiriertes Café mit Pistachio-Cheesecake als Star und hochwertigem Kaffee. Schellingstr. 143.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Cafe+MaBae+M%C3%BCnchen",
+    "instagram": "cafe.mabae",
+    "curated": true
+  },
+  {
+    "id": "snack-mackbear",
+    "type": "restaurant",
+    "name": "Mackbear Coffee Co.",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "brunch",
+      "cheesecake"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "business",
+      "date"
+    ],
+    "mood": [
+      "cozy",
+      "chic",
+      "trendy"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Specialty-Coffee-Café mit Cult-Following — top Kaffee, Cheesecake, ruhige Wohlfühlatmosphäre. Leopoldstr. 44.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Mackbear+Coffee+Co+M%C3%BCnchen+Leopoldstr",
+    "instagram": "mackbear_coffee_co_germany",
+    "curated": true
+  },
+  {
+    "id": "snack-cheesecake-witch",
+    "type": "restaurant",
+    "name": "Cheesecake Witch",
+    "neighborhood": "Neuhausen",
+    "cuisine": [
+      "cheesecake",
+      "brunch"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "celebration",
+      "family"
+    ],
+    "mood": [
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Kleines Café in Neuhausen mit ca. 25 verschiedenen American-Style Cheesecakes, handgemacht. Quark statt Cream Cheese für die typische Textur. Volkartstr.",
+    "bookingUrl": "https://www.cheesecake-witch.com/",
+    "instagram": "cheesecake_witch",
+    "curated": true
+  },
+  {
+    "id": "snack-matcharina",
+    "type": "restaurant",
+    "name": "Matcha Rina",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "matcha",
+      "brunch"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "business"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "cozy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Premium-Matcha-Bar am Odeonsplatz im Mercedes Store — Brienner Str. 1. Hochwertiger Ceremonial-Matcha to-go und vor Ort.",
+    "bookingUrl": "https://www.matcharina.com/pages/bar",
+    "instagram": "matcharina_official",
+    "curated": true
+  },
+  {
+    "id": "snack-kencho-matcha",
+    "type": "restaurant",
+    "name": "Kencho Matcha",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "matcha",
+      "brunch",
+      "japanese"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "business"
+    ],
+    "mood": [
+      "chic",
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Matcha-Café in der Maxvorstadt — Schellingstr. 15. Di-So 12-20 Uhr.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Kencho+Matcha+Schellingstr+M%C3%BCnchen",
+    "instagram": "kencho.matcha",
+    "curated": true
+  },
+  {
+    "id": "snack-toto-matcha",
+    "type": "restaurant",
+    "name": "toto Matcha",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "matcha",
+      "brunch",
+      "japanese"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "business"
+    ],
+    "mood": [
+      "chic",
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Matcha-Café an der Schellingstr. 48, Maxvorstadt. Mo-Do 11-20 Uhr.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=toto+Matcha+M%C3%BCnchen+Schellingstr",
+    "instagram": "toto.matcha",
     "curated": true
   }
 ]
