@@ -1484,8 +1484,11 @@ function renderResults() {
     card.addEventListener("click", () => openDetail(r.id));
     const [bgFrom, bgTo] = cuisineGradient(r.cuisine);
     const bookUrl = r.bookingUrl && /^https?:\/\//.test(r.bookingUrl) ? r.bookingUrl : "";
+    const igHandle = (r.instagram || "").replace(/^@/, "");
+    const placeName = (r.name || "").replace(/"/g, "&quot;");
+    const directImage = (r.imageUrl || "").replace(/"/g, "&quot;");
     card.innerHTML = `
-      <div class="card-banner" style="--banner-from:${bgFrom}; --banner-to:${bgTo};" data-book-url="${bookUrl}">
+      <div class="card-banner" style="--banner-from:${bgFrom}; --banner-to:${bgTo};" data-book-url="${bookUrl}" data-ig="${igHandle}" data-name="${placeName}" data-direct-image="${directImage}">
         <div class="real-photo"></div>
         <div class="big-emoji">${cuisineIcon}</div>
         <div class="badges" style="position:relative;z-index:2">${badges.join("")}</div>
@@ -1974,15 +1977,19 @@ function setPhotoCacheEntry(url, image) {
     localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(c));
   } catch {}
 }
-async function fetchPhoto(url) {
+async function fetchPhoto(key, params) {
   const cache = getPhotoCache();
-  const hit = cache[url];
+  const hit = cache[key];
   if (hit && (Date.now() - hit.ts) < PHOTO_CACHE_TTL) return hit.image;
   try {
-    const r = await fetch("/api/og-image?url=" + encodeURIComponent(url));
+    const q = new URLSearchParams();
+    if (params.url) q.set("url", params.url);
+    if (params.ig) q.set("ig", params.ig);
+    if (params.name) q.set("name", params.name);
+    const r = await fetch("/api/og-image?" + q.toString());
     if (!r.ok) return null;
     const j = await r.json();
-    setPhotoCacheEntry(url, j.image || null);
+    setPhotoCacheEntry(key, j.image || null);
     return j.image || null;
   } catch { return null; }
 }
@@ -1991,11 +1998,21 @@ const photoObserver = new IntersectionObserver(entries => {
     if (!entry.isIntersecting) return;
     const banner = entry.target;
     photoObserver.unobserve(banner);
-    const url = banner.dataset.bookUrl;
-    if (!url) return;
     const photo = banner.querySelector(".real-photo");
     if (!photo) return;
-    const img = await fetchPhoto(url);
+
+    const direct = banner.dataset.directImage;
+    const url = banner.dataset.bookUrl;
+    const ig = banner.dataset.ig;
+    const name = banner.dataset.name;
+
+    let img = null;
+    if (direct) {
+      img = direct;
+    } else if (url || ig || name) {
+      const cacheKey = url || `ig:${ig}` || `name:${name}`;
+      img = await fetchPhoto(cacheKey, { url, ig, name });
+    }
     if (img) {
       const probe = new Image();
       probe.onload = () => {
@@ -2003,14 +2020,14 @@ const photoObserver = new IntersectionObserver(entries => {
         photo.classList.add("loaded");
         banner.classList.add("has-photo");
       };
-      probe.onerror = () => {};  // keep gradient
+      probe.onerror = () => {};
       probe.src = img;
     }
   });
-}, { rootMargin: "200px" });
+}, { rootMargin: "300px" });
 
 function observePhotos() {
-  document.querySelectorAll(".card-banner[data-book-url]:not([data-photo-observed])").forEach(b => {
+  document.querySelectorAll(".card-banner[data-name]:not([data-photo-observed])").forEach(b => {
     b.dataset.photoObserved = "1";
     photoObserver.observe(b);
   });
