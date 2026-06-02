@@ -116,8 +116,32 @@ export default async function handler(req, res) {
         search: `https://geheimtippmuenchen.de/?s=${q}`,
         regex: /https:\/\/geheimtippmuenchen\.de\/(?:geheimtipp|gastronomie|stadtleben)\/[a-z0-9-]+\//i,
         via: "geheimtipp"
+      },
+      {
+        search: `https://www.tripadvisor.de/Search?q=${q}`,
+        regex: /https?:\/\/(?:www\.)?tripadvisor\.(?:de|com)\/Restaurant_Review-[a-zA-Z0-9_-]+\.html/i,
+        via: "tripadvisor"
+      },
+      {
+        search: `https://isarblog.de/?s=${q}`,
+        regex: /https:\/\/isarblog\.de\/[a-z0-9-]+\/?/i,
+        via: "isarblog"
       }
     ];
+
+    // Wikipedia direct API — works for famous places
+    try {
+      const wikiSlug = encodeURIComponent(String(name).replace(/\s+/g, "_"));
+      const wikiJson = await fetchHtml(`https://de.wikipedia.org/api/rest_v1/page/summary/${wikiSlug}`, { timeoutMs: 5000 }).catch(() => null);
+      if (wikiJson) {
+        const wd = JSON.parse(wikiJson);
+        if (wd?.thumbnail?.source) {
+          // Get larger version by replacing "thumb/...XXpx-" with the full file
+          const fullSize = wd.thumbnail.source.replace(/\/\d+px-([^/]+)$/, "/800px-$1");
+          return res.status(200).json({ image: fullSize, via: "wikipedia" });
+        }
+      }
+    } catch {}
 
     for (const agg of aggregators) {
       const img = await searchAndScrape(agg.search, agg.regex, tokens);
