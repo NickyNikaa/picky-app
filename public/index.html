@@ -241,6 +241,25 @@
     color: #fff; border-color: #ff3e8a; font-weight: 600;
     box-shadow: 0 2px 12px rgba(255, 62, 138, 0.35);
   }
+  .badge.peoplewatching {
+    background: linear-gradient(135deg, #6a5acd 0%, #ff7eb3 100%);
+    color: #fff; font-weight: 700; letter-spacing: 0.3px;
+    box-shadow: 0 2px 10px rgba(106, 90, 205, 0.4);
+  }
+  .pw-toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--chip-bg); border: 1px solid var(--border);
+    padding: 7px 14px; border-radius: 999px;
+    cursor: pointer; font-size: 13px; color: var(--text-dim);
+    transition: all 0.15s ease; user-select: none;
+    font-family: inherit; font-weight: 500;
+  }
+  .pw-toggle:hover { color: var(--text); }
+  .pw-toggle.active {
+    background: linear-gradient(135deg, #6a5acd 0%, #ff7eb3 100%);
+    color: #fff; border-color: #6a5acd; font-weight: 600;
+    box-shadow: 0 2px 12px rgba(106, 90, 205, 0.35);
+  }
   .badge.trending {
     background: linear-gradient(135deg, #ff5e3a 0%, #ff9a3a 100%);
     color: #fff; font-weight: 700; letter-spacing: 0.5px;
@@ -701,6 +720,7 @@
       <div class="filter-row">
         <div class="filter-label">Highlight</div>
         <button class="maki-toggle" id="makiToggle" type="button">👨🏻 Maki approved</button>
+        <button class="pw-toggle" id="pwToggle" type="button">👀 People Watching</button>
       </div>
       <div class="filter-row">
         <div class="filter-label">Typ</div>
@@ -1330,6 +1350,7 @@ function allPlaces() { return [...PLACES, ...CURATED_PLACES, ...OSM_PLACES, ...l
 const state = {
   type: "all",
   onlyMaki: false,
+  onlyPW: false,
   occasion: new Set(), mood: new Set(), cuisine: new Set(),
   price: new Set(), exclusivity: new Set(), feature: new Set()
 };
@@ -1359,6 +1380,7 @@ function matchSetValue(set, value) { if (set.size === 0) return true; return set
 function filtered() {
   return allPlaces().filter(r => {
     if (state.onlyMaki && !r.makiApproved) return false;
+    if (state.onlyPW && !r.peopleWatching) return false;
     if (state.type !== "all" && r.type !== state.type) return false;
     if (!matchSet(state.occasion, r.occasion)) return false;
     if (!matchSet(state.mood, r.mood)) return false;
@@ -1453,6 +1475,7 @@ function renderResults() {
     if (r.custom) badges.push(`<span class="badge custom">Eigene</span>`);
     if (r.osm) badges.push(`<span class="badge osm">OSM</span>`);
     if (r.makiApproved) badges.push(`<span class="badge maki">👨🏻 Maki approved</span>`);
+    if (r.peopleWatching) badges.push(`<span class="badge peoplewatching">👀 People Watching</span>`);
     // r.curated places appear as regular places (no badge)
     const features = r.features.filter(f => !["michelin","rooftop","vegan"].includes(f));
     const cuisineIcon = CUISINE_EMOJI[r.cuisine[0]] || "🍽️";
@@ -1924,6 +1947,11 @@ document.getElementById("makiToggle").addEventListener("click", () => {
   document.getElementById("makiToggle").classList.toggle("active", state.onlyMaki);
   renderResults();
 });
+document.getElementById("pwToggle").addEventListener("click", () => {
+  state.onlyPW = !state.onlyPW;
+  document.getElementById("pwToggle").classList.toggle("active", state.onlyPW);
+  renderResults();
+});
 // ============================================================
 // PHOTO LAZY-LOADER — fetches og:image for cards in viewport
 // ============================================================
@@ -1999,6 +2027,8 @@ setTimeout(observePhotos, 100);
 document.getElementById("resetBtn").addEventListener("click", () => {
   state.onlyMaki = false;
   document.getElementById("makiToggle").classList.remove("active");
+  state.onlyPW = false;
+  document.getElementById("pwToggle").classList.remove("active");
   state.type = "all";
   document.querySelectorAll("#typeSeg button").forEach(b => b.classList.remove("active"));
   document.querySelector('#typeSeg button[data-type="all"]').classList.add("active");

@@ -1919,7 +1919,8 @@
     "bookingUrl": "https://lo-studente.de/",
     "instagram": "lostudente_muenchen",
     "curated": true,
-    "makiApproved": true
+    "makiApproved": true,
+    "peopleWatching": true
   },
   {
     "id": "tip-pera-meze",
@@ -2190,7 +2191,8 @@
     "pitch": "Matcha-Café in der Maxvorstadt — Schellingstr. 15. Di-So 12-20 Uhr.",
     "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Kencho+Matcha+Schellingstr+M%C3%BCnchen",
     "instagram": "kencho.matcha",
-    "curated": true
+    "curated": true,
+    "peopleWatching": true
   },
   {
     "id": "snack-toto-matcha",
@@ -2218,6 +2220,517 @@
     "pitch": "Matcha-Café an der Schellingstr. 48, Maxvorstadt. Mo-Do 11-20 Uhr.",
     "bookingUrl": "https://www.google.com/maps/search/?api=1&query=toto+Matcha+M%C3%BCnchen+Schellingstr",
     "instagram": "toto.matcha",
+    "curated": true
+  },
+  {
+    "id": "tip-gigi-trattoria",
+    "type": "restaurant",
+    "name": "GIGI Trattoria",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "italian",
+      "pizza",
+      "modern-european"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "group",
+      "celebration",
+      "business"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "lively"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Italian Lifestyle trifft modernes Schwabing. Neapolitanische Pizza + hausgemachte Pasta. Türkenstr. 83.",
+    "bookingUrl": "https://www.gigi.restaurant/",
+    "instagram": "gigimunich",
+    "curated": true
+  },
+  {
+    "id": "tip-bono",
+    "type": "restaurant",
+    "name": "BONO",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "italian",
+      "brunch"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "group",
+      "brunch"
+    ],
+    "mood": [
+      "lively",
+      "chic",
+      "social"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Italienisch direkt an der Münchner Freiheit. Live-Musik mit DJs + Saxophon am Wochenende, Brunch Sa/So. Leopoldstr. 74.",
+    "bookingUrl": "https://www.bonomuenchen.de/",
+    "instagram": "bono.muenchen",
+    "curated": true
+  },
+  {
+    "id": "tip-azuki",
+    "type": "restaurant",
+    "name": "Azuki",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "japanese",
+      "asian-fusion",
+      "vietnamese"
+    ],
+    "price": 4,
+    "occasion": [
+      "date",
+      "business",
+      "celebration"
+    ],
+    "mood": [
+      "chic",
+      "elegant",
+      "trendy"
+    ],
+    "exclusivity": 4,
+    "features": [],
+    "pitch": "Japanisch-vietnamesisch im Palais an der Oper. Gegenüber Nationaltheater zwischen Louis Vuitton und Bucherer. Hofgraben 9.",
+    "bookingUrl": "https://azukimunich.com/",
+    "instagram": "azuki_munich",
+    "curated": true,
+    "peopleWatching": true
+  },
+  {
+    "id": "tip-brezenreiter",
+    "type": "restaurant",
+    "name": "Brezenreiter Restaurant - Café",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "bavarian",
+      "german",
+      "modern-european"
+    ],
+    "price": 2,
+    "occasion": [
+      "casual",
+      "group",
+      "brunch"
+    ],
+    "mood": [
+      "lively",
+      "social",
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Trendy Day-Bar am Viktualienmarkt. Brezelschnitzel + Aperol-Tower. Prälat-Miller-Weg 3.",
+    "bookingUrl": "https://www.brezenreiter.de/",
+    "instagram": "brezenreiter",
+    "curated": true
+  },
+  {
+    "id": "tip-89anju",
+    "type": "restaurant",
+    "name": "89Anju",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "korean",
+      "asian-fusion"
+    ],
+    "price": 2,
+    "occasion": [
+      "date",
+      "group",
+      "casual"
+    ],
+    "mood": [
+      "trendy",
+      "lively",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Korean Street Food wie in Seouls Itaewon/Hongdae. Fried Chicken (Volcano!), Bibimbap, Japchae. Luisenstr. 47.",
+    "bookingUrl": "https://www.89anju.com/",
+    "instagram": "89anju_munich",
+    "curated": true
+  },
+  {
+    "id": "tip-amari",
+    "type": "restaurant",
+    "name": "AMARi Kantine & Bar",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "modern-european",
+      "mediterranean"
+    ],
+    "price": 2,
+    "occasion": [
+      "casual",
+      "group",
+      "date",
+      "brunch"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "social",
+      "lively"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Wohnzimmer-Feeling im Kunstlabor 2 nahe Stiglmaierplatz. Kantine + Bar + Eventlocation in einem. Dachauer Str. 90.",
+    "bookingUrl": "https://www.amari-muenchen.de/",
+    "instagram": "amari_muenchen",
+    "curated": true
+  },
+  {
+    "id": "tip-story-cafe",
+    "type": "restaurant",
+    "name": "Story Café",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "brunch",
+      "café",
+      "bakery"
+    ],
+    "price": 2,
+    "occasion": [
+      "brunch",
+      "casual",
+      "solo"
+    ],
+    "mood": [
+      "cozy",
+      "social",
+      "chic"
+    ],
+    "exclusivity": 2,
+    "features": [
+      "vegan"
+    ],
+    "pitch": "Bio-Frühstück im Blauen Haus. Großer runder Holztisch für die Brunch-Runde mit den besten Freund*innen. Schellingstr. 143.",
+    "bookingUrl": "https://www.story-cafe-muenchen.de/",
+    "instagram": "storycafemunich",
+    "curated": true
+  },
+  {
+    "id": "tip-cafe-puck",
+    "type": "restaurant",
+    "name": "Café Puck",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "american",
+      "international",
+      "brunch"
+    ],
+    "price": 2,
+    "occasion": [
+      "brunch",
+      "casual",
+      "group"
+    ],
+    "mood": [
+      "cozy",
+      "social",
+      "lively"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Schwabinger Klassiker an der Türkenstraße seit Ewigkeiten. Frühstück mit US-Bagel + Räucherlachs, Mittagskarte mit Lammhaxe. Türkenstr. 33.",
+    "bookingUrl": "https://cafe-puck.de/",
+    "instagram": "cafepuck",
+    "curated": true
+  },
+  {
+    "id": "tip-buchwalsky",
+    "type": "restaurant",
+    "name": "Café Buchwalsky",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "café",
+      "brunch",
+      "bakery"
+    ],
+    "price": 2,
+    "occasion": [
+      "brunch",
+      "casual",
+      "solo"
+    ],
+    "mood": [
+      "cozy",
+      "chic",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Eck-Coffee mit rotierendem Pop-up-Antiquariat. Plum Crumble, Cheesecake, starker Espresso. Barer Str. 74.",
+    "bookingUrl": "https://www.feinkost-buchwalsky.de/",
+    "instagram": "cafe_buchwalsky",
+    "curated": true
+  },
+  {
+    "id": "tip-soda",
+    "type": "restaurant",
+    "name": "Café Soda",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "italian",
+      "café",
+      "brunch"
+    ],
+    "price": 2,
+    "occasion": [
+      "brunch",
+      "casual",
+      "date",
+      "group"
+    ],
+    "mood": [
+      "lively",
+      "social",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Maxvorstadt-Klassiker zwischen Alter Pinakothek und Akademie. Geöffnet bis 2 Uhr nachts. Türkenstr. 51.",
+    "bookingUrl": "https://cafesoda.de/",
+    "instagram": "cafesoda.muenchen",
+    "curated": true,
+    "peopleWatching": true
+  },
+  {
+    "id": "tip-morso",
+    "type": "restaurant",
+    "name": "Café Morso",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "italian",
+      "café",
+      "brunch"
+    ],
+    "price": 2,
+    "occasion": [
+      "brunch",
+      "casual",
+      "date"
+    ],
+    "mood": [
+      "chic",
+      "cozy",
+      "social",
+      "trendy"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Italienischer Kurzurlaub im Vintage-Interieur. Drei Münchner Locations — Original in der Nordendstr. 17.",
+    "bookingUrl": "https://www.morso-cafe.de/",
+    "instagram": "morsomunich",
+    "curated": true,
+    "peopleWatching": true
+  },
+  {
+    "id": "tip-bar-montez",
+    "type": "bar",
+    "name": "Bar Montez",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "cocktails",
+      "wine-bar"
+    ],
+    "price": 4,
+    "occasion": [
+      "date",
+      "drinks",
+      "celebration"
+    ],
+    "mood": [
+      "elegant",
+      "chic",
+      "intimate",
+      "live-music"
+    ],
+    "exclusivity": 4,
+    "features": [],
+    "pitch": "Lola-Montez-Vibes im Rosewood. Täglich Live-Jazz, Soul, Bossa Nova — Piano, Duo oder Quartett. Kardinal-Faulhaber-Str. 1.",
+    "bookingUrl": "https://www.rosewoodhotels.com/de/munich/dining/bar-montez",
+    "instagram": "rosewoodmunich",
+    "curated": true
+  },
+  {
+    "id": "tip-geisha-cheesecake",
+    "type": "snack",
+    "name": "Geisha",
+    "neighborhood": "Gärtnerplatz",
+    "cuisine": [
+      "cheesecake",
+      "matcha",
+      "japanese"
+    ],
+    "price": 3,
+    "occasion": [
+      "dessert",
+      "café",
+      "date"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Matcha-Cheesecake im Pan-Asia & Sushi-Bar am Gärtnerplatz. Auch Frühstück (Sexy Peach Croissant!). Corneliusstr. 2.",
+    "bookingUrl": "https://geisha-sushibar.de/",
+    "instagram": "geisha.munich",
+    "curated": true
+  },
+  {
+    "id": "tip-joon-cheesecake",
+    "type": "snack",
+    "name": "Café Joon",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "cheesecake",
+      "café",
+      "brunch"
+    ],
+    "price": 2,
+    "occasion": [
+      "café",
+      "brunch",
+      "drinks"
+    ],
+    "mood": [
+      "cozy",
+      "social",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Vom Frühstück bis zum Feierabenddrink. Cheesecake auf der Karte, U-Theresienstraße direkt vor der Tür. Theresienstr. 114.",
+    "bookingUrl": "http://cafejoon.de/",
+    "instagram": "cafejoon",
+    "curated": true
+  },
+  {
+    "id": "tip-tillu-coffee",
+    "type": "snack",
+    "name": "Tillu Coffee",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "café",
+      "cheesecake",
+      "specialty-coffee"
+    ],
+    "price": 2,
+    "occasion": [
+      "café",
+      "solo"
+    ],
+    "mood": [
+      "cozy",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Äthiopische Kaffeezeremonie + Specialty Coffee. Maxvorstadt-Geheimtipp mit traditioneller Brewing-Show. Augustenstr. 106.",
+    "bookingUrl": "https://www.tillu-coffee.de/",
+    "instagram": "tillucoffee",
+    "curated": true
+  },
+  {
+    "id": "tip-life-is-sweet",
+    "type": "snack",
+    "name": "Life is Sweet",
+    "neighborhood": "Glockenbach",
+    "cuisine": [
+      "cheesecake",
+      "bakery",
+      "american"
+    ],
+    "price": 2,
+    "occasion": [
+      "dessert",
+      "café"
+    ],
+    "mood": [
+      "cozy",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [
+      "vegan"
+    ],
+    "pitch": "American Sweets von Kevin Otto (ex-Ginger & Grays). Pistachio-Baklava-Cheesecake, Dubai-Chocolate-Cheesecake, vegane Torten. Pestalozzistr. 17.",
+    "bookingUrl": "https://www.lifeissweetmunich.com/",
+    "instagram": "lifeissweetmunich",
+    "curated": true
+  },
+  {
+    "id": "tip-treemans",
+    "type": "snack",
+    "name": "Treemans",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "cheesecake",
+      "bakery",
+      "american"
+    ],
+    "price": 2,
+    "occasion": [
+      "café",
+      "dessert",
+      "casual"
+    ],
+    "mood": [
+      "cozy",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "American Coffee & Bakery mit fantastischen Cheesecakes + Made-in-USA-Produkten. Bagels, Sandwiches, Imports. Dachauer Str. 69.",
+    "bookingUrl": "https://www.treemans.de/",
+    "instagram": "treemans.muc",
+    "curated": true
+  },
+  {
+    "id": "tip-bato",
+    "type": "snack",
+    "name": "BaTo Café",
+    "neighborhood": "Maxvorstadt",
+    "cuisine": [
+      "zimtschnecken",
+      "café",
+      "bakery"
+    ],
+    "price": 2,
+    "occasion": [
+      "café",
+      "dessert"
+    ],
+    "mood": [
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Zimtschnecken in verschiedenen Varianten, dazu Cakes, Cookies, Tarts. Heßstr. 71.",
+    "bookingUrl": "",
+    "instagram": "bato.cafe",
     "curated": true
   }
 ]
