@@ -1,6 +1,6 @@
-// api/og-image.js — Multi-Source Photo Resolver
-// Tries (in order): website → Instagram (skip placeholder) → muenchen.mitvergnuegen.com →
-// geheimtippmuenchen.de → www.muenchen-sehen.de.
+// api/og-image.js — Real og:image only.  No icon/aggregator fallbacks that
+// return wrong photos.  Frontend falls back to cuisine gradient + emoji
+// when this returns null.
 
 import * as cheerio from "cheerio";
 import { fetchHtml } from "../lib/utils.js";
@@ -12,10 +12,8 @@ function resolveUrl(rel, base) {
 function isLikelyHero(url) {
   if (!url) return false;
   if (/favicon|pixel\.gif|spacer|blank\.gif|sprite|placeholder|1x1\.png/i.test(url)) return false;
-  // Instagram returns its generic logo placeholder when scraped — reject it
   if (/static\.cdninstagram\.com\/rsrc\.php/i.test(url)) return false;
-  // MitVergnügen header default
-  if (/wochenende-titel\.png/i.test(url)) return false;
+  if (/wochenende-titel\.png|apple-touch-icon|wp-content\/.+\/icon|logo\.(?:png|svg)/i.test(url)) return false;
   return true;
 }
 
@@ -45,18 +43,14 @@ function extractOgImage(html, baseUrl) {
 
   if (candidates.length) return resolveUrl(candidates[0], baseUrl);
 
-  // Hero image fallback
+  // Hero image — only large images in semantic areas
   let heroImg = null;
-  $('header img, .hero img, .banner img, [class*="hero"] img, [class*="banner"] img, main img').each((_, el) => {
+  $('header img, .hero img, [class*="hero"] img, [class*="cover"] img, main > img, main section img').each((_, el) => {
     if (heroImg) return;
     const src = $(el).attr("src") || $(el).attr("data-src") || $(el).attr("data-lazy-src");
     if (src && isLikelyHero(src) && !src.startsWith("data:")) heroImg = src;
   });
   if (heroImg) return resolveUrl(heroImg, baseUrl);
-
-  // Apple touch icon last resort
-  const ti = $('link[rel="apple-touch-icon"], link[rel="apple-touch-icon-precomposed"]').attr("href");
-  if (ti) return resolveUrl(ti, baseUrl);
 
   return null;
 }
@@ -68,15 +62,18 @@ async function tryUrl(url, timeoutMs = 6000) {
   } catch { return null; }
 }
 
-// Search an aggregator, find the FIRST article URL using a strict regex, then
-// scrape that article's og:image.
-async function searchAndScrape(searchUrl, articleRegex) {
+// Search mitvergnuegen / geheimtipp — only proceed if name token appears near article link
+async function searchAndScrape(searchUrl, articleRegex, nameTokens) {
   try {
     const html = await fetchHtml(searchUrl, { timeoutMs: 6000 });
-    const m = html.match(articleRegex);
-    if (!m) return null;
-    const articleUrl = m[0].startsWith("http") ? m[0] : `https://${new URL(searchUrl).hostname}${m[0]}`;
-    return await tryUrl(articleUrl);
+    // Find articles whose URL slug contains at least one name token (≥4 chars)
+    const matches = html.match(new RegExp(articleRegex.source, articleRegex.flags + "g")) || [];
+    const goodMatch = matches.find(url => {
+      const slug = url.toLowerCase();
+      return nameTokens.some(t => t.length >= 4 && slug.includes(t.toLowerCase()));
+    });
+    if (!goodMatch) return null;
+    return await tryUrl(goodMatch);
   } catch { return null; }
 }
 
@@ -101,33 +98,29 @@ export default async function handler(req, res) {
     } catch {}
   }
 
-  // 2) Aggregator search — these have og:image set to actual restaurant photo
+  // 2) Aggregator search — only accept when name token appears in URL slug
   if (name) {
-    const q = encodeURIComponent(name + " münchen");
+    const tokens = String(name)
+      .replace(/Café|Cafe|Restaurant|Bar|Munich|München|&|–|—/gi, "")
+      .split(/\s+/).map(t => t.replace(/[^a-z0-9äöüß]/gi, "").toLowerCase())
+      .filter(t => t.length >= 3);
 
+    const q = encodeURIComponent(name + " münchen");
     const aggregators = [
-      // MitVergnügen — articles live at /YYYY/slug/
       {
         search: `https://muenchen.mitvergnuegen.com/?s=${q}`,
         regex: /https:\/\/muenchen\.mitvergnuegen\.com\/20[0-9]{2}\/[a-z0-9-]+\//i,
         via: "mitvergnuegen"
       },
-      // Geheimtipp München — articles at /geheimtipp/slug/
       {
         search: `https://geheimtippmuenchen.de/?s=${q}`,
         regex: /https:\/\/geheimtippmuenchen\.de\/(?:geheimtipp|gastronomie|stadtleben)\/[a-z0-9-]+\//i,
         via: "geheimtipp"
-      },
-      // mucbook — articles at /YYYY/MM/slug
-      {
-        search: `https://www.mucbook.de/?s=${q}`,
-        regex: /https:\/\/www\.mucbook\.de\/[a-z0-9-]+/i,
-        via: "mucbook"
       }
     ];
 
     for (const agg of aggregators) {
-      const img = await searchAndScrape(agg.search, agg.regex);
+      const img = await searchAndScrape(agg.search, agg.regex, tokens);
       if (img) return res.status(200).json({ image: img, via: agg.via });
     }
   }
