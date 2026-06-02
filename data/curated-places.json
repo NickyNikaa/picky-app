@@ -1700,5 +1700,196 @@
     "instagram": "daangelo_muenchen",
     "curated": true,
     "makiApproved": true
+  },
+  {
+    "id": "tt-goldies",
+    "type": "restaurant",
+    "name": "Goldies",
+    "neighborhood": "Schwabing",
+    "cuisine": [
+      "steakhouse",
+      "international"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "date",
+      "group"
+    ],
+    "mood": [
+      "trendy",
+      "lively"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Berliner Smashburger-Filiale, eröffnet Feb 2026 auf der Leopoldstraße. Patty platt gedrückt, außen karamellisiert, innen saftig.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Goldies+Burger+M%C3%BCnchen+Leopoldstra%C3%9Fe",
+    "instagram": "goldies.berlin",
+    "curated": true
+  },
+  {
+    "id": "tt-otto-25",
+    "type": "bar",
+    "name": "OTTO·25",
+    "neighborhood": "Werksviertel",
+    "cuisine": [
+      "cocktail-bar"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "celebration",
+      "casual"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "romantic"
+    ],
+    "exclusivity": 2,
+    "features": [
+      "rooftop",
+      "view"
+    ],
+    "pitch": "Rooftop-Bar über den Dächern des Werksviertels. Signature-Cocktails, 180°-Aussicht bis zu den Alpen.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=OTTO+25+Rooftop+M%C3%BCnchen+Werksviertel",
+    "instagram": "otto25.muc",
+    "curated": true
+  },
+  {
+    "id": "tt-ooh-baby",
+    "type": "restaurant",
+    "name": "Ooh Baby I like it raw",
+    "neighborhood": "Glockenbach",
+    "cuisine": [
+      "brunch",
+      "vegan"
+    ],
+    "price": 2,
+    "occasion": [
+      "casual",
+      "date"
+    ],
+    "mood": [
+      "cozy",
+      "trendy"
+    ],
+    "exclusivity": 2,
+    "features": [],
+    "pitch": "Süßes Café im Glockenbach mit nur 5 Tischen — kuschelig-intim, Insta-würdige Einrichtung.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Ooh+Baby+I+like+it+raw+M%C3%BCnchen",
+    "instagram": "oohbabyilikeitraw",
+    "curated": true
+  },
+  {
+    "id": "tt-la-favela",
+    "type": "restaurant",
+    "name": "La Favela im Bahnwärter Thiel",
+    "neighborhood": "Schlachthofviertel",
+    "cuisine": [
+      "international"
+    ],
+    "price": 2,
+    "occasion": [
+      "casual",
+      "date",
+      "group"
+    ],
+    "mood": [
+      "trendy",
+      "lively",
+      "cozy"
+    ],
+    "exclusivity": 2,
+    "features": [
+      "terrace"
+    ],
+    "pitch": "Brasilianisches Restaurant in einem ausrangierten U-Bahnwagen im Bahnwärter Thiel. Caipi, Streetfood, Underground-Vibe.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=La+Favela+Bahnw%C3%A4rter+Thiel+M%C3%BCnchen",
+    "instagram": "lafavela.muc",
+    "curated": true
+  },
+  {
+    "id": "tt-container-collective",
+    "type": "restaurant",
+    "name": "Container Collective",
+    "neighborhood": "Ostbahnhof",
+    "cuisine": [
+      "brunch",
+      "international"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "family",
+      "group"
+    ],
+    "mood": [
+      "trendy",
+      "lively",
+      "cozy"
+    ],
+    "exclusivity": 1,
+    "features": [
+      "terrace"
+    ],
+    "pitch": "Sommer-Spot aus bunten Containern am Ostbahnhof. Kaffee, Eis, kleine Shops, entspannen.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Container+Collective+Ostbahnhof+M%C3%BCnchen",
+    "instagram": "containercollective",
+    "curated": true
+  },
+  {
+    "id": "tt-bahnwaerter-thiel",
+    "type": "bar",
+    "name": "Bahnwärter Thiel",
+    "neighborhood": "Schlachthofviertel",
+    "cuisine": [
+      "cocktail-bar",
+      "bar-bites"
+    ],
+    "price": 2,
+    "occasion": [
+      "casual",
+      "date",
+      "group",
+      "celebration"
+    ],
+    "mood": [
+      "trendy",
+      "lively"
+    ],
+    "exclusivity": 2,
+    "features": [
+      "terrace"
+    ],
+    "pitch": "Kultur-Spot aus U-Bahn-Waggons und Containern. Konzerte, Club-Nächte, Pop-up-Restaurants, Open-Air im Sommer.",
+    "bookingUrl": "https://www.bahnwaertertheel.de/",
+    "instagram": "bahnwaertertheel",
+    "curated": true
+  },
+  {
+    "id": "tt-cafe-frischhut",
+    "type": "restaurant",
+    "name": "Café Frischhut (Schmalznudel)",
+    "neighborhood": "Viktualienmarkt",
+    "cuisine": [
+      "bavarian",
+      "brunch"
+    ],
+    "price": 1,
+    "occasion": [
+      "casual",
+      "family"
+    ],
+    "mood": [
+      "traditional",
+      "cozy"
+    ],
+    "exclusivity": 1,
+    "features": [],
+    "pitch": "Münchner Institution für die Schmalznudel — frittierte Hefeteig-Spezialität, am Viktualienmarkt seit Jahrzehnten.",
+    "bookingUrl": "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Frischhut+Schmalznudel+M%C3%BCnchen",
+    "instagram": "cafefrischhut",
+    "curated": true
   }
 ]
