@@ -638,7 +638,7 @@
   {
     "id": "tip-bar-tatar",
     "type": "bar",
-    "name": "BAR TATAR in der Schreiberei",
+    "name": "Bar Tatar in der Schreiberei",
     "neighborhood": "Altstadt",
     "cuisine": [
       "cocktail-bar",
@@ -2545,6 +2545,7 @@
     "name": "Bar Montez",
     "neighborhood": "Altstadt",
     "cuisine": [
+      "tatar",
       "cocktails",
       "wine-bar"
     ],
@@ -2562,10 +2563,11 @@
     ],
     "exclusivity": 4,
     "features": [],
-    "pitch": "Lola-Montez-Vibes im Rosewood. Täglich Live-Jazz, Soul, Bossa Nova — Piano, Duo oder Quartett. Kardinal-Faulhaber-Str. 1.",
+    "pitch": "Maki-Favorit: das Beef-Tatar ist ein absolutes Highlight. Dazu Lola-Montez-Vibes im Rosewood — täglich Live-Jazz, Soul, Bossa Nova am Piano. Kardinal-Faulhaber-Str. 1.",
     "bookingUrl": "https://www.rosewoodhotels.com/de/munich/dining/bar-montez",
     "instagram": "rosewoodmunich",
-    "curated": true
+    "curated": true,
+    "makiApproved": true
   },
   {
     "id": "tip-geisha-cheesecake",
@@ -2731,6 +2733,151 @@
     "pitch": "Zimtschnecken in verschiedenen Varianten, dazu Cakes, Cookies, Tarts. Heßstr. 71.",
     "bookingUrl": "",
     "instagram": "bato.cafe",
+    "curated": true
+  },
+  {
+    "id": "tip-brenner-grill",
+    "type": "restaurant",
+    "name": "Brenner Operngrill",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "tatar",
+      "italian",
+      "grill",
+      "modern-european"
+    ],
+    "price": 4,
+    "occasion": [
+      "date",
+      "business",
+      "celebration",
+      "group"
+    ],
+    "mood": [
+      "chic",
+      "elegant",
+      "trendy",
+      "lively"
+    ],
+    "exclusivity": 4,
+    "features": [],
+    "pitch": "Seit 2003 in den ehemaligen königlichen Stallungen an der Maximilianstr. Grill mit offenem Feuer, frische Pasta, große Bar. Tatar gehört zu den Klassikern. Maximilianstr. 15.",
+    "bookingUrl": "https://www.brennergrill.de/",
+    "instagram": "brennergrill",
+    "curated": true
+  },
+  {
+    "id": "tip-schumanns",
+    "type": "bar",
+    "name": "Schumann's Bar",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "tatar",
+      "cocktails",
+      "wine-bar"
+    ],
+    "price": 4,
+    "occasion": [
+      "date",
+      "drinks",
+      "business"
+    ],
+    "mood": [
+      "elegant",
+      "chic",
+      "intimate"
+    ],
+    "exclusivity": 4,
+    "features": [],
+    "pitch": "American-Style-Cocktail-Bar im Herzen Münchens — seit Jahrzehnten Klassiker. Roastbeef + Tatar auf der kleinen Karte. Odeonsplatz 6-7.",
+    "bookingUrl": "https://www.schumanns.de/",
+    "instagram": "schumannsbarmunich",
+    "curated": true
+  },
+  {
+    "id": "tip-halali",
+    "type": "restaurant",
+    "name": "Restaurant Halali",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "tatar",
+      "bavarian",
+      "german",
+      "modern-european"
+    ],
+    "price": 4,
+    "occasion": [
+      "date",
+      "celebration",
+      "business"
+    ],
+    "mood": [
+      "elegant",
+      "traditionell",
+      "intimate"
+    ],
+    "exclusivity": 4,
+    "features": [],
+    "pitch": "Bayerisch-Klassisch in elegantem Ambiente. Wildgerichte, Wiener Schnitzel und ein hervorragendes Beef-Tatar. Schönfeldstr. 22.",
+    "bookingUrl": "https://www.restaurant-halali.de/",
+    "instagram": "restauranthalali",
+    "curated": true
+  },
+  {
+    "id": "tip-avin",
+    "type": "restaurant",
+    "name": "Avin Wine Bar",
+    "neighborhood": "Glockenbach",
+    "cuisine": [
+      "tatar",
+      "modern-european",
+      "wine-bar"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "drinks",
+      "group"
+    ],
+    "mood": [
+      "chic",
+      "trendy",
+      "intimate"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Hohe Decken, burgunderrote Stühle, Holztische — minimalistisch im Glockenbach. Wechselnde Karte mit Beef-Tatar + Crostini + Trüffel-Mascarpone als Signature.",
+    "bookingUrl": "https://www.avin-muenchen.de/",
+    "instagram": "avin.muenchen",
+    "curated": true
+  },
+  {
+    "id": "tip-burger-lobster",
+    "type": "restaurant",
+    "name": "Burger & Lobster",
+    "neighborhood": "Altstadt",
+    "cuisine": [
+      "tatar",
+      "american",
+      "steakhouse"
+    ],
+    "price": 3,
+    "occasion": [
+      "date",
+      "group",
+      "business",
+      "casual"
+    ],
+    "mood": [
+      "lively",
+      "trendy",
+      "social"
+    ],
+    "exclusivity": 3,
+    "features": [],
+    "pitch": "Burger, Lobster, Steak — und ein erstklassiges Beef-Tatar. Münchner Klassiker hinter dem Lenbachplatz seit 2014. Salvatorstr. 6.",
+    "bookingUrl": "https://burger-and-lobster.de/",
+    "instagram": "burgerandlobster",
     "curated": true
   }
 ]
