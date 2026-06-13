@@ -679,6 +679,196 @@
     .form-row { grid-template-columns: 1fr; }
     .tab { padding: 10px 12px; font-size: 13px; }
   }
+
+  /* ============================================================
+     MODERN DESIGN REFRESH 2026
+     ============================================================ */
+  body {
+    background:
+      radial-gradient(ellipse at top left, rgba(179, 136, 235, 0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
+      var(--bg);
+  }
+  header {
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(15, 13, 11, 0.72);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .tabs {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 6px;
+    display: inline-flex;
+    gap: 4px;
+    backdrop-filter: blur(10px);
+  }
+  .tab {
+    background: transparent;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 11px;
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    background: linear-gradient(135deg, rgba(212,165,116,0.18), rgba(179,136,235,0.18));
+    color: var(--text);
+    box-shadow: 0 4px 16px rgba(212,165,116,0.12);
+  }
+  .tab .count {
+    margin-left: 6px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .tab.active .count {
+    background: rgba(212,165,116,0.25);
+    color: var(--text);
+  }
+
+  /* Cards — more refined */
+  .card {
+    border: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    transition: all 0.25s cubic-bezier(.2,.7,.3,1);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212,165,116,0.25);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,165,116,0.08);
+  }
+
+  /* Filter chips — softer modern look */
+  .chip {
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.18s ease;
+  }
+  .chip:hover { border-color: rgba(212,165,116,0.4); transform: translateY(-1px); }
+
+  /* ============================================================
+     COMMUNITIES STYLES
+     ============================================================ */
+  .comm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .comm-card {
+    --comm-color: #d4a574;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px;
+    padding: 22px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(.2,.7,.3,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .comm-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 0%, var(--comm-color) 0%, transparent 60%);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .comm-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--comm-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  .comm-card:hover::before { opacity: 0.18; }
+  .comm-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .comm-cat-pill {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--comm-color) 22%, transparent);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid color-mix(in srgb, var(--comm-color) 35%, transparent);
+  }
+  .comm-size {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .comm-name {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+  }
+  .comm-pitch {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 14px;
+  }
+  .comm-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-dim);
+    align-items: center;
+  }
+  .comm-meta .dot { opacity: 0.4; }
+  .comm-event-strip {
+    margin-top: 14px;
+    padding: 8px 12px;
+    background: rgba(212,165,116,0.1);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--text);
+    border: 1px solid rgba(212,165,116,0.2);
+  }
+  .banner-info {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(106,130,251,0.07), rgba(252,96,118,0.05));
+    border: 1px solid rgba(255,255,255,0.06);
+    margin: 24px 0;
+  }
+  .banner-icon { font-size: 32px; }
+  .banner-text strong { display: block; margin-bottom: 4px; font-size: 15px; }
+  .banner-text { font-size: 14px; color: var(--text-dim); }
+  .linked-event {
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    margin-bottom: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .detail-hero {
+    padding: 28px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+  .detail-hero-inner h2 {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 32px;
+    letter-spacing: -0.5px;
+  }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
@@ -712,6 +902,7 @@
   <div class="tabs" id="tabs">
     <button class="tab active" data-view="places">🍽️ Restaurants & Bars <span class="count" id="placesCount">0</span></button>
     <button class="tab" data-view="events">🎉 Events <span class="count" id="eventsCount">0</span></button>
+    <button class="tab" data-view="communities">👥 Communities <span class="count" id="communitiesCount">0</span></button>
   </div>
 
   <!-- PLACES VIEW (Restaurants & Bars) -->
@@ -792,6 +983,27 @@
     </section>
 
     <section class="results" id="eventsResults"></section>
+  </div>
+
+  <!-- COMMUNITIES VIEW -->
+  <div id="view-communities" style="display:none;">
+    <section class="banner-info" id="communitiesBanner">
+      <div class="banner-icon">👥</div>
+      <div class="banner-text">
+        <strong>Communities & Gruppen.</strong> Run Clubs, Female-Founders-Netzwerke, BookClubs, Queer-Spaces — finde deine Crew.
+      </div>
+    </section>
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter-label">Kategorie</div>
+        <div class="chips" id="commCategoryChips"></div>
+      </div>
+      <div class="filter-actions">
+        <a href="#" class="reset-btn" id="commResetBtn">Filter zurücksetzen</a>
+        <span class="result-count"><strong id="commResultCount">0</strong> Communities</span>
+      </div>
+    </section>
+    <section class="results comm-grid" id="communitiesResults"></section>
   </div>
 </div>
 
@@ -1859,6 +2071,8 @@ document.querySelectorAll("#tabs .tab").forEach(tab => {
     const view = tab.dataset.view;
     document.getElementById("view-places").style.display = view === "places" ? "" : "none";
     document.getElementById("view-events").style.display = view === "events" ? "" : "none";
+    document.getElementById("view-communities").style.display = view === "communities" ? "" : "none";
+    if (view === "communities" && !window._communitiesLoaded) loadCommunities();
   });
 });
 
@@ -1890,6 +2104,153 @@ renderChips("featureChips", FILTER_DEFS.feature, "feature");
     wrap.appendChild(el);
   });
 })();
+
+// ============================================================
+// COMMUNITIES VIEW
+// ============================================================
+let COMMUNITIES = [];
+const COMM_CATEGORIES = [
+  { id: "sport",    label: "🏃 Sport & Run", color: "#ff7e5f" },
+  { id: "founders", label: "💼 Founders & Tech", color: "#6a82fb" },
+  { id: "kultur",   label: "🎨 Kultur & Kreativ", color: "#fc6076" },
+  { id: "queer",    label: "🌈 Queer & Safe Space", color: "#ff9966" },
+  { id: "expat",    label: "🌍 Expat & International", color: "#00c9ff" },
+  { id: "wellness", label: "🧘 Wellness", color: "#a8e063" }
+];
+const COMM_CAT_COLOR = Object.fromEntries(COMM_CATEGORIES.map(c => [c.id, c.color]));
+const COMM_CAT_LABEL = Object.fromEntries(COMM_CATEGORIES.map(c => [c.id, c.label]));
+const commState = { categories: new Set() };
+
+function renderCommCategoryChips() {
+  const wrap = document.getElementById("commCategoryChips");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  COMM_CATEGORIES.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "chip";
+    el.textContent = c.label;
+    el.addEventListener("click", () => {
+      if (commState.categories.has(c.id)) commState.categories.delete(c.id);
+      else commState.categories.add(c.id);
+      el.classList.toggle("active");
+      renderCommunities();
+    });
+    wrap.appendChild(el);
+  });
+}
+
+function commsFiltered() {
+  if (commState.categories.size === 0) return COMMUNITIES;
+  return COMMUNITIES.filter(c => commState.categories.has(c.category));
+}
+
+function communityEventsFor(c) {
+  if (!c.eventTitles || !Array.isArray(c.eventTitles)) return [];
+  const titles = c.eventTitles.map(t => t.toLowerCase());
+  return EVENTS.filter(e => titles.some(t => (e.title || "").toLowerCase().includes(t)));
+}
+
+function renderCommunities() {
+  const list = commsFiltered();
+  document.getElementById("commResultCount").textContent = list.length;
+  document.getElementById("communitiesCount").textContent = COMMUNITIES.length;
+  const wrap = document.getElementById("communitiesResults");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  if (list.length === 0) {
+    wrap.innerHTML = `<div class="empty"><h3>Keine Community passt.</h3><p>Lockere die Filter.</p></div>`;
+    return;
+  }
+  list.forEach(c => {
+    const color = COMM_CAT_COLOR[c.category] || "#888";
+    const catLabel = COMM_CAT_LABEL[c.category] || c.category;
+    const linkedEvents = communityEventsFor(c);
+    const card = document.createElement("article");
+    card.className = "comm-card";
+    card.style.setProperty("--comm-color", color);
+    card.addEventListener("click", () => openCommunityDetail(c.id));
+    card.innerHTML = `
+      <div class="comm-card-head">
+        <span class="comm-cat-pill">${catLabel}</span>
+        <span class="comm-size">${c.size || ""}</span>
+      </div>
+      <h3 class="comm-name">${c.name}</h3>
+      <p class="comm-pitch">${c.pitch}</p>
+      <div class="comm-meta">
+        <span>📍 ${c.neighborhood}</span>
+        <span class="dot">·</span>
+        <span>🔁 ${c.frequency}</span>
+      </div>
+      ${linkedEvents.length ? `<div class="comm-event-strip">🎟 ${linkedEvents.length} kommende${linkedEvents.length > 1 ? '' : 's'} Event${linkedEvents.length > 1 ? 's' : ''}</div>` : ""}
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function openCommunityDetail(id) {
+  const c = COMMUNITIES.find(x => x.id === id);
+  if (!c) return;
+  const linkedEvents = communityEventsFor(c);
+  const modal = document.getElementById("detailModal");
+  const body = document.getElementById("detailContent");
+  const color = COMM_CAT_COLOR[c.category] || "#888";
+  body.innerHTML = `
+    <div class="detail-hero" style="background: linear-gradient(135deg, ${color}33, ${color}11);">
+      <div class="detail-hero-inner">
+        <span class="comm-cat-pill" style="--comm-color:${color}">${COMM_CAT_LABEL[c.category]}</span>
+        <h2 style="margin:14px 0 4px;">${c.name}</h2>
+        <div style="opacity:.75;">📍 ${c.neighborhood} · 🔁 ${c.frequency} · 👥 ${c.size}</div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <p style="font-size:16px; line-height:1.6;">${c.pitch}</p>
+      <div class="detail-section">
+        <h4>Wann & Wo</h4>
+        <p>${c.meetup}</p>
+      </div>
+      ${c.tags?.length ? `<div class="detail-section"><h4>Tags</h4><div class="card-tags">${c.tags.map(t => `<span class="tag-pill">#${t}</span>`).join("")}</div></div>` : ""}
+      ${linkedEvents.length ? `
+        <div class="detail-section">
+          <h4>Kommende Events</h4>
+          ${linkedEvents.slice(0, 5).map(e => `
+            <div class="linked-event">
+              <strong>${e.title}</strong>
+              <div style="opacity:.7; font-size:13px;">${e.date} · ${e.venueName}</div>
+            </div>
+          `).join("")}
+        </div>
+      ` : ""}
+      <div class="detail-actions">
+        ${c.website ? `<a href="${c.website}" target="_blank" rel="noopener" class="btn btn-primary">Website öffnen →</a>` : ""}
+        ${c.instagram ? `<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener" class="btn btn-secondary">@${c.instagram}</a>` : ""}
+      </div>
+    </div>
+  `;
+  modal.classList.add("open");
+}
+
+async function loadCommunities() {
+  try {
+    const r = await fetch("/api/communities", { headers: { "Accept": "application/json" } });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    COMMUNITIES = j.communities || [];
+    window._communitiesLoaded = true;
+    document.getElementById("communitiesCount").textContent = COMMUNITIES.length;
+    renderCommunities();
+  } catch (e) {
+    console.warn("[communities] failed:", e.message);
+  }
+}
+renderCommCategoryChips();
+document.getElementById("commResetBtn")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  commState.categories.clear();
+  document.querySelectorAll("#commCategoryChips .chip").forEach(el => el.classList.remove("active"));
+  renderCommunities();
+});
+// Pre-load communities count so tab shows non-zero immediately
+loadCommunities();
 
 // Initial render with seed data (instant)
 EVENTS = SEED_EVENTS.slice();
