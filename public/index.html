@@ -6,22 +6,22 @@
 <title>picky. — Restaurants, Bars & Events</title>
 <style>
   :root {
-    --bg: #0f0e0c;
-    --bg-soft: #18161312;
-    --panel: #1a1714;
-    --panel-2: #221d18;
-    --text: #f4ede2;
-    --text-dim: #b9ada0;
-    --text-mute: #8c8074;
-    --accent: #d4a574;
-    --accent-2: #c2410c;
-    --border: #2a241e;
-    --border-soft: #221d18;
-    --chip-bg: #1f1a15;
-    --chip-bg-active: #d4a574;
-    --chip-text-active: #1a1714;
-    --good: #6ec27f;
-    --shadow: 0 10px 40px rgba(0,0,0,0.45);
+    --bg: #f7f2ea;
+    --bg-soft: #fcf8f2;
+    --panel: #ffffff;
+    --panel-2: #fbf6ee;
+    --text: #1f1a14;
+    --text-dim: #6b5f51;
+    --text-mute: #98897a;
+    --accent: #b87333;
+    --accent-2: #8b4513;
+    --border: #ebe1d2;
+    --border-soft: #f1e8d8;
+    --chip-bg: #ffffff;
+    --chip-bg-active: #1f1a14;
+    --chip-text-active: #faf6ee;
+    --good: #4caf50;
+    --shadow: 0 8px 30px rgba(60,40,20,0.06), 0 2px 8px rgba(60,40,20,0.04);
   }
   * { box-sizing: border-box; }
   html, body {
@@ -685,74 +685,99 @@
      ============================================================ */
   body {
     background:
-      radial-gradient(ellipse at top left, rgba(179, 136, 235, 0.07) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at top left, rgba(179, 136, 235, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(212, 165, 116, 0.13) 0%, transparent 55%),
       var(--bg);
   }
   header {
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    background: rgba(15, 13, 11, 0.72);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255, 250, 242, 0.78);
+    border-bottom: 1px solid rgba(31,26,20,0.06);
   }
   .tabs {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 18px;
     padding: 6px;
     display: inline-flex;
     gap: 4px;
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px rgba(60,40,20,0.04);
   }
   .tab {
     background: transparent;
     border: none;
-    padding: 10px 18px;
-    border-radius: 11px;
+    padding: 11px 20px;
+    border-radius: 13px;
     color: var(--text-dim);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  .tab:hover { color: var(--text); }
+  .tab:hover { color: var(--text); background: rgba(31,26,20,0.04); }
   .tab.active {
-    background: linear-gradient(135deg, rgba(212,165,116,0.18), rgba(179,136,235,0.18));
-    color: var(--text);
-    box-shadow: 0 4px 16px rgba(212,165,116,0.12);
+    background: var(--text);
+    color: var(--panel);
+    box-shadow: 0 4px 16px rgba(31,26,20,0.15);
   }
   .tab .count {
     margin-left: 6px;
     padding: 2px 7px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(31,26,20,0.06);
     font-size: 11px;
     color: var(--text-dim);
   }
   .tab.active .count {
-    background: rgba(212,165,116,0.25);
-    color: var(--text);
+    background: rgba(255,255,255,0.18);
+    color: var(--panel);
   }
 
   /* Cards — more refined */
   .card {
-    border: 1px solid rgba(255,255,255,0.06);
-    background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    border: 1px solid var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
     transition: all 0.25s cubic-bezier(.2,.7,.3,1);
   }
   .card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(212,165,116,0.25);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,165,116,0.08);
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 18px 50px rgba(60,40,20,0.1), 0 0 0 1px rgba(184,115,51,0.1);
   }
 
   /* Filter chips — softer modern look */
   .chip {
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text-dim);
     transition: all 0.18s ease;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
   }
-  .chip:hover { border-color: rgba(212,165,116,0.4); transform: translateY(-1px); }
+  .chip:hover { border-color: var(--accent); transform: translateY(-1px); color: var(--text); }
+  .chip.active {
+    background: var(--text);
+    color: var(--panel);
+    border-color: var(--text);
+  }
+  .chip-count {
+    margin-left: 5px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba(31,26,20,0.07);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .chip.active .chip-count {
+    background: rgba(255,255,255,0.18);
+    color: var(--panel);
+  }
+  .chip-cat { font-weight: 600; }
 
   /* ============================================================
      COMMUNITIES STYLES
@@ -763,30 +788,32 @@
     gap: 18px;
   }
   .comm-card {
-    --comm-color: #d4a574;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 18px;
-    padding: 22px;
+    --comm-color: #b87333;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(.2,.7,.3,1);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow);
   }
   .comm-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 30% 0%, var(--comm-color) 0%, transparent 60%);
-    opacity: 0.08;
+    background: radial-gradient(circle at 30% 0%, var(--comm-color) 0%, transparent 65%);
+    opacity: 0.05;
     pointer-events: none;
+    transition: opacity 0.25s ease;
   }
   .comm-card:hover {
     transform: translateY(-3px);
     border-color: var(--comm-color);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 22px 55px rgba(60,40,20,0.12);
   }
-  .comm-card:hover::before { opacity: 0.18; }
+  .comm-card:hover::before { opacity: 0.13; }
   .comm-card-head {
     display: flex;
     justify-content: space-between;
@@ -795,13 +822,13 @@
   }
   .comm-cat-pill {
     display: inline-block;
-    padding: 5px 11px;
+    padding: 5px 12px;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--comm-color) 22%, transparent);
-    color: var(--text);
+    background: color-mix(in srgb, var(--comm-color) 12%, white);
+    color: color-mix(in srgb, var(--comm-color) 80%, var(--text));
     font-size: 12px;
     font-weight: 600;
-    border: 1px solid color-mix(in srgb, var(--comm-color) 35%, transparent);
+    border: 1px solid color-mix(in srgb, var(--comm-color) 30%, white);
   }
   .comm-size {
     font-size: 12px;
@@ -831,32 +858,32 @@
   .comm-meta .dot { opacity: 0.4; }
   .comm-event-strip {
     margin-top: 14px;
-    padding: 8px 12px;
-    background: rgba(212,165,116,0.1);
-    border-radius: 10px;
+    padding: 9px 13px;
+    background: color-mix(in srgb, var(--accent) 8%, white);
+    border-radius: 12px;
     font-size: 13px;
     color: var(--text);
-    border: 1px solid rgba(212,165,116,0.2);
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, white);
   }
   .banner-info {
     display: flex;
     gap: 16px;
     align-items: center;
     padding: 20px 24px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(106,130,251,0.07), rgba(252,96,118,0.05));
-    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(106,130,251,0.08), rgba(252,96,118,0.06));
+    border: 1px solid var(--border);
     margin: 24px 0;
   }
   .banner-icon { font-size: 32px; }
   .banner-text strong { display: block; margin-bottom: 4px; font-size: 15px; }
   .banner-text { font-size: 14px; color: var(--text-dim); }
   .linked-event {
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 10px;
-    margin-bottom: 6px;
-    border: 1px solid rgba(255,255,255,0.05);
+    padding: 11px 14px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
   }
   .detail-hero {
     padding: 28px;
@@ -882,20 +909,20 @@
     gap: 12px;
     padding: 14px 16px;
     border-radius: 14px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel);
+    border: 1px solid var(--border);
     color: var(--text);
     text-decoration: none;
     transition: all 0.18s ease;
     font-size: 14px;
   }
   .link-btn:hover {
-    background: rgba(255,255,255,0.08);
+    background: var(--bg-soft);
     transform: translateY(-1px);
-    border-color: rgba(212,165,116,0.4);
+    border-color: var(--accent);
   }
   .link-btn.link-info { cursor: default; opacity: 0.85; }
-  .link-btn.link-info:hover { transform: none; border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); }
+  .link-btn.link-info:hover { transform: none; border-color: var(--border); background: var(--panel); }
   .link-btn .link-icon { font-size: 18px; }
   .link-btn .link-label { flex: 1; font-weight: 500; }
   .link-btn .link-arrow { opacity: 0.5; font-size: 16px; }
@@ -1044,6 +1071,10 @@
       <div class="filter-row">
         <div class="filter-label">Kategorie</div>
         <div class="chips" id="commCategoryChips"></div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-label">Interesse</div>
+        <div class="chips" id="commInterestChips"></div>
       </div>
       <div class="filter-actions">
         <a href="#" class="reset-btn" id="commResetBtn">Filter zurücksetzen</a>
@@ -2156,17 +2187,61 @@ renderChips("featureChips", FILTER_DEFS.feature, "feature");
 // COMMUNITIES VIEW
 // ============================================================
 let COMMUNITIES = [];
+const COMM_INTERESTS = [
+  // Sport (granular)
+  { id: "running",      label: "🏃 Running",       cat: "sport" },
+  { id: "yoga",         label: "🧘 Yoga",          cat: "wellness" },
+  { id: "pilates",      label: "🤸 Pilates",       cat: "wellness" },
+  { id: "padel",        label: "🎾 Padel",         cat: "sport" },
+  { id: "tennis",       label: "🎾 Tennis",        cat: "sport" },
+  { id: "golf",         label: "⛳ Golf",          cat: "sport" },
+  { id: "crossfit",     label: "💪 Crossfit",      cat: "sport" },
+  { id: "fitness",      label: "🏋️ Fitness",      cat: "sport" },
+  { id: "basketball",   label: "🏀 Basketball",    cat: "sport" },
+  { id: "football",     label: "⚽ Fußball",       cat: "sport" },
+  { id: "climbing",     label: "🧗 Klettern",      cat: "sport" },
+  { id: "hiking",       label: "🥾 Wandern",       cat: "sport" },
+  { id: "cycling",      label: "🚴 Radfahren",     cat: "sport" },
+  { id: "horseriding",  label: "🐎 Reiten",        cat: "sport" },
+  { id: "surfing",      label: "🏄 Surfen",        cat: "sport" },
+  { id: "wintersport",  label: "⛷ Wintersport",   cat: "sport" },
+  { id: "martial-arts", label: "🥋 Kampfsport",    cat: "sport" },
+  { id: "sport",        label: "🏟 Sport allgem.", cat: "sport" },
+  // Kultur
+  { id: "dance",        label: "💃 Tanzen",        cat: "kultur" },
+  { id: "art",          label: "🎨 Kunst & Malen", cat: "kultur" },
+  { id: "photo",        label: "📷 Foto/Video",    cat: "kultur" },
+  { id: "bookclub",     label: "📚 BookClub",      cat: "kultur" },
+  { id: "music",        label: "🎵 Musik",         cat: "kultur" },
+  { id: "games",        label: "🎲 Spiele",        cat: "kultur" },
+  { id: "cooking",      label: "🍳 Kochen",        cat: "kultur" },
+  { id: "food",         label: "🍽 Food",          cat: "kultur" },
+  { id: "coffee",       label: "☕ Kaffee",        cat: "kultur" },
+  { id: "drinks",       label: "🍷 Drinks",        cat: "kultur" },
+  { id: "nightlife",    label: "🌃 Nightlife",     cat: "kultur" },
+  { id: "diy",          label: "🧶 DIY",           cat: "kultur" },
+  { id: "creator",      label: "✨ Creator",       cat: "kultur" },
+  { id: "lifestyle",    label: "🌿 Lifestyle",     cat: "kultur" },
+  // Connection
+  { id: "networking",   label: "🤝 Networking",    cat: "founders" },
+  { id: "female",       label: "👩 Female",        cat: "founders" },
+  { id: "finance",      label: "💰 Finance",       cat: "founders" },
+  { id: "newintown",    label: "🌍 New in Town",   cat: "expat" },
+  { id: "queer",        label: "🌈 Queer",         cat: "queer" },
+  { id: "wellness",     label: "💆 Wellness",      cat: "wellness" }
+];
 const COMM_CATEGORIES = [
-  { id: "sport",    label: "🏃 Sport & Run", color: "#ff7e5f" },
-  { id: "founders", label: "💼 Founders & Tech", color: "#6a82fb" },
-  { id: "kultur",   label: "🎨 Kultur & Kreativ", color: "#fc6076" },
-  { id: "queer",    label: "🌈 Queer & Safe Space", color: "#ff9966" },
-  { id: "expat",    label: "🌍 Expat & International", color: "#00c9ff" },
-  { id: "wellness", label: "🧘 Wellness", color: "#a8e063" }
+  { id: "sport",    label: "🏃 Sport", color: "#ff7e5f" },
+  { id: "wellness", label: "🧘 Wellness", color: "#a8e063" },
+  { id: "kultur",   label: "🎨 Kultur", color: "#fc6076" },
+  { id: "founders", label: "💼 Connect", color: "#6a82fb" },
+  { id: "queer",    label: "🌈 Queer", color: "#ff9966" },
+  { id: "expat",    label: "🌍 Expat", color: "#00c9ff" }
 ];
 const COMM_CAT_COLOR = Object.fromEntries(COMM_CATEGORIES.map(c => [c.id, c.color]));
 const COMM_CAT_LABEL = Object.fromEntries(COMM_CATEGORIES.map(c => [c.id, c.label]));
-const commState = { categories: new Set() };
+const COMM_INTEREST_LABEL = Object.fromEntries(COMM_INTERESTS.map(c => [c.id, c.label]));
+const commState = { categories: new Set(), interests: new Set() };
 
 function renderCommCategoryChips() {
   const wrap = document.getElementById("commCategoryChips");
@@ -2174,11 +2249,42 @@ function renderCommCategoryChips() {
   wrap.innerHTML = "";
   COMM_CATEGORIES.forEach(c => {
     const el = document.createElement("div");
-    el.className = "chip";
+    el.className = "chip chip-cat";
     el.textContent = c.label;
     el.addEventListener("click", () => {
       if (commState.categories.has(c.id)) commState.categories.delete(c.id);
       else commState.categories.add(c.id);
+      el.classList.toggle("active");
+      renderCommunities();
+      renderCommInterestChips();  // filter interests to selected cats
+    });
+    wrap.appendChild(el);
+  });
+}
+
+function renderCommInterestChips() {
+  const wrap = document.getElementById("commInterestChips");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  // Compute counts per interest from current dataset (after cat filter)
+  const sourceList = commState.categories.size === 0
+    ? COMMUNITIES
+    : COMMUNITIES.filter(c => commState.categories.has(c.category));
+  const counts = {};
+  sourceList.forEach(c => {
+    if (c.interest) counts[c.interest] = (counts[c.interest] || 0) + 1;
+  });
+  const available = COMM_INTERESTS.filter(i => counts[i.id]);
+  // Sort by count desc
+  available.sort((a, b) => (counts[b.id] || 0) - (counts[a.id] || 0));
+  available.forEach(i => {
+    const el = document.createElement("div");
+    el.className = "chip chip-interest";
+    el.innerHTML = `${i.label} <span class="chip-count">${counts[i.id]}</span>`;
+    if (commState.interests.has(i.id)) el.classList.add("active");
+    el.addEventListener("click", () => {
+      if (commState.interests.has(i.id)) commState.interests.delete(i.id);
+      else commState.interests.add(i.id);
       el.classList.toggle("active");
       renderCommunities();
     });
@@ -2187,8 +2293,12 @@ function renderCommCategoryChips() {
 }
 
 function commsFiltered() {
-  if (commState.categories.size === 0) return COMMUNITIES;
-  return COMMUNITIES.filter(c => commState.categories.has(c.category));
+  let list = COMMUNITIES;
+  if (commState.categories.size > 0)
+    list = list.filter(c => commState.categories.has(c.category));
+  if (commState.interests.size > 0)
+    list = list.filter(c => commState.interests.has(c.interest));
+  return list;
 }
 
 function communityEventsFor(c) {
@@ -2210,7 +2320,7 @@ function renderCommunities() {
   }
   list.forEach(c => {
     const color = COMM_CAT_COLOR[c.category] || "#888";
-    const catLabel = COMM_CAT_LABEL[c.category] || c.category;
+    const catLabel = (c.interest && COMM_INTEREST_LABEL[c.interest]) || COMM_CAT_LABEL[c.category] || c.category;
     const linkedEvents = communityEventsFor(c);
     const card = document.createElement("article");
     card.className = "comm-card";
@@ -2407,6 +2517,7 @@ async function loadCommunities() {
     COMMUNITIES = j.communities || [];
     window._communitiesLoaded = true;
     document.getElementById("communitiesCount").textContent = COMMUNITIES.length;
+    renderCommInterestChips();
     renderCommunities();
   } catch (e) {
     console.warn("[communities] failed:", e.message);
@@ -2416,7 +2527,9 @@ renderCommCategoryChips();
 document.getElementById("commResetBtn")?.addEventListener("click", (e) => {
   e.preventDefault();
   commState.categories.clear();
-  document.querySelectorAll("#commCategoryChips .chip").forEach(el => el.classList.remove("active"));
+  commState.interests.clear();
+  document.querySelectorAll("#commCategoryChips .chip, #commInterestChips .chip").forEach(el => el.classList.remove("active"));
+  renderCommInterestChips();
   renderCommunities();
 });
 // Pre-load communities count so tab shows non-zero immediately
