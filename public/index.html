@@ -912,6 +912,10 @@
     opacity: 0.7;
   }
 
+
+  .link-btn.link-tt:hover     { border-color: #ff0050; box-shadow: 0 0 0 2px rgba(255,0,80,0.15); }
+  .link-btn.link-strava:hover { border-color: #fc4c02; box-shadow: 0 0 0 2px rgba(252,76,2,0.15); }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
@@ -2227,6 +2231,8 @@ function renderCommunities() {
       <div class="comm-link-icons">
         ${c.website ? '<span title="Website">🌐</span>' : ''}
         ${c.instagram ? '<span title="Instagram">📷</span>' : ''}
+        ${c.tiktok ? '<span title="TikTok">🎵</span>' : ''}
+        ${c.strava ? '<span title="Strava">🏃</span>' : ''}
         ${c.whatsapp ? '<span title="WhatsApp">💬</span>' : ''}
         ${c.email ? '<span title="Email">✉️</span>' : ''}
       </div>
@@ -2236,12 +2242,50 @@ function renderCommunities() {
   });
 }
 
+const COMM_LINKS_CACHE = "picky.commLinks.v1";
+const COMM_LINKS_TTL = 7 * 24 * 60 * 60 * 1000;
+function getCommLinksCache() {
+  try { return JSON.parse(localStorage.getItem(COMM_LINKS_CACHE) || "{}"); }
+  catch { return {}; }
+}
+async function fetchCommunityLinks(url) {
+  const cache = getCommLinksCache();
+  const hit = cache[url];
+  if (hit && (Date.now() - hit.ts) < COMM_LINKS_TTL) return hit.data;
+  try {
+    const r = await fetch("/api/community-links?url=" + encodeURIComponent(url));
+    const j = await r.json();
+    cache[url] = { ts: Date.now(), data: j.found || {} };
+    localStorage.setItem(COMM_LINKS_CACHE, JSON.stringify(cache));
+    return j.found || {};
+  } catch { return {}; }
+}
+
 function openCommunityDetail(id) {
   const c = COMMUNITIES.find(x => x.id === id);
   if (!c) return;
   const linkedEvents = communityEventsFor(c);
   const modal = document.getElementById("detailModal");
   const color = COMM_CAT_COLOR[c.category] || "#888";
+
+  // Background: if website exists and any social missing, lazily augment
+  const missing = ["instagram","tiktok","strava","whatsapp","email"].filter(k => !c[k]);
+  if (c.website && missing.length > 0) {
+    fetchCommunityLinks(c.website).then(found => {
+      let changed = false;
+      for (const k of missing) {
+        if (found[k] && !c[k]) {
+          c[k] = found[k];
+          changed = true;
+        }
+      }
+      // If the modal still shows this community, re-render
+      if (changed && modal.classList.contains("open")
+          && document.getElementById("detailName")?.textContent === c.name) {
+        openCommunityDetail(id);
+      }
+    });
+  }
 
   // Switch modal into community mode — hide restaurant-specific sections
   document.querySelectorAll("#detailModal .detail-section, #detailModal .detail-cta, #detailModal .gallery").forEach(el => el.style.display = "none");
@@ -2266,9 +2310,9 @@ function openCommunityDetail(id) {
     </a>`);
   }
   if (c.instagram) {
-    links.push(`<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener" class="link-btn link-ig">
+    links.push(`<a href="${c.instagram.startsWith('http') ? c.instagram : `https://instagram.com/${c.instagram.replace(/^@/, "")}`}" target="_blank" rel="noopener" class="link-btn link-ig">
       <span class="link-icon">📷</span>
-      <span class="link-label">@${c.instagram}</span>
+      <span class="link-label">@${c.instagram.replace(/^@/, "").replace(/^https?:\/\/[^/]+\//, "").replace(/\/$/, "")}</span>
       <span class="link-arrow">→</span>
     </a>`);
   }
@@ -2281,6 +2325,19 @@ function openCommunityDetail(id) {
       : `<div class="link-btn link-wa link-info">
           <span class="link-icon">💬</span><span class="link-label">${c.whatsapp}</span><span class="link-arrow">·</span>
         </div>`);
+  }
+  if (c.tiktok) {
+    const tt = c.tiktok.startsWith("http") ? c.tiktok : `https://www.tiktok.com/@${c.tiktok.replace(/^@/, "")}`;
+    const ttLabel = c.tiktok.startsWith("http") ? "TikTok" : `@${c.tiktok.replace(/^@/, "")}`;
+    links.push(`<a href="${tt}" target="_blank" rel="noopener" class="link-btn link-tt">
+      <span class="link-icon">🎵</span><span class="link-label">${ttLabel}</span><span class="link-arrow">→</span>
+    </a>`);
+  }
+  if (c.strava) {
+    const sv = c.strava.startsWith("http") ? c.strava : `https://www.strava.com/clubs/${c.strava}`;
+    links.push(`<a href="${sv}" target="_blank" rel="noopener" class="link-btn link-strava">
+      <span class="link-icon">🏃</span><span class="link-label">Strava Club</span><span class="link-arrow">→</span>
+    </a>`);
   }
   if (c.email) {
     links.push(`<a href="mailto:${c.email}" class="link-btn link-mail">
