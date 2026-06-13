@@ -869,6 +869,49 @@
     letter-spacing: -0.5px;
   }
 
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    font-size: 14px;
+  }
+  .link-btn:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-1px);
+    border-color: rgba(212,165,116,0.4);
+  }
+  .link-btn.link-info { cursor: default; opacity: 0.85; }
+  .link-btn.link-info:hover { transform: none; border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); }
+  .link-btn .link-icon { font-size: 18px; }
+  .link-btn .link-label { flex: 1; font-weight: 500; }
+  .link-btn .link-arrow { opacity: 0.5; font-size: 16px; }
+  .link-btn.link-ig:hover  { border-color: #e1306c; box-shadow: 0 0 0 2px rgba(225,48,108,0.15); }
+  .link-btn.link-wa:hover  { border-color: #25d366; box-shadow: 0 0 0 2px rgba(37,211,102,0.15); }
+  .link-btn.link-web:hover { border-color: #6a82fb; box-shadow: 0 0 0 2px rgba(106,130,251,0.15); }
+  .link-btn.link-mail:hover{ border-color: #fc6076; box-shadow: 0 0 0 2px rgba(252,96,118,0.15); }
+
+  .comm-link-icons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
@@ -2181,6 +2224,12 @@ function renderCommunities() {
         <span class="dot">·</span>
         <span>🔁 ${c.frequency}</span>
       </div>
+      <div class="comm-link-icons">
+        ${c.website ? '<span title="Website">🌐</span>' : ''}
+        ${c.instagram ? '<span title="Instagram">📷</span>' : ''}
+        ${c.whatsapp ? '<span title="WhatsApp">💬</span>' : ''}
+        ${c.email ? '<span title="Email">✉️</span>' : ''}
+      </div>
       ${linkedEvents.length ? `<div class="comm-event-strip">🎟 ${linkedEvents.length} kommende${linkedEvents.length > 1 ? '' : 's'} Event${linkedEvents.length > 1 ? 's' : ''}</div>` : ""}
     `;
     wrap.appendChild(card);
@@ -2194,6 +2243,63 @@ function openCommunityDetail(id) {
   const modal = document.getElementById("detailModal");
   const body = document.getElementById("detailContent");
   const color = COMM_CAT_COLOR[c.category] || "#888";
+
+  // Build link buttons — show whatever exists
+  const links = [];
+  if (c.website) {
+    links.push(`<a href="${c.website}" target="_blank" rel="noopener" class="link-btn link-web">
+      <span class="link-icon">🌐</span>
+      <span class="link-label">Website</span>
+      <span class="link-arrow">→</span>
+    </a>`);
+  }
+  if (c.instagram) {
+    links.push(`<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener" class="link-btn link-ig">
+      <span class="link-icon">📷</span>
+      <span class="link-label">@${c.instagram}</span>
+      <span class="link-arrow">→</span>
+    </a>`);
+  }
+  if (c.whatsapp) {
+    const waUrl = c.whatsapp.startsWith("http") ? c.whatsapp : null;
+    if (waUrl) {
+      links.push(`<a href="${waUrl}" target="_blank" rel="noopener" class="link-btn link-wa">
+        <span class="link-icon">💬</span>
+        <span class="link-label">WhatsApp beitreten</span>
+        <span class="link-arrow">→</span>
+      </a>`);
+    } else {
+      links.push(`<div class="link-btn link-wa link-info">
+        <span class="link-icon">💬</span>
+        <span class="link-label">${c.whatsapp}</span>
+        <span class="link-arrow">·</span>
+      </div>`);
+    }
+  }
+  if (c.email) {
+    links.push(`<a href="mailto:${c.email}" class="link-btn link-mail">
+      <span class="link-icon">✉️</span>
+      <span class="link-label">${c.email}</span>
+      <span class="link-arrow">→</span>
+    </a>`);
+  }
+  if (c.phone) {
+    links.push(`<a href="tel:${c.phone}" class="link-btn link-phone">
+      <span class="link-icon">📞</span>
+      <span class="link-label">${c.phone}</span>
+      <span class="link-arrow">→</span>
+    </a>`);
+  }
+  const linksHtml = links.length
+    ? `<div class="detail-section">
+         <h4>Links & Kontakt</h4>
+         <div class="link-grid">${links.join("")}</div>
+       </div>`
+    : `<div class="detail-section">
+         <h4>Links & Kontakt</h4>
+         <p style="opacity:.6; font-style:italic;">Noch keine Links hinterlegt. Frag in der Community nach!</p>
+       </div>`;
+
   body.innerHTML = `
     <div class="detail-hero" style="background: linear-gradient(135deg, ${color}33, ${color}11);">
       <div class="detail-hero-inner">
@@ -2203,11 +2309,13 @@ function openCommunityDetail(id) {
       </div>
     </div>
     <div class="detail-body">
-      <p style="font-size:16px; line-height:1.6;">${c.pitch}</p>
-      <div class="detail-section">
-        <h4>Wann & Wo</h4>
-        <p>${c.meetup}</p>
-      </div>
+      <p style="font-size:16px; line-height:1.6;">${c.pitch || ""}</p>
+      ${linksHtml}
+      ${c.meetup && c.meetup !== "siehe Links" ? `
+        <div class="detail-section">
+          <h4>Wann & Wo</h4>
+          <p>${c.meetup}</p>
+        </div>` : ""}
       ${c.tags?.length ? `<div class="detail-section"><h4>Tags</h4><div class="card-tags">${c.tags.map(t => `<span class="tag-pill">#${t}</span>`).join("")}</div></div>` : ""}
       ${linkedEvents.length ? `
         <div class="detail-section">
@@ -2220,10 +2328,6 @@ function openCommunityDetail(id) {
           `).join("")}
         </div>
       ` : ""}
-      <div class="detail-actions">
-        ${c.website ? `<a href="${c.website}" target="_blank" rel="noopener" class="btn btn-primary">Website öffnen →</a>` : ""}
-        ${c.instagram ? `<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener" class="btn btn-secondary">@${c.instagram}</a>` : ""}
-      </div>
     </div>
   `;
   modal.classList.add("open");
