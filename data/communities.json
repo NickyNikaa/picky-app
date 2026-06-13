@@ -17,7 +17,8 @@
     "instagram": "runningsociety.de",
     "tiktok": "runningsociety.de",
     "strava": "https://www.strava.com/clubs/334611",
-    "whatsapp": "https://chat.whatsapp.com/Dw4iQBFxTPs2D0B27Ew7tT"
+    "whatsapp": "https://chat.whatsapp.com/Dw4iQBFxTPs2D0B27Ew7tT",
+    "interest": "running"
   },
   {
     "id": "comm-cato",
@@ -33,7 +34,8 @@
     "meetup": "siehe Instagram",
     "frequency": "wöchentlich",
     "size": "5k+ Follower",
-    "instagram": "cato.run"
+    "instagram": "cato.run",
+    "interest": "running"
   },
   {
     "id": "comm-26miles",
@@ -49,7 +51,8 @@
     "meetup": "siehe Instagram",
     "frequency": "wöchentlich",
     "size": "2k+",
-    "instagram": "26.miles"
+    "instagram": "26.miles",
+    "interest": "running"
   },
   {
     "id": "comm-run-and-chill",
@@ -65,7 +68,8 @@
     "meetup": "siehe Instagram",
     "frequency": "wöchentlich",
     "size": "3k+",
-    "instagram": "runandchill.munich"
+    "instagram": "runandchill.munich",
+    "interest": "running"
   },
   {
     "id": "comm-campus-runners",
@@ -82,7 +86,8 @@
     "frequency": "wöchentlich",
     "size": "1k+",
     "website": "https://campusrunners.de/",
-    "instagram": "campusrunners"
+    "instagram": "campusrunners",
+    "interest": "running"
   },
   {
     "id": "comm-founders-running-club",
@@ -99,7 +104,8 @@
     "frequency": "wöchentlich",
     "size": "500+",
     "website": "https://www.meetup.com/de-de/founders-running-club-munich/",
-    "instagram": "foundersrunningclub"
+    "instagram": "foundersrunningclub",
+    "interest": "running"
   },
   {
     "id": "comm-nfbc",
@@ -115,7 +121,8 @@
     "meetup": "siehe Instagram",
     "frequency": "wöchentlich",
     "size": "1k+",
-    "instagram": "nfbc.run"
+    "instagram": "nfbc.run",
+    "interest": "running"
   },
   {
     "id": "comm-businettes",
@@ -135,7 +142,8 @@
     "instagram": "businettes",
     "eventTitles": [
       "Female Founders Night | Businettes Apéritif MÜNCHEN"
-    ]
+    ],
+    "interest": "female"
   },
   {
     "id": "comm-women-startup",
@@ -152,7 +160,8 @@
     "frequency": "monatlich",
     "size": "500+",
     "website": "https://www.unternehmertum.de/en/landingpages/women-startup",
-    "instagram": "unternehmertum"
+    "instagram": "unternehmertum",
+    "interest": "networking"
   },
   {
     "id": "comm-munich-startup",
@@ -169,7 +178,8 @@
     "frequency": "wöchentlich",
     "size": "10k+",
     "website": "https://www.munich-startup.de/",
-    "instagram": "munichstartup"
+    "instagram": "munichstartup",
+    "interest": "networking"
   },
   {
     "id": "comm-munich-tech",
@@ -185,7 +195,8 @@
     "meetup": "Monatliche Meetups",
     "frequency": "monatlich",
     "size": "5k+",
-    "website": "https://www.meetup.com/munich-tech/"
+    "website": "https://www.meetup.com/munich-tech/",
+    "interest": "networking"
   },
   {
     "id": "comm-fin",
@@ -200,7 +211,8 @@
     "pitch": "FIN Academy: Online-Training für Frauen, die als Business Angels starten wollen.",
     "meetup": "Online-Kohorten + Live-Events",
     "frequency": "saisonal",
-    "size": "300+"
+    "size": "300+",
+    "interest": "networking"
   },
   {
     "id": "comm-ananas-bookclub",
@@ -217,7 +229,8 @@
     "frequency": "monatlich",
     "size": "500+",
     "website": "https://ananas-buchclub.de/",
-    "instagram": "ananas.bookclub"
+    "instagram": "ananas.bookclub",
+    "interest": "bookclub"
   },
   {
     "id": "comm-bookclub-friends",
@@ -234,7 +247,8 @@
     "frequency": "monatlich",
     "size": "2.7k+",
     "website": "https://www.bookclubandfriends.de/",
-    "instagram": "bookclubandfriends"
+    "instagram": "bookclubandfriends",
+    "interest": "bookclub"
   },
   {
     "id": "comm-creative-supper-club",
@@ -250,7 +264,8 @@
     "meetup": "Pop-up Dinner",
     "frequency": "saisonal",
     "size": "1.5k+",
-    "instagram": "creative_supper_club"
+    "instagram": "creative_supper_club",
+    "interest": "food"
   },
   {
     "id": "comm-gray-fox-bookclub",
@@ -266,7 +281,8 @@
     "meetup": "Monatlich",
     "frequency": "monatlich",
     "size": "200+",
-    "website": "https://www.meetup.com/gray-fox-book-club-munich/"
+    "website": "https://www.meetup.com/gray-fox-book-club-munich/",
+    "interest": "bookclub"
   },
   {
     "id": "comm-pink-heaven",
@@ -286,7 +302,8 @@
     "eventTitles": [
       "Queer & Glam",
       "She & Her Night"
-    ]
+    ],
+    "interest": "queer"
   },
   {
     "id": "comm-queerinmunich",
@@ -303,7 +320,8 @@
     "frequency": "wöchentlich",
     "size": "5.8k+",
     "website": "https://queerinmunich.com/",
-    "instagram": "queerinmunich"
+    "instagram": "queerinmunich",
+    "interest": "queer"
   },
   {
     "id": "comm-queer-bipoc",
@@ -318,7 +336,8 @@
     "pitch": "Trifft sich alle zwei Wochen freitags für Snacks, Drinks und Community Space.",
     "meetup": "Alle 2 Wochen freitags",
     "frequency": "wöchentlich",
-    "size": "200+"
+    "size": "200+",
+    "interest": "queer"
   },
   {
     "id": "comm-konnektiva",
@@ -333,7 +352,8 @@
     "pitch": "Non-Profit für Kunst, Kultur, Bildung mit Fokus auf intersektionale Gleichberechtigung. Events, Yoga, Talks.",
     "meetup": "Events + Yoga",
     "frequency": "wöchentlich",
-    "size": "300+"
+    "size": "300+",
+    "interest": "queer"
   },
   {
     "id": "comm-internations",
@@ -349,7 +369,8 @@
     "meetup": "wöchentlich",
     "frequency": "wöchentlich",
     "size": "3.6M global",
-    "website": "https://www.internations.org/munich-expats/"
+    "website": "https://www.internations.org/munich-expats/",
+    "interest": "newintown"
   },
   {
     "id": "comm-munich-intl-friends",
@@ -365,7 +386,8 @@
     "meetup": "wöchentlich",
     "frequency": "wöchentlich",
     "size": "5k+",
-    "website": "https://www.meetup.com/Munich-EXPATS/"
+    "website": "https://www.meetup.com/Munich-EXPATS/",
+    "interest": "newintown"
   },
   {
     "id": "comm-padel-seasons",
@@ -381,7 +403,8 @@
     "meetup": "Court-Buchungen + Community-Spiele",
     "frequency": "wöchentlich",
     "size": "1k+",
-    "website": "https://padel-seasons.de/"
+    "website": "https://padel-seasons.de/",
+    "interest": "padel"
   },
   {
     "id": "comm-padel-city",
@@ -395,12 +418,13 @@
     "pitch": "Moderne Padel-Anlage am OEZ, fördert aktive Padel-Community.",
     "meetup": "tägliche Slots",
     "frequency": "täglich",
-    "size": "1k+"
+    "size": "1k+",
+    "interest": "padel"
   },
   {
     "id": "comm-urban-sports",
     "name": "Urban Sports Club München",
-    "category": "wellness",
+    "category": "sport",
     "tags": [
       "fitness",
       "yoga",
@@ -411,7 +435,8 @@
     "meetup": "flexibel",
     "frequency": "täglich",
     "size": "Plattform",
-    "website": "https://urbansportsclub.com/"
+    "website": "https://urbansportsclub.com/",
+    "interest": "fitness"
   },
   {
     "id": "comm-kitchenhub",
@@ -425,7 +450,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://integreat.app/lkmuenchen/de/events/anmeldung-kochtreffen-f%C3%BCr-frauen"
+    "website": "https://integreat.app/lkmuenchen/de/events/anmeldung-kochtreffen-f%C3%BCr-frauen",
+    "interest": "cooking"
   },
   {
     "id": "comm-stefaniehelen",
@@ -439,7 +465,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "stefaniehelen"
+    "instagram": "stefaniehelen",
+    "interest": "lifestyle"
   },
   {
     "id": "comm-crossfitmuc",
@@ -454,7 +481,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://crossfitmuc.com/",
-    "instagram": "crossfitmuc"
+    "instagram": "crossfitmuc",
+    "interest": "crossfit"
   },
   {
     "id": "comm-alpenverein-muenchen-oberland",
@@ -469,7 +497,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.alpenverein-muenchen-oberland.de/dav-kletterhallen-in-muenchen",
-    "email": "service@alpenverein-muenchen.de"
+    "email": "service@alpenverein-muenchen.de",
+    "interest": "climbing"
   },
   {
     "id": "comm-muenchenbasket",
@@ -483,7 +512,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "muenchenbasket"
+    "instagram": "muenchenbasket",
+    "interest": "basketball"
   },
   {
     "id": "comm-fitness-socks-nico",
@@ -497,7 +527,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "fitness_socks_nico"
+    "instagram": "fitness_socks_nico",
+    "interest": "crossfit"
   },
   {
     "id": "comm-mtv-basketball",
@@ -511,7 +542,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "mtv_basketball"
+    "instagram": "mtv_basketball",
+    "interest": "basketball"
   },
   {
     "id": "comm-fr-hst-ckstreff-m-nchen",
@@ -525,7 +557,8 @@
     "size": "—",
     "website": "https://muenchen.fruehstueckstreff.de/",
     "email": "redaktion@fruehstueckstreff.de",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "kultur"
   },
   {
     "id": "comm-people-on-bikes",
@@ -539,7 +572,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "people.on_bikes"
+    "instagram": "people.on_bikes",
+    "interest": "cycling"
   },
   {
     "id": "comm-cf-benni-87",
@@ -553,7 +587,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "cf_benni_87"
+    "instagram": "cf_benni_87",
+    "interest": "crossfit"
   },
   {
     "id": "comm-bold-runningclub",
@@ -567,7 +602,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bold.runningclub"
+    "instagram": "bold.runningclub",
+    "interest": "running"
   },
   {
     "id": "comm-aleva-private-girls-club",
@@ -580,12 +616,13 @@
     "pitch": "Connection",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "networking"
   },
   {
     "id": "comm-community-dance",
     "name": "Community Dance",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -594,7 +631,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.muenchner-kammerspiele.de/de/programm/34875-community-dance"
+    "website": "https://www.muenchner-kammerspiele.de/de/programm/34875-community-dance",
+    "interest": "dance"
   },
   {
     "id": "comm-paulomucyt",
@@ -608,18 +646,20 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "paulomuc"
+    "instagram": "paulomuc",
+    "interest": "basketball"
   },
   {
     "id": "comm-lj-specialevents",
     "name": "lj.specialevents",
-    "category": "kultur",
+    "category": "founders",
     "tags": [],
     "neighborhood": "München",
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "female"
   },
   {
     "id": "comm-gcmuenchen",
@@ -633,7 +673,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "gcmuenchen"
+    "instagram": "gcmuenchen",
+    "interest": "golf"
   },
   {
     "id": "comm-socialmatch",
@@ -648,7 +689,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://socialmatch.de/",
-    "email": "julie@socialmatch.de"
+    "email": "julie@socialmatch.de",
+    "interest": "games"
   },
   {
     "id": "comm-gc-valley",
@@ -662,7 +704,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "gc_valley"
+    "instagram": "gc_valley",
+    "interest": "golf"
   },
   {
     "id": "comm-trekdinner",
@@ -674,7 +717,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.trekdinner-muenchen.de/stammtisch/"
+    "website": "https://www.trekdinner-muenchen.de/stammtisch/",
+    "interest": "kultur"
   },
   {
     "id": "comm-so-what-collective",
@@ -688,7 +732,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "_sowhatcollective_"
+    "instagram": "_sowhatcollective_",
+    "interest": "running"
   },
   {
     "id": "comm-wandernmuc",
@@ -702,7 +747,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "wandernmuc"
+    "instagram": "wandernmuc",
+    "interest": "hiking"
   },
   {
     "id": "comm-nfcb-running-club",
@@ -716,7 +762,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "nfc_runningclub"
+    "instagram": "nfc_runningclub",
+    "interest": "running"
   },
   {
     "id": "comm-stekos-fanclub-ig-steko-s",
@@ -730,7 +777,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "fanclub@stekos.de"
+    "email": "fanclub@stekos.de",
+    "interest": "martial-arts"
   },
   {
     "id": "comm-sophia-popov",
@@ -744,7 +792,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sophia_popov"
+    "instagram": "sophia_popov",
+    "interest": "golf"
   },
   {
     "id": "comm-crossfitmunich",
@@ -758,7 +807,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "crossfitmunich"
+    "instagram": "crossfitmunich",
+    "interest": "crossfit"
   },
   {
     "id": "comm-opengymmunich",
@@ -772,7 +822,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "opengymmunich"
+    "instagram": "opengymmunich",
+    "interest": "sport"
   },
   {
     "id": "comm-munich-move",
@@ -786,7 +837,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichmove"
+    "instagram": "munichmove",
+    "interest": "running"
   },
   {
     "id": "comm-chique",
@@ -798,7 +850,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "kultur"
   },
   {
     "id": "comm-zarkosretenovic",
@@ -812,7 +865,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "zarkosretenovic"
+    "instagram": "zarkosretenovic",
+    "interest": "crossfit"
   },
   {
     "id": "comm-boost-zone",
@@ -828,7 +882,8 @@
     "size": "—",
     "instagram": "boost_zone",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "fitness"
   },
   {
     "id": "comm-klub-langer-menschen",
@@ -843,7 +898,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.klub-langer-menschen.de/bg/muenchen/",
-    "email": "leitung@klm-muenchen.de"
+    "email": "leitung@klm-muenchen.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-ebruslifestyleecke",
@@ -857,7 +913,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "ebruslifestyleecke"
+    "instagram": "ebruslifestyleecke",
+    "interest": "lifestyle"
   },
   {
     "id": "comm-mcg-munich-connect",
@@ -871,7 +928,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "whatsapp": "WhatsApp-Community"
+    "whatsapp": "WhatsApp-Community",
+    "interest": "networking"
   },
   {
     "id": "comm-ye-veranstaltungen-events",
@@ -883,7 +941,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "kultur"
   },
   {
     "id": "comm-diy-munich",
@@ -900,7 +959,8 @@
     "website": "https://www.diymunich.com/",
     "instagram": "diymunich",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "diy"
   },
   {
     "id": "comm-mehrere-buchclubs-treffen",
@@ -915,7 +975,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.muenchner-stadtbibliothek.de/buchclubs-lesekreise",
-    "email": "stb.leserservice@muenchen.de"
+    "email": "stb.leserservice@muenchen.de",
+    "interest": "bookclub"
   },
   {
     "id": "comm-munichesports",
@@ -930,7 +991,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "munichesports",
-    "whatsapp": "WhatsApp-Community"
+    "whatsapp": "WhatsApp-Community",
+    "interest": "games"
   },
   {
     "id": "comm-maxkiebacher",
@@ -944,7 +1006,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "maxkiebacher"
+    "instagram": "maxkiebacher",
+    "interest": "golf"
   },
   {
     "id": "comm-ihwt-munich",
@@ -956,12 +1019,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "kultur"
   },
   {
     "id": "comm-the-collective-flow",
     "name": "The Collective Flow",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -970,7 +1034,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "the_collective_flow"
+    "instagram": "the_collective_flow",
+    "interest": "pilates"
   },
   {
     "id": "comm-jumping-dinner",
@@ -983,7 +1048,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.jumpingdinner.de/deinestadt/muenchen",
-    "email": "info@jumpingdinner.de"
+    "email": "info@jumpingdinner.de",
+    "interest": "kultur"
   },
   {
     "id": "comm-zweidiereisen",
@@ -996,7 +1062,8 @@
     "pitch": "Food",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "food"
   },
   {
     "id": "comm-igsm",
@@ -1011,7 +1078,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.igsm.info/",
-    "email": "kontakt@igsm.info"
+    "email": "kontakt@igsm.info",
+    "interest": "surfing"
   },
   {
     "id": "comm-dallmayr-coffee-club",
@@ -1025,7 +1093,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.dallmayr.com/de/coffee-club/"
+    "website": "https://www.dallmayr.com/de/coffee-club/",
+    "interest": "coffee"
   },
   {
     "id": "comm-munich-girls-club",
@@ -1040,7 +1109,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "networking"
   },
   {
     "id": "comm-golf-mit-lukas",
@@ -1054,12 +1124,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "golf_mit_lukas"
+    "instagram": "golf_mit_lukas",
+    "interest": "golf"
   },
   {
     "id": "comm-immobilien-gruppe-josef",
     "name": "Immobilien-Gruppe Josef",
-    "category": "kultur",
+    "category": "founders",
     "tags": [
       "finanzielle bildung"
     ],
@@ -1068,7 +1139,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "whatsapp": "WhatsApp-Community"
+    "whatsapp": "WhatsApp-Community",
+    "interest": "finance"
   },
   {
     "id": "comm-run-and-chill-club-social-running-club-in-munich",
@@ -1084,7 +1156,8 @@
     "size": "—",
     "instagram": "runandchill.munich",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "running"
   },
   {
     "id": "comm-rominasfitnessjourney",
@@ -1098,7 +1171,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "rominasfitnessjourney"
+    "instagram": "rominasfitnessjourney",
+    "interest": "creator"
   },
   {
     "id": "comm-feelings-muc",
@@ -1112,7 +1186,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "feelings.muc"
+    "instagram": "feelings.muc",
+    "interest": "music"
   },
   {
     "id": "comm-fitness-ma",
@@ -1126,7 +1201,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "fitness_ma_"
+    "instagram": "fitness_ma_",
+    "interest": "creator"
   },
   {
     "id": "comm-ruckzuck-running",
@@ -1140,7 +1216,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "ruckzuck.running"
+    "instagram": "ruckzuck.running",
+    "interest": "running"
   },
   {
     "id": "comm-ollimuenchen",
@@ -1154,7 +1231,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "ollimuenchen"
+    "instagram": "ollimuenchen",
+    "interest": "creator"
   },
   {
     "id": "comm-clicqui-muc",
@@ -1168,7 +1246,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "clicqui_muc"
+    "instagram": "clicqui_muc",
+    "interest": "networking"
   },
   {
     "id": "comm-munichworkouts",
@@ -1182,12 +1261,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichworkouts"
+    "instagram": "munichworkouts",
+    "interest": "sport"
   },
   {
     "id": "comm-maishas-human-arts",
     "name": "maishas_human_arts",
-    "category": "kultur",
+    "category": "queer",
     "tags": [
       "divers"
     ],
@@ -1196,7 +1276,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "maishas_human_arts"
+    "instagram": "maishas_human_arts",
+    "interest": "queer"
   },
   {
     "id": "comm-gretaoto-munich",
@@ -1211,7 +1292,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "gretaoto_munich",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "food"
   },
   {
     "id": "comm-rostudiosworld",
@@ -1226,7 +1308,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "rostudiosworld",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "fitness"
   },
   {
     "id": "comm-eternity-healthclub",
@@ -1240,7 +1323,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "eternity.healthclub"
+    "instagram": "eternity.healthclub",
+    "interest": "fitness"
   },
   {
     "id": "comm-beat81",
@@ -1254,7 +1338,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "beat81"
+    "instagram": "beat81",
+    "interest": "fitness"
   },
   {
     "id": "comm-endorphinclubmunich",
@@ -1268,12 +1353,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "endorphinclubmunich"
+    "instagram": "endorphinclubmunich",
+    "interest": "networking"
   },
   {
     "id": "comm-padel-club-m-nchen",
     "name": "Padel Club München",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1283,7 +1369,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "padelclubmuenchen",
-    "email": "info@padelclubmuenchen.de"
+    "email": "info@padelclubmuenchen.de",
+    "interest": "padel"
   },
   {
     "id": "comm-munich-mma",
@@ -1298,7 +1385,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://munich-mma.de/",
-    "email": "team@munich-mma.de"
+    "email": "team@munich-mma.de",
+    "interest": "martial-arts"
   },
   {
     "id": "comm-alpenverein-m-nchen-oberland-dav",
@@ -1313,7 +1401,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.alpenverein-muenchen-oberland.de/",
-    "phone": "895517000"
+    "phone": "895517000",
+    "interest": "hiking"
   },
   {
     "id": "comm-zhs-zentraler-hochschulsport-m-nchen",
@@ -1327,7 +1416,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "zhs_muenchen"
+    "instagram": "zhs_muenchen",
+    "interest": "sport"
   },
   {
     "id": "comm-dav-sektion-bergfreunde-m-nchen",
@@ -1342,12 +1432,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.bergfreunde-muenchen.de/",
-    "phone": "81415294440"
+    "phone": "81415294440",
+    "interest": "hiking"
   },
   {
     "id": "comm-munichpadelbash",
     "name": "Munichpadelbash",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1357,12 +1448,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "munichpadelbash",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "padel"
   },
   {
     "id": "comm-scheck-club",
     "name": "Scheck Club",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1372,12 +1464,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://scheckclub.de/padel/",
-    "priority": "niedrig"
+    "priority": "niedrig",
+    "interest": "padel"
   },
   {
     "id": "comm-pickleball-crew",
     "name": "pickleball.crew",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "pickleball"
     ],
@@ -1388,12 +1481,13 @@
     "size": "—",
     "instagram": "pickleball.crew",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "padel"
   },
   {
     "id": "comm-munichpickleballclub",
     "name": "Munichpickleballclub",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "pickleball"
     ],
@@ -1402,7 +1496,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichpickleballclub"
+    "instagram": "munichpickleballclub",
+    "interest": "padel"
   },
   {
     "id": "comm-naturfreunde-ortsgruppe-m-nchen-ost-e-v",
@@ -1417,12 +1512,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://naturfreunde-muenchen-ost.de/",
-    "phone": "8943578595"
+    "phone": "8943578595",
+    "interest": "hiking"
   },
   {
     "id": "comm-munich-padel-club",
     "name": "Munich Padel Club",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1433,12 +1529,13 @@
     "size": "—",
     "instagram": "munich.padelclub",
     "whatsapp": "WhatsApp-Community",
-    "phone": "56935048278"
+    "phone": "56935048278",
+    "interest": "padel"
   },
   {
     "id": "comm-padelcrewmunich",
     "name": "padelcrewmunich",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1447,12 +1544,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "padelcrewmunich"
+    "instagram": "padelcrewmunich",
+    "interest": "padel"
   },
   {
     "id": "comm-padel-parranda",
     "name": "padel.parranda",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1461,12 +1559,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "padel.parranda"
+    "instagram": "padel.parranda",
+    "interest": "padel"
   },
   {
     "id": "comm-padelseasons",
     "name": "Padelseasons",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "padel"
     ],
@@ -1477,7 +1576,8 @@
     "size": "—",
     "instagram": "padelseasons",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "padel"
   },
   {
     "id": "comm-naturfreunde-deutschlands-bezirk-m-nchen-e-v",
@@ -1492,7 +1592,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.naturfreunde-bezirk-muenchen.de/",
-    "phone": "892015777"
+    "phone": "892015777",
+    "interest": "hiking"
   },
   {
     "id": "comm-globetrotter-wanderclub",
@@ -1507,7 +1608,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://globetrotter-wanderclub.de/",
-    "phone": "897600457"
+    "phone": "897600457",
+    "interest": "hiking"
   },
   {
     "id": "comm-wandergruppe-m-nchen-alex-wandergaudi",
@@ -1521,7 +1623,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "alex.munichstories"
+    "instagram": "alex.munichstories",
+    "interest": "hiking"
   },
   {
     "id": "comm-heavensgate-klettern-bouldern",
@@ -1535,12 +1638,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "heavensgate_klettern_bouldern"
+    "instagram": "heavensgate_klettern_bouldern",
+    "interest": "climbing"
   },
   {
     "id": "comm-patopickleball",
     "name": "patopickleball",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "pickleball"
     ],
@@ -1551,7 +1655,8 @@
     "size": "—",
     "instagram": "patopickleball",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "padel"
   },
   {
     "id": "comm-supermunich-friends",
@@ -1565,7 +1670,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "supermunich"
+    "instagram": "supermunich",
+    "interest": "creator"
   },
   {
     "id": "comm-kraxlkollektiv",
@@ -1580,7 +1686,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "kraxlkollektiv",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "climbing"
   },
   {
     "id": "comm-gruppe49ontop",
@@ -1595,7 +1702,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.49ontop.de/",
-    "email": "frank.viohl@49ontop.de"
+    "email": "frank.viohl@49ontop.de",
+    "interest": "hiking"
   },
   {
     "id": "comm-munich-new-in-town",
@@ -1609,7 +1717,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich_new_in_town"
+    "instagram": "munich_new_in_town",
+    "interest": "newintown"
   },
   {
     "id": "comm-maxx-arena-klettern-trampolin-lasertag",
@@ -1623,12 +1732,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "maxxarena"
+    "instagram": "maxxarena",
+    "interest": "climbing"
   },
   {
     "id": "comm-freeform-pilates",
     "name": "freeform.pilates",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -1637,7 +1747,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "freeform.pilates"
+    "instagram": "freeform.pilates",
+    "interest": "pilates"
   },
   {
     "id": "comm-yogaloftmunich",
@@ -1651,12 +1762,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yogaloftmunich"
+    "instagram": "yogaloftmunich",
+    "interest": "yoga"
   },
   {
     "id": "comm-pilates-sports-m-nchen",
     "name": "Pilates Sports München",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -1665,7 +1777,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://pilates-sports.com/de/startseite"
+    "website": "https://pilates-sports.com/de/startseite",
+    "interest": "pilates"
   },
   {
     "id": "comm-herspace-munich",
@@ -1679,7 +1792,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "herspace.munich"
+    "instagram": "herspace.munich",
+    "interest": "yoga"
   },
   {
     "id": "comm-verband-der-deutsch-amerikanischen-clubs-vdac",
@@ -1694,7 +1808,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://vdac.de/",
-    "email": "events@vdac.de"
+    "email": "events@vdac.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-yoga-nebenan",
@@ -1709,7 +1824,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.yoganebenan.de/",
-    "instagram": "yoga.nebenan"
+    "instagram": "yoga.nebenan",
+    "interest": "yoga"
   },
   {
     "id": "comm-citygems-munich",
@@ -1723,12 +1839,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "citygems_munich"
+    "instagram": "citygems_munich",
+    "interest": "creator"
   },
   {
     "id": "comm-badminton-club",
     "name": "Badminton Club",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "badminton"
     ],
@@ -1737,7 +1854,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "admin@ftm-schwabing.org"
+    "email": "admin@ftm-schwabing.org",
+    "interest": "tennis"
   },
   {
     "id": "comm-mymunichjournal",
@@ -1751,7 +1869,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "mymunichjournal"
+    "instagram": "mymunichjournal",
+    "interest": "creator"
   },
   {
     "id": "comm-deutsch-britische-gesellschaft-m-nchen",
@@ -1766,7 +1885,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.dbg-munich.de/",
-    "email": "programme@dbg-munich.de"
+    "email": "programme@dbg-munich.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-the-sanctuary",
@@ -1780,7 +1900,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://thesanctuary.me/"
+    "website": "https://thesanctuary.me/",
+    "interest": "yoga"
   },
   {
     "id": "comm-herrenbesuch-e-v-barbershop-herrenchor",
@@ -1792,12 +1913,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.herrenbesuch.net/"
+    "website": "https://www.herrenbesuch.net/",
+    "interest": "kultur"
   },
   {
     "id": "comm-m-nchner-pferdefreunde-e-v",
     "name": "Münchner Pferdefreunde e. V.",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "reiten"
     ],
@@ -1807,7 +1929,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.verein-muenchner-pferdefreunde.de/",
-    "email": "erstervorstand@vmpf.de"
+    "email": "erstervorstand@vmpf.de",
+    "interest": "horseriding"
   },
   {
     "id": "comm-gea-german-english-association",
@@ -1822,7 +1945,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "http://www.gea-muc.de/",
-    "email": "programme@gea-muc.de"
+    "email": "programme@gea-muc.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-stitch-n-bitch",
@@ -1837,7 +1961,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "instagram": "fsi.kunstgeschichte",
-    "email": "snb.muenchen@yahoo.de"
+    "email": "snb.muenchen@yahoo.de",
+    "interest": "diy"
   },
   {
     "id": "comm-munich-rugby-club",
@@ -1849,7 +1974,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://mrfc.de/"
+    "website": "https://mrfc.de/",
+    "interest": "kultur"
   },
   {
     "id": "comm-giuliakowalski",
@@ -1863,7 +1989,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "giuliakowalski"
+    "instagram": "giuliakowalski",
+    "interest": "yoga"
   },
   {
     "id": "comm-at-peace",
@@ -1880,12 +2007,13 @@
     "website": "https://www.atpeace.eu/",
     "instagram": "studio_atpeace",
     "whatsapp": "WhatsApp-Community",
-    "phone": "4915164961675"
+    "phone": "4915164961675",
+    "interest": "yoga"
   },
   {
     "id": "comm-reformer-club",
     "name": "reformer.club",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -1894,7 +2022,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "reformer.club"
+    "instagram": "reformer.club",
+    "interest": "pilates"
   },
   {
     "id": "comm-yogaonthe-move",
@@ -1908,7 +2037,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yogaonthe.move"
+    "instagram": "yogaonthe.move",
+    "interest": "yoga"
   },
   {
     "id": "comm-session-labs",
@@ -1922,7 +2052,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "session.labs"
+    "instagram": "session.labs",
+    "interest": "yoga"
   },
   {
     "id": "comm-munich-hash-house-harriers",
@@ -1937,12 +2068,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://mh3.beer/",
-    "email": "MunichH3+subscribe@groups.io"
+    "email": "MunichH3+subscribe@groups.io",
+    "interest": "running"
   },
   {
     "id": "comm-momaxpilates",
     "name": "momaxpilates",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -1951,12 +2083,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "momaxpilates"
+    "instagram": "momaxpilates",
+    "interest": "pilates"
   },
   {
     "id": "comm-studentenreitgruppe-aus-m-nchen-arc-m-nchen",
     "name": "Studentenreitgruppe aus München – ARC München",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "reiten"
     ],
@@ -1965,12 +2098,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "arc_muenchen"
+    "instagram": "arc_muenchen",
+    "interest": "horseriding"
   },
   {
     "id": "comm-skigaudi",
     "name": "SkiGaudi",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "wintersport"
     ],
@@ -1979,12 +2113,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "skigaudi.official"
+    "instagram": "skigaudi.official",
+    "interest": "wintersport"
   },
   {
     "id": "comm-blush-munich",
     "name": "blush.munich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -1993,7 +2128,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "blush.munich"
+    "instagram": "blush.munich",
+    "interest": "pilates"
   },
   {
     "id": "comm-australien-freunde-m-nchen",
@@ -2007,7 +2143,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "http://www.australienfreundemuenchen.de/"
+    "website": "http://www.australienfreundemuenchen.de/",
+    "interest": "newintown"
   },
   {
     "id": "comm-canadian-club",
@@ -2021,12 +2158,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.thelocal.de/"
+    "website": "https://www.thelocal.de/",
+    "interest": "newintown"
   },
   {
     "id": "comm-pilatesinmunich",
     "name": "pilatesinmunich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2035,12 +2173,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "pilatesinmunich"
+    "instagram": "pilatesinmunich",
+    "interest": "pilates"
   },
   {
     "id": "comm-beats-frogs",
     "name": "Beats & Frogs",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2049,7 +2188,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://beats-and-frogs.de/"
+    "website": "https://beats-and-frogs.de/",
+    "interest": "pilates"
   },
   {
     "id": "comm-deutsch-irischer-freundeskreis-bayern-e-v",
@@ -2063,7 +2203,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "veranstaltungen@dif-bayern.de"
+    "email": "veranstaltungen@dif-bayern.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-american-german-business-club",
@@ -2079,7 +2220,8 @@
     "size": "—",
     "website": "https://agbc-munich.com/contact",
     "email": "admin@agbc-munich.com",
-    "phone": "55028129"
+    "phone": "55028129",
+    "interest": "newintown"
   },
   {
     "id": "comm-yogalovers",
@@ -2093,7 +2235,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yogaloverscommunity"
+    "instagram": "yogaloverscommunity",
+    "interest": "yoga"
   },
   {
     "id": "comm-amerika-haus",
@@ -2107,12 +2250,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "info@amerikahaus.de"
+    "email": "info@amerikahaus.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-thepilatesatelier-munich",
     "name": "thepilatesatelier_munich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2121,7 +2265,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "thepilatesatelier_munich"
+    "instagram": "thepilatesatelier_munich",
+    "interest": "pilates"
   },
   {
     "id": "comm-german-canadian-society",
@@ -2136,12 +2281,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "http://www.dkg-online.de/",
-    "email": "info@dkg-online.de"
+    "email": "info@dkg-online.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-studio-core-emotion",
     "name": "Studio Core & Emotion",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2150,7 +2296,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://studio-core-and-emotion.de/"
+    "website": "https://studio-core-and-emotion.de/",
+    "interest": "pilates"
   },
   {
     "id": "comm-k-nstlersozialwerk",
@@ -2162,7 +2309,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://paul-klinger-ksw.de/"
+    "website": "https://paul-klinger-ksw.de/",
+    "interest": "kultur"
   },
   {
     "id": "comm-rapha-clubhouse-munich",
@@ -2176,7 +2324,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://content.rapha.cc/de/de/clubhouses/munich"
+    "website": "https://content.rapha.cc/de/de/clubhouses/munich",
+    "interest": "cycling"
   },
   {
     "id": "comm-urbanyogamunich",
@@ -2192,7 +2341,8 @@
     "size": "—",
     "instagram": "urbanyogamunich",
     "whatsapp": "WhatsApp-Community",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "yoga"
   },
   {
     "id": "comm-munich-toastmaster-clubs",
@@ -2204,7 +2354,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.munich-toastmasters.de/"
+    "website": "https://www.munich-toastmasters.de/",
+    "interest": "kultur"
   },
   {
     "id": "comm-daysofmunich",
@@ -2218,7 +2369,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "daysofmunich"
+    "instagram": "daysofmunich",
+    "interest": "creator"
   },
   {
     "id": "comm-freizeitgruppe-m-nchen",
@@ -2233,7 +2385,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.xn--mnchner-freizeitclub-pec.de/",
-    "email": "manuela@freizeit-clubs.de"
+    "email": "manuela@freizeit-clubs.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-pop-up-yoga",
@@ -2248,12 +2401,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.popupyogamuc.com/",
-    "instagram": "popupyogamuc"
+    "instagram": "popupyogamuc",
+    "interest": "yoga"
   },
   {
     "id": "comm-munichpilates",
     "name": "munichpilates",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2262,7 +2416,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichpilates"
+    "instagram": "munichpilates",
+    "interest": "pilates"
   },
   {
     "id": "comm-m97-forum",
@@ -2276,7 +2431,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.facebook.com/M97Moutainbikegruppe/"
+    "website": "https://www.facebook.com/M97Moutainbikegruppe/",
+    "interest": "cycling"
   },
   {
     "id": "comm-english-golfing-society",
@@ -2290,7 +2446,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://egsmunich.de/"
+    "website": "https://egsmunich.de/",
+    "interest": "golf"
   },
   {
     "id": "comm-munich-scottish-association",
@@ -2304,7 +2461,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "info@munichscottish.de"
+    "email": "info@munichscottish.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-german-american-men-s-club",
@@ -2319,12 +2477,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.dahc-muenchen.de/",
-    "email": "praesident@dahc-muenchen.de"
+    "email": "praesident@dahc-muenchen.de",
+    "interest": "newintown"
   },
   {
     "id": "comm-lupo-tennis",
     "name": "Lupo Tennis",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "tennis"
     ],
@@ -2333,7 +2492,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://lupo-tennis.de/"
+    "website": "https://lupo-tennis.de/",
+    "interest": "tennis"
   },
   {
     "id": "comm-radfahren-viele-links",
@@ -2345,7 +2505,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.wurzlwerk.de/2017/03/16/rennrad-cyclocross-mountainbike-gruppen-und-treffs-in-muenchen/"
+    "website": "https://www.wurzlwerk.de/2017/03/16/rennrad-cyclocross-mountainbike-gruppen-und-treffs-in-muenchen/",
+    "interest": "kultur"
   },
   {
     "id": "comm-gleitschirm-stammtisch-bodenlos",
@@ -2357,7 +2518,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.bodenlos.de/"
+    "website": "https://www.bodenlos.de/",
+    "interest": "kultur"
   },
   {
     "id": "comm-gemeinsamstricken",
@@ -2372,12 +2534,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://gemeinsamstricken.blogspot.com/",
-    "email": "muenchner-strickeria@gmx.de"
+    "email": "muenchner-strickeria@gmx.de",
+    "interest": "diy"
   },
   {
     "id": "comm-tennis-im-msc",
     "name": "Tennis im MSC",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "tennis"
     ],
@@ -2386,23 +2549,25 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.muenchner-sportclub.de/tennis/"
+    "website": "https://www.muenchner-sportclub.de/tennis/",
+    "interest": "tennis"
   },
   {
     "id": "comm-flow-munich",
     "name": "flow.munich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [],
     "neighborhood": "München",
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "pilates"
   },
   {
     "id": "comm-puritepilatesmunich",
     "name": "puritepilatesmunich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2411,7 +2576,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "puritepilatesmunich"
+    "instagram": "puritepilatesmunich",
+    "interest": "pilates"
   },
   {
     "id": "comm-biker-union",
@@ -2423,12 +2589,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://bikerunion.de/c2/?q=node/63"
+    "website": "https://bikerunion.de/c2/?q=node/63",
+    "interest": "kultur"
   },
   {
     "id": "comm-munich-international-ski-club",
     "name": "Munich International Ski Club",
-    "category": "kultur",
+    "category": "sport",
     "tags": [
       "wintersport"
     ],
@@ -2437,7 +2604,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich_skiclub"
+    "instagram": "munich_skiclub",
+    "interest": "wintersport"
   },
   {
     "id": "comm-toytown-munich",
@@ -2451,7 +2619,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "http://www.toytowngermany.com/munich"
+    "website": "http://www.toytowngermany.com/munich",
+    "interest": "newintown"
   },
   {
     "id": "comm-yogabeemunich",
@@ -2465,7 +2634,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yogabeemunich"
+    "instagram": "yogabeemunich",
+    "interest": "yoga"
   },
   {
     "id": "comm-munich-cowboys",
@@ -2477,7 +2647,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.munich-cowboys.de/"
+    "website": "https://www.munich-cowboys.de/",
+    "interest": "kultur"
   },
   {
     "id": "comm-munich-ladies-choir",
@@ -2490,12 +2661,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.muenchner-frauenchor.de/",
-    "email": "look@muenchner-frauenchor.de"
+    "email": "look@muenchner-frauenchor.de",
+    "interest": "kultur"
   },
   {
     "id": "comm-be-community",
     "name": "be community",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "pilates"
     ],
@@ -2504,7 +2676,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.becommunity.online/"
+    "website": "https://www.becommunity.online/",
+    "interest": "pilates"
   },
   {
     "id": "comm-kmkv-superjeilezick",
@@ -2516,7 +2689,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "kmkv.superjeilezick"
+    "instagram": "kmkv.superjeilezick",
+    "interest": "kultur"
   },
   {
     "id": "comm-bryony-cecil",
@@ -2530,7 +2704,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bryony.cecil"
+    "instagram": "bryony.cecil",
+    "interest": "yoga"
   },
   {
     "id": "comm-thestudioyogamunich",
@@ -2544,7 +2719,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "thestudioyogamunich"
+    "instagram": "thestudioyogamunich",
+    "interest": "yoga"
   },
   {
     "id": "comm-casacalma-yoga",
@@ -2558,7 +2734,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "casacalma.yoga"
+    "instagram": "casacalma.yoga",
+    "interest": "yoga"
   },
   {
     "id": "comm-flux-community",
@@ -2573,7 +2750,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.flux-munich.com/activities/flux-community-yoga",
-    "instagram": "flux_munich"
+    "instagram": "flux_munich",
+    "interest": "yoga"
   },
   {
     "id": "comm-friendsandfiction",
@@ -2585,7 +2763,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://friendsandfiction.com/"
+    "website": "https://friendsandfiction.com/",
+    "interest": "kultur"
   },
   {
     "id": "comm-bookclubandfriends",
@@ -2600,7 +2779,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.bookclubandfriends.de/",
-    "email": "julia@bookclubandfriends.de"
+    "email": "julia@bookclubandfriends.de",
+    "interest": "bookclub"
   },
   {
     "id": "comm-munich-caledonians",
@@ -2615,12 +2795,13 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "http://www.the-munich-caledonians.org/",
-    "email": "info@the-munich-caledonians.org"
+    "email": "info@the-munich-caledonians.org",
+    "interest": "newintown"
   },
   {
     "id": "comm-salsa-gruppe",
     "name": "Salsa-Gruppe",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -2630,7 +2811,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "http://www.clublatino.de/salsa-veranstaltungen-muenchen/salsa-portal-muenchen-startseite/",
-    "email": "info@clublatino.de"
+    "email": "info@clublatino.de",
+    "interest": "dance"
   },
   {
     "id": "comm-aiblinger-zockerbande",
@@ -2644,7 +2826,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://spielwiesn.de/sw/spieletreffs"
+    "website": "https://spielwiesn.de/sw/spieletreffs",
+    "interest": "games"
   },
   {
     "id": "comm-grafinger-spielb-ren",
@@ -2658,12 +2841,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "werner.liebald@web.de"
+    "email": "werner.liebald@web.de",
+    "interest": "games"
   },
   {
     "id": "comm-community-dance-m-nchen",
     "name": "Community Dance München",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -2672,7 +2856,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "info@uteschmitt.de"
+    "email": "info@uteschmitt.de",
+    "interest": "dance"
   },
   {
     "id": "comm-blix",
@@ -2686,7 +2871,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "blix_munich"
+    "instagram": "blix_munich",
+    "interest": "photo"
   },
   {
     "id": "comm-obvs-studios",
@@ -2700,7 +2886,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "obvs_studios"
+    "instagram": "obvs_studios",
+    "interest": "nightlife"
   },
   {
     "id": "comm-games-bavaria",
@@ -2714,7 +2901,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.games-bavaria.com/die-gamerei/"
+    "website": "https://www.games-bavaria.com/die-gamerei/",
+    "interest": "games"
   },
   {
     "id": "comm-kunstlabor-munich",
@@ -2728,7 +2916,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "kunstlabor.munich"
+    "instagram": "kunstlabor.munich",
+    "interest": "art"
   },
   {
     "id": "comm-atelier-schauen",
@@ -2742,7 +2931,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "atelier.schauen"
+    "instagram": "atelier.schauen",
+    "interest": "art"
   },
   {
     "id": "comm-saturo-event",
@@ -2756,7 +2946,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "saturo.event"
+    "instagram": "saturo.event",
+    "interest": "nightlife"
   },
   {
     "id": "comm-superplusstudio",
@@ -2770,7 +2961,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "superplusstudio"
+    "instagram": "superplusstudio",
+    "interest": "art"
   },
   {
     "id": "comm-sissyisabellafotografie",
@@ -2784,12 +2976,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sissyisabellafotografie"
+    "instagram": "sissyisabellafotografie",
+    "interest": "photo"
   },
   {
     "id": "comm-munich-openair-dance-community",
     "name": "munich_openair_dance_community",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -2798,7 +2991,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich_openair_dance_community"
+    "instagram": "munich_openair_dance_community",
+    "interest": "dance"
   },
   {
     "id": "comm-munichinternationalladies",
@@ -2810,7 +3004,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichinternationalladies"
+    "instagram": "munichinternationalladies",
+    "interest": "kultur"
   },
   {
     "id": "comm-kunsthallemuc",
@@ -2824,7 +3019,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "kunsthallemuc"
+    "instagram": "kunsthallemuc",
+    "interest": "art"
   },
   {
     "id": "comm-cvjm",
@@ -2839,7 +3035,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://cvjm-muenchen.org/projekte/gaming",
-    "email": "gaming@cvjm-muenchen.de"
+    "email": "gaming@cvjm-muenchen.de",
+    "interest": "games"
   },
   {
     "id": "comm-yo-franklin-art",
@@ -2853,7 +3050,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yo_franklin_art"
+    "instagram": "yo_franklin_art",
+    "interest": "art"
   },
   {
     "id": "comm-spielefreunde-m-nchen",
@@ -2868,7 +3066,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.spielefreunde-muenchen.de/",
-    "email": "info@spielefreunde-muenchen.de"
+    "email": "info@spielefreunde-muenchen.de",
+    "interest": "games"
   },
   {
     "id": "comm-hei",
@@ -2883,7 +3082,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.hei-muenchen.de/",
-    "email": "welcome@hei-muenchen.de"
+    "email": "welcome@hei-muenchen.de",
+    "interest": "diy"
   },
   {
     "id": "comm-m-nchner-camera-club",
@@ -2898,7 +3098,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.muenchner-camera-club.de/mcc/Links/index.shtml",
-    "email": "clubleiter@muenchner-camera-club.de"
+    "email": "clubleiter@muenchner-camera-club.de",
+    "interest": "photo"
   },
   {
     "id": "comm-munich-art-district",
@@ -2912,12 +3113,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich_art_district"
+    "instagram": "munich_art_district",
+    "interest": "art"
   },
   {
     "id": "comm-jumpro-art",
     "name": "Jumpro Art",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -2927,7 +3129,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://ecstatic-conscious-dance-muenchen.de/",
-    "email": "info@improart.de"
+    "email": "info@improart.de",
+    "interest": "dance"
   },
   {
     "id": "comm-susanne-felgenhauer-art",
@@ -2941,7 +3144,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "susanne_felgenhauer_art"
+    "instagram": "susanne_felgenhauer_art",
+    "interest": "art"
   },
   {
     "id": "comm-superhouseclub-munich",
@@ -2955,7 +3159,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "superhouseclub.munich"
+    "instagram": "superhouseclub.munich",
+    "interest": "nightlife"
   },
   {
     "id": "comm-rituals-ofc",
@@ -2969,12 +3174,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "rituals.ofc"
+    "instagram": "rituals.ofc",
+    "interest": "nightlife"
   },
   {
     "id": "comm-kefai-munich",
     "name": "kefai.munich",
-    "category": "kultur",
+    "category": "founders",
     "tags": [
       "networking"
     ],
@@ -2983,7 +3189,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "kefai.munich"
+    "instagram": "kefai.munich",
+    "interest": "networking"
   },
   {
     "id": "comm-kunstverein-mu-nchen",
@@ -2997,7 +3204,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "kunstvereinmuenchen"
+    "instagram": "kunstvereinmuenchen",
+    "interest": "art"
   },
   {
     "id": "comm-gayromeo-club-spieleabend-m-nchen",
@@ -3011,7 +3219,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "stefan@gaytrotter.de"
+    "email": "stefan@gaytrotter.de",
+    "interest": "games"
   },
   {
     "id": "comm-geheimkonzerte",
@@ -3025,7 +3234,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "geheimkonzerte"
+    "instagram": "geheimkonzerte",
+    "interest": "music"
   },
   {
     "id": "comm-lost-in-perfection",
@@ -3040,7 +3250,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.lost-in-perfection.de/?srsltid=AfmBOoqPDe4BMKAQVvR-WkxTu_DLsgb1jaNxsUBIEpyUzWScql4gy_Di",
-    "email": "info@lost-in-perfection.de"
+    "email": "info@lost-in-perfection.de",
+    "interest": "diy"
   },
   {
     "id": "comm-nightlife-munich",
@@ -3054,7 +3265,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "nightlife_munich"
+    "instagram": "nightlife_munich",
+    "interest": "nightlife"
   },
   {
     "id": "comm-the-happy-club",
@@ -3069,7 +3281,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.thehappyclub.de/workshops",
-    "email": "hallo@thehappyclub.de"
+    "email": "hallo@thehappyclub.de",
+    "interest": "diy"
   },
   {
     "id": "comm-jounisto",
@@ -3083,7 +3296,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "jounisto"
+    "instagram": "jounisto",
+    "interest": "cooking"
   },
   {
     "id": "comm-dashalloprojekt",
@@ -3097,7 +3311,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "dashalloprojekt"
+    "instagram": "dashalloprojekt",
+    "interest": "games"
   },
   {
     "id": "comm-openartmunich",
@@ -3111,7 +3326,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "openartmunich"
+    "instagram": "openartmunich",
+    "interest": "art"
   },
   {
     "id": "comm-munichartgallery",
@@ -3125,7 +3341,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichartgallery"
+    "instagram": "munichartgallery",
+    "interest": "art"
   },
   {
     "id": "comm-munichtrend",
@@ -3139,12 +3356,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichtrend"
+    "instagram": "munichtrend",
+    "interest": "nightlife"
   },
   {
     "id": "comm-tws-tanzschule",
     "name": "TWS Tanzschule",
-    "category": "sport",
+    "category": "kultur",
     "tags": [
       "tanzen"
     ],
@@ -3154,7 +3372,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://www.tanz.de/tanzparty-muenchen",
-    "email": "info@tanz.de"
+    "email": "info@tanz.de",
+    "interest": "dance"
   },
   {
     "id": "comm-freiesmusikzentrummunich",
@@ -3168,7 +3387,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "freiesmusikzentrummunich"
+    "instagram": "freiesmusikzentrummunich",
+    "interest": "music"
   },
   {
     "id": "comm-brettspieletreff-in-m-nchen-oberf-hring",
@@ -3182,7 +3402,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "email": "spieletreff-pep@gmx.de"
+    "email": "spieletreff-pep@gmx.de",
+    "interest": "games"
   },
   {
     "id": "comm-tuerkenstrasse",
@@ -3194,7 +3415,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "tuerkenstrasse"
+    "instagram": "tuerkenstrasse",
+    "interest": "kultur"
   },
   {
     "id": "comm-specialtycoffee",
@@ -3208,7 +3430,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "specialtycoffeemunich"
+    "instagram": "specialtycoffeemunich",
+    "interest": "coffee"
   },
   {
     "id": "comm-muenchner-konzertchor",
@@ -3222,7 +3445,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "muenchner_konzertchor"
+    "instagram": "muenchner_konzertchor",
+    "interest": "music"
   },
   {
     "id": "comm-communitykitchen-muc",
@@ -3234,7 +3458,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "communitykitchen_muc"
+    "instagram": "communitykitchen_muc",
+    "interest": "kultur"
   },
   {
     "id": "comm-munich-social-gaming",
@@ -3248,7 +3473,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.meetup.com/munich-social-gaming/"
+    "website": "https://www.meetup.com/munich-social-gaming/",
+    "interest": "games"
   },
   {
     "id": "comm-bgmuc",
@@ -3263,7 +3489,8 @@
     "frequency": "wechselnd",
     "size": "—",
     "website": "https://bgmuc.de/",
-    "email": "kontakt@bgmuc.de"
+    "email": "kontakt@bgmuc.de",
+    "interest": "games"
   },
   {
     "id": "comm-spielf-chse-m-nchen",
@@ -3276,7 +3503,8 @@
     "pitch": "Brettspiele",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "games"
   },
   {
     "id": "comm-mehrere-buchclubs",
@@ -3290,7 +3518,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://leemos.de/bookclub?place=&latitude=&longitude=&hideFull=0&selectedTypes=3&selectedGenres=&selectedMeetupOnly=0&selectedNewOnly=0"
+    "website": "https://leemos.de/bookclub?place=&latitude=&longitude=&hideFull=0&selectedTypes=3&selectedGenres=&selectedMeetupOnly=0&selectedNewOnly=0",
+    "interest": "bookclub"
   },
   {
     "id": "comm-ananas-buchclub",
@@ -3306,7 +3535,8 @@
     "size": "—",
     "website": "https://ananas-buchclub.de/#home/",
     "email": "info@ananas-buchclub.de",
-    "priority": "hoch"
+    "priority": "hoch",
+    "interest": "bookclub"
   },
   {
     "id": "comm-elevate-buchclub-muenchen",
@@ -3320,7 +3550,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "elevate_buchclub_muenchen"
+    "instagram": "elevate_buchclub_muenchen",
+    "interest": "bookclub"
   },
   {
     "id": "comm-queergelesen-muc",
@@ -3334,7 +3565,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "queergelesen_muc"
+    "instagram": "queergelesen_muc",
+    "interest": "bookclub"
   },
   {
     "id": "comm-gif-me-books",
@@ -3348,7 +3580,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "gif.me.books"
+    "instagram": "gif.me.books",
+    "interest": "bookclub"
   },
   {
     "id": "comm-luisazickler",
@@ -3362,7 +3595,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "luisazickler"
+    "instagram": "luisazickler",
+    "interest": "creator"
   },
   {
     "id": "comm-irgendwiediemarie",
@@ -3376,7 +3610,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "irgendwiediemarie"
+    "instagram": "irgendwiediemarie",
+    "interest": "creator"
   },
   {
     "id": "comm-lauraanatalie",
@@ -3390,12 +3625,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "lauraanatalie_"
+    "instagram": "lauraanatalie_",
+    "interest": "creator"
   },
   {
     "id": "comm-movewithreform",
     "name": "movewithreform",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "yoga & pilates"
     ],
@@ -3404,7 +3640,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "movewithreform"
+    "instagram": "movewithreform",
+    "interest": "yoga"
   },
   {
     "id": "comm-muc-girlsandgatherings",
@@ -3416,7 +3653,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "muc_girlsandgatherings"
+    "instagram": "muc_girlsandgatherings",
+    "interest": "kultur"
   },
   {
     "id": "comm-laurafranziskaaa",
@@ -3430,7 +3668,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "laurafranziskaaa"
+    "instagram": "laurafranziskaaa",
+    "interest": "creator"
   },
   {
     "id": "comm-alinaluisa",
@@ -3444,7 +3683,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "alinaluisa__"
+    "instagram": "alinaluisa__",
+    "interest": "creator"
   },
   {
     "id": "comm-sophiieengel",
@@ -3458,7 +3698,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sophiieengel"
+    "instagram": "sophiieengel",
+    "interest": "creator"
   },
   {
     "id": "comm-alina-es",
@@ -3472,7 +3713,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "alina.es"
+    "instagram": "alina.es",
+    "interest": "creator"
   },
   {
     "id": "comm-neleahlbrn",
@@ -3486,7 +3728,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "neleahlbrn"
+    "instagram": "neleahlbrn",
+    "interest": "creator"
   },
   {
     "id": "comm-lucaxcarolin",
@@ -3500,7 +3743,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "lucaxcarolin"
+    "instagram": "lucaxcarolin",
+    "interest": "creator"
   },
   {
     "id": "comm-iamhearteyes",
@@ -3514,7 +3758,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "iamhearteyes"
+    "instagram": "iamhearteyes",
+    "interest": "creator"
   },
   {
     "id": "comm-munichcorporategirl",
@@ -3528,7 +3773,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichcorporategirl"
+    "instagram": "munichcorporategirl",
+    "interest": "creator"
   },
   {
     "id": "comm-sarahmarialinder",
@@ -3542,7 +3788,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sarahmarialinder"
+    "instagram": "sarahmarialinder",
+    "interest": "creator"
   },
   {
     "id": "comm-miria-hny",
@@ -3556,7 +3803,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "miria.hny"
+    "instagram": "miria.hny",
+    "interest": "creator"
   },
   {
     "id": "comm-marah-cgn",
@@ -3570,7 +3818,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "marah_cgn"
+    "instagram": "marah_cgn",
+    "interest": "creator"
   },
   {
     "id": "comm-lauramariesoons",
@@ -3584,7 +3833,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "lauramariesoons"
+    "instagram": "lauramariesoons",
+    "interest": "creator"
   },
   {
     "id": "comm-lana-ruee",
@@ -3598,7 +3848,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "lana.ruee"
+    "instagram": "lana.ruee",
+    "interest": "creator"
   },
   {
     "id": "comm-aless-hrm",
@@ -3612,7 +3863,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "aless.hrm"
+    "instagram": "aless.hrm",
+    "interest": "creator"
   },
   {
     "id": "comm-broke-today",
@@ -3626,7 +3878,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "broke.today"
+    "instagram": "broke.today",
+    "interest": "art"
   },
   {
     "id": "comm-mindspace-germany",
@@ -3638,7 +3891,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "mindspace_germany"
+    "instagram": "mindspace_germany",
+    "interest": "kultur"
   },
   {
     "id": "comm-allin-move",
@@ -3652,7 +3906,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "allin.move"
+    "instagram": "allin.move",
+    "interest": "running"
   },
   {
     "id": "comm-inuma",
@@ -3666,7 +3921,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "website": "https://www.inuma.space/"
+    "website": "https://www.inuma.space/",
+    "interest": "running"
   },
   {
     "id": "comm-munichmove",
@@ -3680,7 +3936,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichmove"
+    "instagram": "munichmove",
+    "interest": "sport"
   },
   {
     "id": "comm-tutti-studios",
@@ -3694,7 +3951,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "tutti_studios"
+    "instagram": "tutti_studios",
+    "interest": "fitness"
   },
   {
     "id": "comm-nopbclub-munich",
@@ -3708,7 +3966,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "nopbclub.munich"
+    "instagram": "nopbclub.munich",
+    "interest": "running"
   },
   {
     "id": "comm-freanks-athletes-club",
@@ -3722,7 +3981,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "freanks.athletes.club"
+    "instagram": "freanks.athletes.club",
+    "interest": "running"
   },
   {
     "id": "comm-becca-kinio-becommunity-pilates",
@@ -3733,7 +3993,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-claudia-baumann-at-peace-yoga",
@@ -3744,7 +4005,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-j-lide-erdem-sober-community-m-nchen",
@@ -3755,7 +4017,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-nathalie-kaiser-geheimtipp-m-nchen",
@@ -3766,7 +4029,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-pop-up-yoga-m-nchen",
@@ -3777,7 +4041,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-tuerkenstrasse-ig",
@@ -3788,7 +4053,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-munich-girls-gatherings-ig",
@@ -3799,7 +4065,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-mila-munich-international-ladies-association",
@@ -3810,7 +4077,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-munich-mountain-girls-munichmountaingirls",
@@ -3823,7 +4091,8 @@
     "pitch": "Wandern",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "hiking"
   },
   {
     "id": "comm-m-nchen-moms-muenchen-moms",
@@ -3836,12 +4105,13 @@
     "pitch": "Connection",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "networking"
   },
   {
     "id": "comm-beauty-club-m-nchen-beautyclub-muenchen-1",
     "name": "Beauty Club München (@beautyclub.muenchen.1)",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "beauty"
     ],
@@ -3849,7 +4119,8 @@
     "pitch": "Beauty",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "wellness"
   },
   {
     "id": "comm-stuwerkmuc-vmsi-m-nchner-studierende",
@@ -3860,7 +4131,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-center-for-mindfulness-m-nchen-center-for-mindfulness-de",
@@ -3871,7 +4143,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-mbsr-m-nchen-mbsr-muenchen-net",
@@ -3882,7 +4155,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-berstunde-m-nchen-ueberstunde-com",
@@ -3893,7 +4167,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-werk1-werk1-com",
@@ -3904,7 +4179,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-fasercafe-muenchen-fasercafe-de",
@@ -3915,7 +4191,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-lost-in-perfection-lost-in-perfection-de",
@@ -3926,7 +4203,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-mia-san-foodies-miasanfoodies",
@@ -3937,7 +4215,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-rc-schwalben-munich-super-cross-cyclocross",
@@ -3948,12 +4227,13 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-cava-community",
     "name": "Cava Community",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "gesundheit & langlebigkeit"
     ],
@@ -3962,7 +4242,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "cava_community"
+    "instagram": "cava_community",
+    "interest": "wellness"
   },
   {
     "id": "comm-5am-club",
@@ -3976,7 +4257,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "5amrunclub_muc_east"
+    "instagram": "5amrunclub_muc_east",
+    "interest": "running"
   },
   {
     "id": "comm-ray-roadrunner",
@@ -3990,7 +4272,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "ray.roadrunner"
+    "instagram": "ray.roadrunner",
+    "interest": "running"
   },
   {
     "id": "comm-team-nvrstp",
@@ -4004,7 +4287,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "team.nvrstp"
+    "instagram": "team.nvrstp",
+    "interest": "running"
   },
   {
     "id": "comm-limitlezz-community",
@@ -4018,7 +4302,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "limitlezz.community"
+    "instagram": "limitlezz.community",
+    "interest": "fitness"
   },
   {
     "id": "comm-specialized-munich",
@@ -4032,7 +4317,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "specialized.munich"
+    "instagram": "specialized.munich",
+    "interest": "cycling"
   },
   {
     "id": "comm-fcf-club",
@@ -4046,7 +4332,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "fcf.club"
+    "instagram": "fcf.club",
+    "interest": "running"
   },
   {
     "id": "comm-gbm-cyclingclub",
@@ -4060,7 +4347,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "gbm_cyclingclub"
+    "instagram": "gbm_cyclingclub",
+    "interest": "cycling"
   },
   {
     "id": "comm-angeliqueur",
@@ -4074,7 +4362,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "angeliqueur"
+    "instagram": "angeliqueur",
+    "interest": "drinks"
   },
   {
     "id": "comm-munichbarcommunity",
@@ -4088,7 +4377,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichbarcommunity"
+    "instagram": "munichbarcommunity",
+    "interest": "drinks"
   },
   {
     "id": "comm-bavaria-social",
@@ -4102,12 +4392,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bavaria.social"
+    "instagram": "bavaria.social",
+    "interest": "photo"
   },
   {
     "id": "comm-hofstatt-munich",
     "name": "hofstatt_munich",
-    "category": "kultur",
+    "category": "queer",
     "tags": [
       "divers"
     ],
@@ -4116,12 +4407,13 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "hofstatt_munich"
+    "instagram": "hofstatt_munich",
+    "interest": "queer"
   },
   {
     "id": "comm-sweatclub-of",
     "name": "sweatclub.of",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "wellness"
     ],
@@ -4130,7 +4422,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sweatclub.of"
+    "instagram": "sweatclub.of",
+    "interest": "wellness"
   },
   {
     "id": "comm-pure-munich",
@@ -4144,7 +4437,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "pure.munich"
+    "instagram": "pure.munich",
+    "interest": "running"
   },
   {
     "id": "comm-sunrise-striders",
@@ -4158,7 +4452,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "sunrise_striders"
+    "instagram": "sunrise_striders",
+    "interest": "running"
   },
   {
     "id": "comm-bandoleros-muc",
@@ -4172,7 +4467,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bandoleros_muc"
+    "instagram": "bandoleros_muc",
+    "interest": "running"
   },
   {
     "id": "comm-tribeperformance-official",
@@ -4186,7 +4482,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "tribeperformance.official"
+    "instagram": "tribeperformance.official",
+    "interest": "running"
   },
   {
     "id": "comm-beatleticsclub",
@@ -4200,7 +4497,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "beatleticsclub"
+    "instagram": "beatleticsclub",
+    "interest": "fitness"
   },
   {
     "id": "comm-munich-social-club",
@@ -4212,7 +4510,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich.social.club"
+    "instagram": "munich.social.club",
+    "interest": "kultur"
   },
   {
     "id": "comm-bladenightmuenchen",
@@ -4224,7 +4523,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bladenightmuenchen"
+    "instagram": "bladenightmuenchen",
+    "interest": "kultur"
   },
   {
     "id": "comm-muenchener-meute",
@@ -4236,7 +4536,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "muenchener.meute"
+    "instagram": "muenchener.meute",
+    "interest": "kultur"
   },
   {
     "id": "comm-viva-muenchen",
@@ -4247,7 +4548,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-hofflohmaerkte-muenchen",
@@ -4258,7 +4560,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-un1t-muenchen",
@@ -4270,7 +4573,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "un1t_muenchen"
+    "instagram": "un1t_muenchen",
+    "interest": "kultur"
   },
   {
     "id": "comm-muenchen-in-fuenf-minuten",
@@ -4282,7 +4586,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "muenchen_in_fuenf_minuten"
+    "instagram": "muenchen_in_fuenf_minuten",
+    "interest": "kultur"
   },
   {
     "id": "comm-munichrunningacademy",
@@ -4296,7 +4601,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichrunningacademy"
+    "instagram": "munichrunningacademy",
+    "interest": "running"
   },
   {
     "id": "comm-munichruncollective",
@@ -4310,7 +4616,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munichruncollective"
+    "instagram": "munichruncollective",
+    "interest": "running"
   },
   {
     "id": "comm-munich-morning-miles",
@@ -4324,7 +4631,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "munich.morning.miles"
+    "instagram": "munich.morning.miles",
+    "interest": "running"
   },
   {
     "id": "comm-themakersclubmunich",
@@ -4337,7 +4645,8 @@
     "pitch": "Connection",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "networking"
   },
   {
     "id": "comm-pauline-erklaert-finanzen",
@@ -4350,7 +4659,8 @@
     "pitch": "Creator",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "creator"
   },
   {
     "id": "comm-mister-mario",
@@ -4363,7 +4673,8 @@
     "pitch": "Creator",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "creator"
   },
   {
     "id": "comm-lukashenn",
@@ -4376,7 +4687,8 @@
     "pitch": "Creator",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "creator"
   },
   {
     "id": "comm-skatecommunitymunich",
@@ -4389,7 +4701,8 @@
     "pitch": "Sport",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "sport"
   },
   {
     "id": "comm-teammural",
@@ -4402,12 +4715,13 @@
     "pitch": "Bars & Drinks",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "drinks"
   },
   {
     "id": "comm-endo-muenchen",
     "name": "endo.muenchen",
-    "category": "kultur",
+    "category": "queer",
     "tags": [
       "divers"
     ],
@@ -4415,7 +4729,8 @@
     "pitch": "divers",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "queer"
   },
   {
     "id": "comm-die-power-frauen-gang",
@@ -4428,7 +4743,8 @@
     "pitch": "Lifestyle",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "lifestyle"
   },
   {
     "id": "comm-manageandmore",
@@ -4441,12 +4757,13 @@
     "pitch": "Connection",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "networking"
   },
   {
     "id": "comm-longevity-munich",
     "name": "longevity.munich",
-    "category": "kultur",
+    "category": "wellness",
     "tags": [
       "gesundheit & langlebigkeit"
     ],
@@ -4455,7 +4772,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "longevity.munich"
+    "instagram": "longevity.munich",
+    "interest": "wellness"
   },
   {
     "id": "comm-revynd-de",
@@ -4467,7 +4785,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "revynd.de"
+    "instagram": "revynd.de",
+    "interest": "kultur"
   },
   {
     "id": "comm-die-keramikothek",
@@ -4479,7 +4798,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "die_keramikothek"
+    "instagram": "die_keramikothek",
+    "interest": "kultur"
   },
   {
     "id": "comm-2cupsmunich",
@@ -4491,7 +4811,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "2cupsmunich"
+    "instagram": "2cupsmunich",
+    "interest": "kultur"
   },
   {
     "id": "comm-runnersmunich",
@@ -4503,7 +4824,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "runnersmunich"
+    "instagram": "runnersmunich",
+    "interest": "kultur"
   },
   {
     "id": "comm-tsv-uhlbach",
@@ -4516,7 +4838,8 @@
     "pitch": "Sport",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "sport"
   },
   {
     "id": "comm-one-nation-munich",
@@ -4528,7 +4851,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "one_nation_munich"
+    "instagram": "one_nation_munich",
+    "interest": "kultur"
   },
   {
     "id": "comm-esnmesa",
@@ -4540,7 +4864,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "esnmesa"
+    "instagram": "esnmesa",
+    "interest": "kultur"
   },
   {
     "id": "comm-danceupmunich",
@@ -4552,7 +4877,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "danceupmunich"
+    "instagram": "danceupmunich",
+    "interest": "kultur"
   },
   {
     "id": "comm-surfskate-munich",
@@ -4564,7 +4890,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "surfskate_munich"
+    "instagram": "surfskate_munich",
+    "interest": "kultur"
   },
   {
     "id": "comm-skatehoes",
@@ -4576,7 +4903,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "_skatehoes_"
+    "instagram": "_skatehoes_",
+    "interest": "kultur"
   },
   {
     "id": "comm-bloomhosts",
@@ -4588,7 +4916,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bloomhosts"
+    "instagram": "bloomhosts",
+    "interest": "kultur"
   },
   {
     "id": "comm-tempoamschloss",
@@ -4599,7 +4928,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-runbeat-munich",
@@ -4613,7 +4943,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "runbeat.munich"
+    "instagram": "runbeat.munich",
+    "interest": "running"
   },
   {
     "id": "comm-triffdich-app",
@@ -4624,7 +4955,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-lesrunmuc",
@@ -4636,7 +4968,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "lesrunmuc"
+    "instagram": "lesrunmuc",
+    "interest": "kultur"
   },
   {
     "id": "comm-queer-walk-talk",
@@ -4648,7 +4981,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "queer.walk.talk"
+    "instagram": "queer.walk.talk",
+    "interest": "kultur"
   },
   {
     "id": "comm-recoveryclub-muc",
@@ -4660,7 +4994,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "recoveryclub.muc"
+    "instagram": "recoveryclub.muc",
+    "interest": "kultur"
   },
   {
     "id": "comm-theglowbesties",
@@ -4672,7 +5007,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "theglowbesties"
+    "instagram": "theglowbesties",
+    "interest": "kultur"
   },
   {
     "id": "comm-26-miles-running",
@@ -4684,7 +5020,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "26.miles_running"
+    "instagram": "26.miles_running",
+    "interest": "kultur"
   },
   {
     "id": "comm-pace-magazin",
@@ -4696,7 +5033,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "pace.magazin"
+    "instagram": "pace.magazin",
+    "interest": "kultur"
   },
   {
     "id": "comm-bike-and-beans",
@@ -4707,7 +5045,8 @@
     "pitch": "Founding-20 DM via IG-DM am 31.05.2026. Hook: Bike-Cafe in/um Pullach, Kaffee mit indischer Note, Radfahren + Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-kudossportsclub",
@@ -4718,7 +5057,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-around-munich",
@@ -4729,7 +5069,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-velvethouse-giesing",
@@ -4740,7 +5081,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-derusocialrunningclub",
@@ -4751,7 +5093,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-cndo-munich",
@@ -4762,7 +5105,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-earlybirdsurbanmovement",
@@ -4773,7 +5117,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-onmasportsclubmunich",
@@ -4784,7 +5129,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-antisocialrun-club",
@@ -4795,7 +5141,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-kamishovka-ceramics-studio",
@@ -4806,7 +5153,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-two-to-seven",
@@ -4817,7 +5165,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-efoilbase",
@@ -4828,7 +5177,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-padelpit-de",
@@ -4839,7 +5189,8 @@
     "pitch": "Münchner Community.",
     "meetup": "siehe Links",
     "frequency": "wechselnd",
-    "size": "—"
+    "size": "—",
+    "interest": "kultur"
   },
   {
     "id": "comm-zeithafen",
@@ -4851,7 +5202,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "zeithafen"
+    "instagram": "zeithafen",
+    "interest": "kultur"
   },
   {
     "id": "comm-bigbadwolfrunning",
@@ -4863,7 +5215,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "bigbadwolfrunning"
+    "instagram": "bigbadwolfrunning",
+    "interest": "kultur"
   },
   {
     "id": "comm-slovotum",
@@ -4875,7 +5228,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "slovotum"
+    "instagram": "slovotum",
+    "interest": "kultur"
   },
   {
     "id": "comm-hold-space-recovery",
@@ -4887,7 +5241,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "hold.space_recovery"
+    "instagram": "hold.space_recovery",
+    "interest": "kultur"
   },
   {
     "id": "comm-untereweidenstrasse",
@@ -4899,7 +5254,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "untereweidenstrasse"
+    "instagram": "untereweidenstrasse",
+    "interest": "kultur"
   },
   {
     "id": "comm-nymphenruns",
@@ -4913,7 +5269,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "nymphenruns"
+    "instagram": "nymphenruns",
+    "interest": "running"
   },
   {
     "id": "comm-theactionpainters",
@@ -4925,7 +5282,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "theactionpainters"
+    "instagram": "theactionpainters",
+    "interest": "kultur"
   },
   {
     "id": "comm-spark-events-de",
@@ -4937,7 +5295,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "spark.events.de"
+    "instagram": "spark.events.de",
+    "interest": "kultur"
   },
   {
     "id": "comm-artistenschule-muenchen",
@@ -4949,7 +5308,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "artistenschule.muenchen"
+    "instagram": "artistenschule.muenchen",
+    "interest": "kultur"
   },
   {
     "id": "comm-atelierinspire-de",
@@ -4961,7 +5321,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "atelierinspire.de"
+    "instagram": "atelierinspire.de",
+    "interest": "kultur"
   },
   {
     "id": "comm-haunted-jewellery",
@@ -4973,7 +5334,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "haunted.jewellery"
+    "instagram": "haunted.jewellery",
+    "interest": "kultur"
   },
   {
     "id": "comm-yarko-werkstatt",
@@ -4985,7 +5347,8 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "yarko_werkstatt"
+    "instagram": "yarko_werkstatt",
+    "interest": "kultur"
   },
   {
     "id": "comm-aper-munich",
@@ -4997,6 +5360,7 @@
     "meetup": "siehe Links",
     "frequency": "wechselnd",
     "size": "—",
-    "instagram": "aper.munich"
+    "instagram": "aper.munich",
+    "interest": "kultur"
   }
 ]
