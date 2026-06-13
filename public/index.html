@@ -2241,10 +2241,22 @@ function openCommunityDetail(id) {
   if (!c) return;
   const linkedEvents = communityEventsFor(c);
   const modal = document.getElementById("detailModal");
-  const body = document.getElementById("detailContent");
   const color = COMM_CAT_COLOR[c.category] || "#888";
 
-  // Build link buttons — show whatever exists
+  // Switch modal into community mode — hide restaurant-specific sections
+  document.querySelectorAll("#detailModal .detail-section, #detailModal .detail-cta, #detailModal .gallery").forEach(el => el.style.display = "none");
+
+  // Populate hero with community data
+  document.getElementById("detailName").textContent = c.name;
+  document.getElementById("detailSub").innerHTML = `${COMM_CAT_LABEL[c.category]} · 📍 ${c.neighborhood} · 🔁 ${c.frequency}`;
+  document.getElementById("detailPrice").textContent = c.size || "";
+  document.getElementById("detailHero").style.background = `linear-gradient(135deg, ${color}33, ${color}11)`;
+
+  // Inject community body inside detail-body
+  const detailBody = document.querySelector("#detailModal .detail-body");
+  // Remove any prior community injection
+  detailBody.querySelector(".community-detail-block")?.remove();
+
   const links = [];
   if (c.website) {
     links.push(`<a href="${c.website}" target="_blank" rel="noopener" class="link-btn link-web">
@@ -2262,76 +2274,73 @@ function openCommunityDetail(id) {
   }
   if (c.whatsapp) {
     const waUrl = c.whatsapp.startsWith("http") ? c.whatsapp : null;
-    if (waUrl) {
-      links.push(`<a href="${waUrl}" target="_blank" rel="noopener" class="link-btn link-wa">
-        <span class="link-icon">💬</span>
-        <span class="link-label">WhatsApp beitreten</span>
-        <span class="link-arrow">→</span>
-      </a>`);
-    } else {
-      links.push(`<div class="link-btn link-wa link-info">
-        <span class="link-icon">💬</span>
-        <span class="link-label">${c.whatsapp}</span>
-        <span class="link-arrow">·</span>
-      </div>`);
-    }
+    links.push(waUrl
+      ? `<a href="${waUrl}" target="_blank" rel="noopener" class="link-btn link-wa">
+          <span class="link-icon">💬</span><span class="link-label">WhatsApp beitreten</span><span class="link-arrow">→</span>
+        </a>`
+      : `<div class="link-btn link-wa link-info">
+          <span class="link-icon">💬</span><span class="link-label">${c.whatsapp}</span><span class="link-arrow">·</span>
+        </div>`);
   }
   if (c.email) {
     links.push(`<a href="mailto:${c.email}" class="link-btn link-mail">
-      <span class="link-icon">✉️</span>
-      <span class="link-label">${c.email}</span>
-      <span class="link-arrow">→</span>
+      <span class="link-icon">✉️</span><span class="link-label">${c.email}</span><span class="link-arrow">→</span>
     </a>`);
   }
   if (c.phone) {
     links.push(`<a href="tel:${c.phone}" class="link-btn link-phone">
-      <span class="link-icon">📞</span>
-      <span class="link-label">${c.phone}</span>
-      <span class="link-arrow">→</span>
+      <span class="link-icon">📞</span><span class="link-label">${c.phone}</span><span class="link-arrow">→</span>
     </a>`);
   }
-  const linksHtml = links.length
-    ? `<div class="detail-section">
-         <h4>Links & Kontakt</h4>
-         <div class="link-grid">${links.join("")}</div>
-       </div>`
-    : `<div class="detail-section">
-         <h4>Links & Kontakt</h4>
-         <p style="opacity:.6; font-style:italic;">Noch keine Links hinterlegt. Frag in der Community nach!</p>
-       </div>`;
 
-  body.innerHTML = `
-    <div class="detail-hero" style="background: linear-gradient(135deg, ${color}33, ${color}11);">
-      <div class="detail-hero-inner">
-        <span class="comm-cat-pill" style="--comm-color:${color}">${COMM_CAT_LABEL[c.category]}</span>
-        <h2 style="margin:14px 0 4px;">${c.name}</h2>
-        <div style="opacity:.75;">📍 ${c.neighborhood} · 🔁 ${c.frequency} · 👥 ${c.size}</div>
+  const block = document.createElement("div");
+  block.className = "community-detail-block";
+  block.style.padding = "0 4px";
+  block.innerHTML = `
+    <div class="detail-section">
+      <p class="detail-pitch">${c.pitch || ""}</p>
+    </div>
+    <div class="detail-section">
+      <h3>Links & Kontakt</h3>
+      ${links.length
+        ? `<div class="link-grid">${links.join("")}</div>`
+        : `<p style="opacity:.6; font-style:italic;">Noch keine öffentlichen Links hinterlegt — schreib der Community auf Instagram an, falls du sie findest!</p>`}
+    </div>
+    ${c.meetup && c.meetup !== "siehe Links" ? `
+      <div class="detail-section">
+        <h3>Wann & Wo</h3>
+        <p>${c.meetup}</p>
+      </div>` : ""}
+    ${c.tags?.length ? `
+      <div class="detail-section">
+        <h3>Tags</h3>
+        <div class="card-tags">${c.tags.map(t => `<span class="tag-pill">#${t}</span>`).join("")}</div>
+      </div>` : ""}
+    ${linkedEvents.length ? `
+      <div class="detail-section">
+        <h3>Kommende Events</h3>
+        ${linkedEvents.slice(0, 5).map(e => `
+          <div class="linked-event">
+            <strong>${e.title}</strong>
+            <div style="opacity:.7; font-size:13px;">${e.date} · ${e.venueName}</div>
+          </div>
+        `).join("")}
       </div>
-    </div>
-    <div class="detail-body">
-      <p style="font-size:16px; line-height:1.6;">${c.pitch || ""}</p>
-      ${linksHtml}
-      ${c.meetup && c.meetup !== "siehe Links" ? `
-        <div class="detail-section">
-          <h4>Wann & Wo</h4>
-          <p>${c.meetup}</p>
-        </div>` : ""}
-      ${c.tags?.length ? `<div class="detail-section"><h4>Tags</h4><div class="card-tags">${c.tags.map(t => `<span class="tag-pill">#${t}</span>`).join("")}</div></div>` : ""}
-      ${linkedEvents.length ? `
-        <div class="detail-section">
-          <h4>Kommende Events</h4>
-          ${linkedEvents.slice(0, 5).map(e => `
-            <div class="linked-event">
-              <strong>${e.title}</strong>
-              <div style="opacity:.7; font-size:13px;">${e.date} · ${e.venueName}</div>
-            </div>
-          `).join("")}
-        </div>
-      ` : ""}
-    </div>
+    ` : ""}
   `;
+  detailBody.appendChild(block);
+
+  // Show the close button only
+  document.getElementById("detailIgBtn").style.display = "none";
   modal.classList.add("open");
 }
+
+// When closing, restore the restaurant sections for next open
+document.getElementById("detailClose")?.addEventListener("click", () => {
+  // Remove community-specific block + restore sections
+  document.querySelector(".community-detail-block")?.remove();
+  document.querySelectorAll("#detailModal .detail-section, #detailModal .detail-cta, #detailModal .gallery").forEach(el => el.style.display = "");
+}, true);
 
 async function loadCommunities() {
   try {
